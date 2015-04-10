@@ -101,7 +101,7 @@ module AV
     # by all API methods. AV.init must be called before saving
     # or retrieving any objects.
     def init(data = {}, &blk)
-      defaults = {:application_id => ENV["PARSE_APPLICATION_ID"], :api_key => ENV["PARSE_REST_API_KEY"]}
+      defaults = {:application_id => ENV["LC_APPLICATION_ID"], :api_key => ENV["LC_APPLICATION_KEY"]}
       defaults.merge!(data)
 
       # use less permissive key if both are specified

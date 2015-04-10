@@ -1,6 +1,6 @@
 require 'helper'
 
-#AV.init :application_id => $PARSE_APPLICATION_ID, :api_key => $PARSE_REST_API_KEY
+#AV.init :application_id => $LC_APPLICATION_ID, :api_key => $LC_APPLICATION_KEY
 
 class TestInit < Test::Unit::TestCase
   def setup
