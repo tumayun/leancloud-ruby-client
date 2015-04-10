@@ -126,7 +126,7 @@ module AV
     end
 
     def client
-      raise ParseError, "API not initialized" if !@@client
+      raise AVError, "API not initialized" if !@@client
       @@client
     end
 

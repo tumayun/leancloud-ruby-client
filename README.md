@@ -4,7 +4,7 @@ leancloud-ruby-client 从 [parse-ruby-client](https://github.com/adelevie/parse-
 
 除了简单的重命名和调用地址改动之外，还做了下列事情：
 
-* 增加短信 API `AV::Cloud.requestSmsCode(params)`
+* 增加短信 API `AV::Cloud.request_sms_code(params)`
 * 增加 CQL 调用 `AV::Query.do_cloud_query(cql, pvalues)`
 * 其他兼容性改进和测试
 * 推送增加可以指定证书功能 `prod` 属性
@@ -96,14 +96,6 @@ AV.init :application_id => "<your_app_id>",
     - [GeoQueries](#geoqueries)
 - [should look something like this:](#should-look-something-like-this:)
     - [Caveats](#caveats)
-
-## Parse App Config Parameters
-
-[Application config parameters](https://parse.com/docs/rest#config) are read-only and must be set via the Parse web application. However, you can access the values with:
-
-```ruby
-AV::Application.config # => {"welcomeMessage" => "Welcome to The Internet!", "winningNumber" => 42}
-```
 
 ## Objects
 
@@ -864,7 +856,7 @@ user.parse_delete
 
 ### Linking Users
 
-TODO: Implement this! See https://parse.com/docs/rest#users-linking
+TODO: Implement this! See https://leancloud.cn/docs/rest_api.html#用户账户连接
 
 Parse allows you to link your users with services like Twitter and Facebook, enabling your users to sign up or log into your application using their existing identities. This is accomplished through the sign-up and update REST endpoints by providing authentication data for the service you wish to link to a user in the authData field. Once your user is associated with a service, the authData for the service will be stored with the user and is retrievable by logging in.
 
@@ -1028,7 +1020,7 @@ If you want to access your data ignoring all ACLs, you can use the master key pr
 
 TODO: Implement this!
 
-See https://parse.com/docs/rest#roles
+See https://leancloud.cn/docs/rest_api.html#角色-1
 
 ## Files
 
@@ -1091,12 +1083,11 @@ Parse allows you send Push Notifications to iOS and Android devices.
 
 Notifications by default are set for iOS and Android. You can set certain notifications to only be sent to iOS or Android by setting the `type` to `ios` or `android`.
 
-For config/installation: https://parse.com/docs/rest#push and https://parse.com/docs/push_guide#top/REST
+For config/installation: https://leancloud.cn/docs/push_guide.html#使用_REST_API_推送消息
 
 ### Using Channels
 
-To send a notification to the "Giants" channel, as given at: https://parse.com/docs/push_guide#sending-channels/REST.
-
+To send a notification to the "Giants" channel, as given at: https://leancloud.cn/docs/push_guide.html
 ```ruby
 data = { :alert => "This is a notification from Parse" }
 push = AV::Push.new(data, "Giants")
@@ -1106,7 +1097,7 @@ push.save
 
 ### Using Advanced Targeting
 
-To send a notification to installations where `injuryReports` is `true`, as given at: https://parse.com/docs/push_guide#sending-queries/REST
+To send a notification to installations where `injuryReports` is `true`, as given at: https://leancloud.cn/docs/push_guide.html
 
 
 ```ruby
@@ -1171,7 +1162,7 @@ places = AV::Query.new("PlaceObject").tap do |q|
 end.get
 ```
 
-See https://parse.com/docs/rest#geo-query for the rest of the geo query types to implement.
+See https://leancloud.cn/docs/rest_api.html#地理查询 for the rest of the geo query types to implement.
 
 ### Caveats
 

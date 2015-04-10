@@ -2,15 +2,15 @@
 module AV
 
   # Base exception class for errors thrown by the Parse
-  # client library. ParseError will be raised by any
+  # client library. AVError will be raised by any
   # network operation if AV.init() has not been called.
-  class ParseError < StandardError #Exception ... why? A:http://www.skorks.com/2009/09/ruby-exceptions-and-exception-handling/
+  class AVError < StandardError #Exception ... why? A:http://www.skorks.com/2009/09/ruby-exceptions-and-exception-handling/
   end
 
   # An exception class raised when the REST API returns an error.
   # The error code and message will be parsed out of the HTTP response,
   # which is also included in the response attribute.
-  class AVProtocolError < ParseError
+  class AVProtocolError < AVError
     attr_accessor :code
     attr_accessor :error
     attr_accessor :response

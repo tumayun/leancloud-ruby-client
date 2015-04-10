@@ -13,6 +13,24 @@ module AV
     attr_accessor :count
     attr_accessor :include
 
+    def self.do_cloud_query(cql, pvalues=[])
+      uri   = Protocol.cql_uri
+      query = { "cql" => cql,"pvalues"=> pvalues.to_json }
+      AV.client.logger.info{"Leancloud query for #{uri} #{query.inspect}"} unless AV.client.quiet
+      response = AV.client.request uri, :get, nil, query
+
+      if response.is_a?(Hash) && response.has_key?(Protocol::KEY_RESULTS) && response[Protocol::KEY_RESULTS].is_a?(Array)
+        class_name = response[Protocol::KEY_CLASS_NAME]
+        parsed_results = response[Protocol::KEY_RESULTS].map{|o| AV.parse_json(class_name, o)}
+        return {
+            count: response['count'],
+            results: parsed_results
+        }
+      else
+        raise AVError.new("query response not a Hash with #{Protocol::KEY_RESULTS} key: #{response.class} #{response.inspect}")
+      end
+    end
+
     def initialize(cls_name)
       @class_name = cls_name
       @where = {}
@@ -153,7 +171,7 @@ module AV
           response.dup.merge(Protocol::KEY_RESULTS => parsed_results)
         end
       else
-        raise ParseError.new("query response not a Hash with #{Protocol::KEY_RESULTS} key: #{response.class} #{response.inspect}")
+        raise AVError.new("query response not a Hash with #{Protocol::KEY_RESULTS} key: #{response.class} #{response.inspect}")
       end
     end
 

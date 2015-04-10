@@ -20,5 +20,9 @@ module AV
       end
     end
 
+    def self.request_sms(params)
+      response = AV.client.post("/#{Protocol::VERSION}/requestSmsCode", params.to_json)
+      return response == {}
+    end
   end
 end
