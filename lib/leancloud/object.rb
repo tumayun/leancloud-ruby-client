@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
-require 'parse/protocol'
-require 'parse/client'
-require 'parse/error'
+require 'leancloud/protocol'
+require 'leancloud/client'
+require 'leancloud/error'
 
 module AV
 

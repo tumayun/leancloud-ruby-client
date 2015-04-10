@@ -20,15 +20,15 @@ require 'cgi'
 cwd = Pathname(__FILE__).dirname
 $:.unshift(cwd.to_s) unless $:.include?(cwd.to_s) || $:.include?(cwd.expand_path.to_s)
 
-require 'parse/object'
-require 'parse/query'
-require 'parse/datatypes'
-require 'parse/util'
-require 'parse/protocol'
-require 'parse/user'
-require "parse/installation"
-require 'parse/push'
-require 'parse/cloud'
-require 'parse/model'
-require 'parse/batch'
-require 'parse/application'
+require 'leancloud/object'
+require 'leancloud/query'
+require 'leancloud/datatypes'
+require 'leancloud/util'
+require 'leancloud/protocol'
+require 'leancloud/user'
+require "leancloud/installation"
+require 'leancloud/push'
+require 'leancloud/cloud'
+require 'leancloud/model'
+require 'leancloud/batch'
+require 'leancloud/application'

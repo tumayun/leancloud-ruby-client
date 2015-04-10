@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 require 'cgi'
-require 'parse/error'
+require 'leancloud/error'
 
 module AV
   class Push

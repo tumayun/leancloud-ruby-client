@@ -1,7 +1,7 @@
-require 'parse/protocol'
-require 'parse/client'
-require 'parse/error'
-require 'parse/object'
+require 'leancloud/protocol'
+require 'leancloud/client'
+require 'leancloud/error'
+require 'leancloud/object'
 
 module AV
   class Installation < AV::Object

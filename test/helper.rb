@@ -25,7 +25,7 @@ SimpleCov.start if ENV['COVERAGE']
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
-require 'parse-ruby-client'
+require 'leancloud-ruby-client'
 
 YAML::ENGINE.yamler='syck' # get ascii strings as strings in fixtures
 
@@ -106,4 +106,3 @@ module Faraday
     end
   end
 end
-
