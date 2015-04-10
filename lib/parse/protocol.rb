@@ -7,28 +7,28 @@ module Parse
     # ----------------------------------------
 
     # The default hostname for communication with the Parse API.
-    HOST            = "api.parse.com"
+    HOST            = "api.leancloud.cn"
 
     # The version of the REST API implemented by this module.
-    VERSION         = 1
+    VERSION         = 1.1
 
     # HTTP Headers
     # ----------------------------------------
 
     # The HTTP header used for passing your application ID to the
     # Parse API.
-    HEADER_APP_ID   = "X-Parse-Application-Id"
+    HEADER_APP_ID   = "X-AVOSCloud-Application-Id"
 
     # The HTTP header used for passing your API key to the
     # Parse API.
-    HEADER_API_KEY  = "X-Parse-REST-API-Key"
+    HEADER_API_KEY  = "X-AVOSCloud-Application-Key"
 
     # The HTTP header used for passing your API Master key to the
     # Parse API.
-    HEADER_MASTER_KEY  = "X-Parse-Master-Key"
+    HEADER_MASTER_KEY  = "X-AVOSCloud-Master-Key"
 
     # The HTTP header used for passing your authenticated session
-    HEADER_SESSION_TOKEN = "X-Parse-Session-Token"
+    HEADER_SESSION_TOKEN = "X-AVOSCloud-Session-Token"
 
     # JSON Keys
     # ----------------------------------------
@@ -120,6 +120,7 @@ module Parse
 
     USER_LOGIN_URI  = "/#{VERSION}/login"
     PASSWORD_RESET_URI = "/#{VERSION}/requestPasswordReset"
+    SMS_URI = "/#{VERSION}/requestSmsCode"
 
     CLOUD_FUNCTIONS_PATH = "functions"
 
