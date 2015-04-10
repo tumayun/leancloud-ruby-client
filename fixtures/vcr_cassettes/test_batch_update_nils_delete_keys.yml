@@ -293,4 +293,143 @@ http_interactions:
       string: '{"code":101,"error":"object not found for get"}'
     http_version: 
   recorded_at: Wed, 26 Mar 2014 15:21:13 GMT
+- request:
+    method: post
+    uri: https://api.leancloud.cn/1.1/classes/BatchTestObject
+    body:
+      encoding: UTF-8
+      string: '{"foo":"1"}'
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:29 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '78'
+      Connection:
+      - keep-alive
+      Location:
+      - /1.1/classes/BatchTestObject/55279385e4b0da2c5defa0e2
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"createdAt":"2015-04-10T09:10:29.835Z","objectId":"55279385e4b0da2c5defa0e2"}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:29 GMT
+- request:
+    method: post
+    uri: https://api.leancloud.cn/1.1/batch
+    body:
+      encoding: UTF-8
+      string: '{"requests":[{"method":"PUT","path":"/1.1/classes/BatchTestObject/55279385e4b0da2c5defa0e2","body":{"foo":{"__op":"Delete"}}}]}'
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:30 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '92'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '[{"success":{"updatedAt":"2015-04-10T09:10:30.118Z","objectId":"55279385e4b0da2c5defa0e2"}}]'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:30 GMT
+- request:
+    method: get
+    uri: https://api.leancloud.cn/1.1/classes/BatchTestObject/55279385e4b0da2c5defa0e2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:30 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '117'
+      Connection:
+      - keep-alive
+      Last-Modified:
+      - Fri, 10 Apr 2015 09:10:30.118 GMT
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"updatedAt":"2015-04-10T09:10:30.118Z","createdAt":"2015-04-10T09:10:29.835Z","objectId":"55279385e4b0da2c5defa0e2"}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:30 GMT
 recorded_with: VCR 2.4.0

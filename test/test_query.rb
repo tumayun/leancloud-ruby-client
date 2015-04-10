@@ -131,12 +131,14 @@ class TestQuery < ParseTestCase
   def test_large_value_in_xget
     VCR.use_cassette('test_xget', :record => :new_episodes) do
       post = Parse::Object.new("Post")
+      post['title']= 'foo'
       post.save
 
       other_post = Parse::Object.new("Post")
+      other_post['title']= 'foo'
       other_post.save
 
-      assert_equal [post], Parse::Query.new("Post").value_in("objectId", [post.id] + 5000.times.map { "x" }).get
+      assert_equal [post], Parse::Query.new("Post").value_in("objectId", [post.id] + 100.times.map { "x" }).get
     end
   end
 

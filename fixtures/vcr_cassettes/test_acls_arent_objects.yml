@@ -177,4 +177,98 @@ http_interactions:
       string: '{"createdAt":"2013-05-21T14:21:15.405Z","updatedAt":"2013-05-21T14:21:15.405Z","objectId":"OHGnBvPDXq","ACL":{"*":{"read":true}}}'
     http_version: 
   recorded_at: Tue, 21 May 2013 14:21:38 GMT
+- request:
+    method: post
+    uri: https://api.leancloud.cn/1.1/classes/Post
+    body:
+      encoding: UTF-8
+      string: '{"ACL":{"*":{"read":true}}}'
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:45 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '78'
+      Connection:
+      - keep-alive
+      Location:
+      - /1.1/classes/Post/55279395e4b0da2c5defa1ab
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"createdAt":"2015-04-10T09:10:45.299Z","objectId":"55279395e4b0da2c5defa1ab"}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:45 GMT
+- request:
+    method: get
+    uri: https://api.leancloud.cn/1.1/classes/Post/55279395e4b0da2c5defa1ab
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:45 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '117'
+      Connection:
+      - keep-alive
+      Last-Modified:
+      - Fri, 10 Apr 2015 09:10:45.299 GMT
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"createdAt":"2015-04-10T09:10:45.299Z","updatedAt":"2015-04-10T09:10:45.299Z","objectId":"55279395e4b0da2c5defa1ab"}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:45 GMT
 recorded_with: VCR 2.4.0

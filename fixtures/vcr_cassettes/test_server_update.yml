@@ -352,4 +352,235 @@ http_interactions:
       string: '{"code":101,"error":"object not found for get"}'
     http_version: 
   recorded_at: Wed, 26 Mar 2014 15:21:15 GMT
+- request:
+    method: post
+    uri: https://api.leancloud.cn/1.1/classes/TestSave
+    body:
+      encoding: UTF-8
+      string: '{}'
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:38 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '78'
+      Connection:
+      - keep-alive
+      Location:
+      - /1.1/classes/TestSave/5527938ee4b0da2c5defa157
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"createdAt":"2015-04-10T09:10:38.361Z","objectId":"5527938ee4b0da2c5defa157"}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:38 GMT
+- request:
+    method: put
+    uri: https://api.leancloud.cn/1.1/classes/TestSave/5527938ee4b0da2c5defa157?new=true
+    body:
+      encoding: UTF-8
+      string: '{"name":"john"}'
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:38 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '92'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"objectId":"5527938ee4b0da2c5defa157","name":"john","updatedAt":"2015-04-10T09:10:38.643Z"}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:38 GMT
+- request:
+    method: get
+    uri: https://api.leancloud.cn/1.1/classes/TestSave/5527938ee4b0da2c5defa157
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:38 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '131'
+      Connection:
+      - keep-alive
+      Last-Modified:
+      - Fri, 10 Apr 2015 09:10:38.643 GMT
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"updatedAt":"2015-04-10T09:10:38.643Z","name":"john","createdAt":"2015-04-10T09:10:38.361Z","objectId":"5527938ee4b0da2c5defa157"}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:38 GMT
+- request:
+    method: put
+    uri: https://api.leancloud.cn/1.1/classes/TestSave/5527938ee4b0da2c5defa157?new=true
+    body:
+      encoding: UTF-8
+      string: '{"name":"dave"}'
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:39 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '92'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"objectId":"5527938ee4b0da2c5defa157","name":"dave","updatedAt":"2015-04-10T09:10:39.138Z"}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:39 GMT
+- request:
+    method: get
+    uri: https://api.leancloud.cn/1.1/classes/TestSave/5527938ee4b0da2c5defa157
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:39 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '131'
+      Connection:
+      - keep-alive
+      Last-Modified:
+      - Fri, 10 Apr 2015 09:10:39.138 GMT
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"updatedAt":"2015-04-10T09:10:39.138Z","name":"dave","createdAt":"2015-04-10T09:10:38.361Z","objectId":"5527938ee4b0da2c5defa157"}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:39 GMT
 recorded_with: VCR 2.4.0

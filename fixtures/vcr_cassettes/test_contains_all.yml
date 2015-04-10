@@ -1,630 +1,1143 @@
---- 
-http_interactions: 
-- request: 
+---
+http_interactions:
+- request:
     method: get
     uri: https://api.parse.com/1/classes/Cactus?where=%7B%7D
-    body: 
+    body:
       encoding: US-ASCII
-      string: ""
-    headers: 
-      Content-Type: 
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      Accept: 
+      Accept:
       - application/json
-      User-Agent: 
+      User-Agent:
       - Parse for Ruby, 0.0
-      X-Parse-Rest-Api-Key: 
+      X-Parse-Rest-Api-Key:
       - <X-Parse-REST-API-Key>
-      X-Parse-Application-Id: 
+      X-Parse-Application-Id:
       - <X-Parse-Application-Id>
-      Expect: 
-      - ""
-  response: 
-    status: 
+      Expect:
+      - ''
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      Access-Control-Allow-Origin: 
-      - "*"
-      Access-Control-Request-Method: 
-      - "*"
-      Cache-Control: 
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Request-Method:
+      - '*'
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      Content-Type: 
+      Content-Type:
       - application/json; charset=utf-8
-      Date: 
+      Date:
       - Tue, 29 Jul 2014 23:17:01 GMT
-      Etag: 
-      - "\"a29bdd9e603493317bf0b36ce9e0db1f\""
-      Server: 
+      Etag:
+      - '"a29bdd9e603493317bf0b36ce9e0db1f"'
+      Server:
       - nginx/1.6.0
-      Set-Cookie: 
+      Set-Cookie:
       - <COOKIE-KEY>
-      Status: 
+      Status:
       - 200 OK
-      X-Content-Type-Options: 
+      X-Content-Type-Options:
       - nosniff
-      X-Runtime: 
-      - "0.083746"
-      X-Ua-Compatible: 
+      X-Runtime:
+      - '0.083746'
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length: 
-      - "259"
-      Connection: 
+      Content-Length:
+      - '259'
+      Connection:
       - keep-alive
-    body: 
+    body:
       encoding: ASCII-8BIT
-      string: "{\"results\":[{\"array\":[1,2,5,6,7],\"createdAt\":\"2014-07-29T23:15:17.390Z\",\"updatedAt\":\"2014-07-29T23:15:17.390Z\",\"objectId\":\"TRD3lrtSSd\"},{\"array\":[3,4,5,6],\"createdAt\":\"2014-07-29T23:15:17.615Z\",\"updatedAt\":\"2014-07-29T23:15:17.615Z\",\"objectId\":\"3JTX8CY12F\"}]}"
+      string: '{"results":[{"array":[1,2,5,6,7],"createdAt":"2014-07-29T23:15:17.390Z","updatedAt":"2014-07-29T23:15:17.390Z","objectId":"TRD3lrtSSd"},{"array":[3,4,5,6],"createdAt":"2014-07-29T23:15:17.615Z","updatedAt":"2014-07-29T23:15:17.615Z","objectId":"3JTX8CY12F"}]}'
     http_version: 
   recorded_at: Tue, 29 Jul 2014 23:17:03 GMT
-- request: 
+- request:
     method: delete
     uri: https://api.parse.com/1/classes/Cactus/TRD3lrtSSd
-    body: 
+    body:
       encoding: US-ASCII
-      string: ""
-    headers: 
-      Content-Type: 
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      Accept: 
+      Accept:
       - application/json
-      User-Agent: 
+      User-Agent:
       - Parse for Ruby, 0.0
-      X-Parse-Rest-Api-Key: 
+      X-Parse-Rest-Api-Key:
       - <X-Parse-REST-API-Key>
-      X-Parse-Application-Id: 
+      X-Parse-Application-Id:
       - <X-Parse-Application-Id>
-      Expect: 
-      - ""
-  response: 
-    status: 
+      Expect:
+      - ''
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      Access-Control-Allow-Origin: 
-      - "*"
-      Access-Control-Request-Method: 
-      - "*"
-      Cache-Control: 
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Request-Method:
+      - '*'
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      Content-Type: 
+      Content-Type:
       - application/json; charset=utf-8
-      Date: 
+      Date:
       - Tue, 29 Jul 2014 23:17:01 GMT
-      Etag: 
-      - "\"99914b932bd37a50b983c5e7c90ae93b\""
-      Server: 
+      Etag:
+      - '"99914b932bd37a50b983c5e7c90ae93b"'
+      Server:
       - nginx/1.6.0
-      Set-Cookie: 
+      Set-Cookie:
       - <COOKIE-KEY>
-      Status: 
+      Status:
       - 200 OK
-      X-Content-Type-Options: 
+      X-Content-Type-Options:
       - nosniff
-      X-Runtime: 
-      - "0.074949"
-      X-Ua-Compatible: 
+      X-Runtime:
+      - '0.074949'
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length: 
-      - "2"
-      Connection: 
+      Content-Length:
+      - '2'
+      Connection:
       - keep-alive
-    body: 
+    body:
       encoding: ASCII-8BIT
-      string: "{}"
+      string: '{}'
     http_version: 
   recorded_at: Tue, 29 Jul 2014 23:17:04 GMT
-- request: 
+- request:
     method: delete
     uri: https://api.parse.com/1/classes/Cactus/3JTX8CY12F
-    body: 
+    body:
       encoding: US-ASCII
-      string: ""
-    headers: 
-      Content-Type: 
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      Accept: 
+      Accept:
       - application/json
-      User-Agent: 
+      User-Agent:
       - Parse for Ruby, 0.0
-      X-Parse-Rest-Api-Key: 
+      X-Parse-Rest-Api-Key:
       - <X-Parse-REST-API-Key>
-      X-Parse-Application-Id: 
+      X-Parse-Application-Id:
       - <X-Parse-Application-Id>
-      Expect: 
-      - ""
-  response: 
-    status: 
+      Expect:
+      - ''
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      Access-Control-Allow-Origin: 
-      - "*"
-      Access-Control-Request-Method: 
-      - "*"
-      Cache-Control: 
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Request-Method:
+      - '*'
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      Content-Type: 
+      Content-Type:
       - application/json; charset=utf-8
-      Date: 
+      Date:
       - Tue, 29 Jul 2014 23:17:01 GMT
-      Etag: 
-      - "\"99914b932bd37a50b983c5e7c90ae93b\""
-      Server: 
+      Etag:
+      - '"99914b932bd37a50b983c5e7c90ae93b"'
+      Server:
       - nginx/1.6.0
-      Set-Cookie: 
+      Set-Cookie:
       - <COOKIE-KEY>
-      Status: 
+      Status:
       - 200 OK
-      X-Content-Type-Options: 
+      X-Content-Type-Options:
       - nosniff
-      X-Runtime: 
-      - "0.078185"
-      X-Ua-Compatible: 
+      X-Runtime:
+      - '0.078185'
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length: 
-      - "2"
-      Connection: 
+      Content-Length:
+      - '2'
+      Connection:
       - keep-alive
-    body: 
+    body:
       encoding: ASCII-8BIT
-      string: "{}"
+      string: '{}'
     http_version: 
   recorded_at: Tue, 29 Jul 2014 23:17:04 GMT
-- request: 
+- request:
     method: post
     uri: https://api.parse.com/1/classes/Cactus
-    body: 
+    body:
       encoding: UTF-8
-      string: "{\"array\":[1,2,5,6,7]}"
-    headers: 
-      Content-Type: 
+      string: '{"array":[1,2,5,6,7]}'
+    headers:
+      Content-Type:
       - application/json
-      Accept: 
+      Accept:
       - application/json
-      User-Agent: 
+      User-Agent:
       - Parse for Ruby, 0.0
-      X-Parse-Rest-Api-Key: 
+      X-Parse-Rest-Api-Key:
       - <X-Parse-REST-API-Key>
-      X-Parse-Application-Id: 
+      X-Parse-Application-Id:
       - <X-Parse-Application-Id>
-      Expect: 
-      - ""
-  response: 
-    status: 
+      Expect:
+      - ''
+  response:
+    status:
       code: 201
       message: Created
-    headers: 
-      Access-Control-Allow-Origin: 
-      - "*"
-      Access-Control-Request-Method: 
-      - "*"
-      Cache-Control: 
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Request-Method:
+      - '*'
+      Cache-Control:
       - no-cache
-      Content-Type: 
+      Content-Type:
       - application/json; charset=utf-8
-      Date: 
+      Date:
       - Tue, 29 Jul 2014 23:17:01 GMT
-      Location: 
+      Location:
       - https://api.parse.com/1/classes/Cactus/aRfKHerSiY
-      Server: 
+      Server:
       - nginx/1.6.0
-      Set-Cookie: 
+      Set-Cookie:
       - <COOKIE-KEY>
-      Status: 
+      Status:
       - 201 Created
-      X-Content-Type-Options: 
+      X-Content-Type-Options:
       - nosniff
-      X-Runtime: 
-      - "0.097259"
-      X-Ua-Compatible: 
+      X-Runtime:
+      - '0.097259'
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length: 
-      - "64"
-      Connection: 
+      Content-Length:
+      - '64'
+      Connection:
       - keep-alive
-    body: 
+    body:
       encoding: ASCII-8BIT
-      string: "{\"createdAt\":\"2014-07-29T23:17:01.774Z\",\"objectId\":\"aRfKHerSiY\"}"
+      string: '{"createdAt":"2014-07-29T23:17:01.774Z","objectId":"aRfKHerSiY"}'
     http_version: 
   recorded_at: Tue, 29 Jul 2014 23:17:04 GMT
-- request: 
+- request:
     method: post
     uri: https://api.parse.com/1/classes/Cactus
-    body: 
+    body:
       encoding: UTF-8
-      string: "{\"array\":[3,4,5,6]}"
-    headers: 
-      Content-Type: 
+      string: '{"array":[3,4,5,6]}'
+    headers:
+      Content-Type:
       - application/json
-      Accept: 
+      Accept:
       - application/json
-      User-Agent: 
+      User-Agent:
       - Parse for Ruby, 0.0
-      X-Parse-Rest-Api-Key: 
+      X-Parse-Rest-Api-Key:
       - <X-Parse-REST-API-Key>
-      X-Parse-Application-Id: 
+      X-Parse-Application-Id:
       - <X-Parse-Application-Id>
-      Expect: 
-      - ""
-  response: 
-    status: 
+      Expect:
+      - ''
+  response:
+    status:
       code: 201
       message: Created
-    headers: 
-      Access-Control-Allow-Origin: 
-      - "*"
-      Access-Control-Request-Method: 
-      - "*"
-      Cache-Control: 
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Request-Method:
+      - '*'
+      Cache-Control:
       - no-cache
-      Content-Type: 
+      Content-Type:
       - application/json; charset=utf-8
-      Date: 
+      Date:
       - Tue, 29 Jul 2014 23:17:02 GMT
-      Location: 
+      Location:
       - https://api.parse.com/1/classes/Cactus/49IRCZEBBr
-      Server: 
+      Server:
       - nginx/1.6.0
-      Set-Cookie: 
+      Set-Cookie:
       - <COOKIE-KEY>
-      Status: 
+      Status:
       - 201 Created
-      X-Content-Type-Options: 
+      X-Content-Type-Options:
       - nosniff
-      X-Runtime: 
-      - "0.126357"
-      X-Ua-Compatible: 
+      X-Runtime:
+      - '0.126357'
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length: 
-      - "64"
-      Connection: 
+      Content-Length:
+      - '64'
+      Connection:
       - keep-alive
-    body: 
+    body:
       encoding: ASCII-8BIT
-      string: "{\"createdAt\":\"2014-07-29T23:17:02.032Z\",\"objectId\":\"49IRCZEBBr\"}"
+      string: '{"createdAt":"2014-07-29T23:17:02.032Z","objectId":"49IRCZEBBr"}'
     http_version: 
   recorded_at: Tue, 29 Jul 2014 23:17:04 GMT
-- request: 
+- request:
     method: get
     uri: https://api.parse.com/1/classes/Cactus?where=%7B%22array%22:%7B%22$all%22:%5B5,6%5D%7D%7D
-    body: 
+    body:
       encoding: US-ASCII
-      string: ""
-    headers: 
-      Content-Type: 
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      Accept: 
+      Accept:
       - application/json
-      User-Agent: 
+      User-Agent:
       - Parse for Ruby, 0.0
-      X-Parse-Rest-Api-Key: 
+      X-Parse-Rest-Api-Key:
       - <X-Parse-REST-API-Key>
-      X-Parse-Application-Id: 
+      X-Parse-Application-Id:
       - <X-Parse-Application-Id>
-      Expect: 
-      - ""
-  response: 
-    status: 
+      Expect:
+      - ''
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      Access-Control-Allow-Origin: 
-      - "*"
-      Access-Control-Request-Method: 
-      - "*"
-      Cache-Control: 
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Request-Method:
+      - '*'
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      Content-Type: 
+      Content-Type:
       - application/json; charset=utf-8
-      Date: 
+      Date:
       - Tue, 29 Jul 2014 23:17:02 GMT
-      Etag: 
-      - "\"3dc3866a1837dd9ce06d243cfcd43af8\""
-      Server: 
+      Etag:
+      - '"3dc3866a1837dd9ce06d243cfcd43af8"'
+      Server:
       - nginx/1.6.0
-      Set-Cookie: 
+      Set-Cookie:
       - <COOKIE-KEY>
-      Status: 
+      Status:
       - 200 OK
-      X-Content-Type-Options: 
+      X-Content-Type-Options:
       - nosniff
-      X-Runtime: 
-      - "0.142504"
-      X-Ua-Compatible: 
+      X-Runtime:
+      - '0.142504'
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length: 
-      - "259"
-      Connection: 
+      Content-Length:
+      - '259'
+      Connection:
       - keep-alive
-    body: 
+    body:
       encoding: ASCII-8BIT
-      string: "{\"results\":[{\"array\":[1,2,5,6,7],\"createdAt\":\"2014-07-29T23:17:01.774Z\",\"updatedAt\":\"2014-07-29T23:17:01.774Z\",\"objectId\":\"aRfKHerSiY\"},{\"array\":[3,4,5,6],\"createdAt\":\"2014-07-29T23:17:02.032Z\",\"updatedAt\":\"2014-07-29T23:17:02.032Z\",\"objectId\":\"49IRCZEBBr\"}]}"
+      string: '{"results":[{"array":[1,2,5,6,7],"createdAt":"2014-07-29T23:17:01.774Z","updatedAt":"2014-07-29T23:17:01.774Z","objectId":"aRfKHerSiY"},{"array":[3,4,5,6],"createdAt":"2014-07-29T23:17:02.032Z","updatedAt":"2014-07-29T23:17:02.032Z","objectId":"49IRCZEBBr"}]}'
     http_version: 
   recorded_at: Tue, 29 Jul 2014 23:17:05 GMT
-- request: 
+- request:
     method: get
     uri: https://api.parse.com/1/classes/Cactus?where=%7B%22array%22:%7B%22$all%22:%5B1,5,6%5D%7D%7D
-    body: 
+    body:
       encoding: US-ASCII
-      string: ""
-    headers: 
-      Content-Type: 
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      Accept: 
+      Accept:
       - application/json
-      User-Agent: 
+      User-Agent:
       - Parse for Ruby, 0.0
-      X-Parse-Rest-Api-Key: 
+      X-Parse-Rest-Api-Key:
       - <X-Parse-REST-API-Key>
-      X-Parse-Application-Id: 
+      X-Parse-Application-Id:
       - <X-Parse-Application-Id>
-      Expect: 
-      - ""
-  response: 
-    status: 
+      Expect:
+      - ''
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      Access-Control-Allow-Origin: 
-      - "*"
-      Access-Control-Request-Method: 
-      - "*"
-      Cache-Control: 
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Request-Method:
+      - '*'
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      Content-Type: 
+      Content-Type:
       - application/json; charset=utf-8
-      Date: 
+      Date:
       - Tue, 29 Jul 2014 23:17:02 GMT
-      Etag: 
-      - "\"019c5bcea7a81f41cbba668aaef5d707\""
-      Server: 
+      Etag:
+      - '"019c5bcea7a81f41cbba668aaef5d707"'
+      Server:
       - nginx/1.6.0
-      Set-Cookie: 
+      Set-Cookie:
       - <COOKIE-KEY>
-      Status: 
+      Status:
       - 200 OK
-      X-Content-Type-Options: 
+      X-Content-Type-Options:
       - nosniff
-      X-Runtime: 
-      - "0.040797"
-      X-Ua-Compatible: 
+      X-Runtime:
+      - '0.040797'
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length: 
-      - "137"
-      Connection: 
+      Content-Length:
+      - '137'
+      Connection:
       - keep-alive
-    body: 
+    body:
       encoding: ASCII-8BIT
-      string: "{\"results\":[{\"array\":[1,2,5,6,7],\"createdAt\":\"2014-07-29T23:17:01.774Z\",\"updatedAt\":\"2014-07-29T23:17:01.774Z\",\"objectId\":\"aRfKHerSiY\"}]}"
+      string: '{"results":[{"array":[1,2,5,6,7],"createdAt":"2014-07-29T23:17:01.774Z","updatedAt":"2014-07-29T23:17:01.774Z","objectId":"aRfKHerSiY"}]}'
     http_version: 
   recorded_at: Tue, 29 Jul 2014 23:17:05 GMT
-- request: 
+- request:
     method: get
     uri: https://api.parse.com/1/classes/Cactus?where=%7B%22array%22:%7B%22$all%22:%5B1,5,6%5D%7D%7D
-    body: 
+    body:
       encoding: US-ASCII
-      string: ""
-    headers: 
-      Content-Type: 
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      Accept: 
+      Accept:
       - application/json
-      User-Agent: 
+      User-Agent:
       - Parse for Ruby, 0.0
-      X-Parse-Rest-Api-Key: 
+      X-Parse-Rest-Api-Key:
       - <X-Parse-REST-API-Key>
-      X-Parse-Application-Id: 
+      X-Parse-Application-Id:
       - <X-Parse-Application-Id>
-      Expect: 
-      - ""
-  response: 
-    status: 
+      Expect:
+      - ''
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      Access-Control-Allow-Origin: 
-      - "*"
-      Access-Control-Request-Method: 
-      - "*"
-      Cache-Control: 
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Request-Method:
+      - '*'
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      Content-Type: 
+      Content-Type:
       - application/json; charset=utf-8
-      Date: 
+      Date:
       - Tue, 29 Jul 2014 23:17:02 GMT
-      Etag: 
-      - "\"019c5bcea7a81f41cbba668aaef5d707\""
-      Server: 
+      Etag:
+      - '"019c5bcea7a81f41cbba668aaef5d707"'
+      Server:
       - nginx/1.6.0
-      Set-Cookie: 
+      Set-Cookie:
       - <COOKIE-KEY>
-      Status: 
+      Status:
       - 200 OK
-      X-Content-Type-Options: 
+      X-Content-Type-Options:
       - nosniff
-      X-Runtime: 
-      - "0.157343"
-      X-Ua-Compatible: 
+      X-Runtime:
+      - '0.157343'
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length: 
-      - "137"
-      Connection: 
+      Content-Length:
+      - '137'
+      Connection:
       - keep-alive
-    body: 
+    body:
       encoding: ASCII-8BIT
-      string: "{\"results\":[{\"array\":[1,2,5,6,7],\"createdAt\":\"2014-07-29T23:17:01.774Z\",\"updatedAt\":\"2014-07-29T23:17:01.774Z\",\"objectId\":\"aRfKHerSiY\"}]}"
+      string: '{"results":[{"array":[1,2,5,6,7],"createdAt":"2014-07-29T23:17:01.774Z","updatedAt":"2014-07-29T23:17:01.774Z","objectId":"aRfKHerSiY"}]}'
     http_version: 
   recorded_at: Tue, 29 Jul 2014 23:17:05 GMT
-- request: 
+- request:
     method: get
     uri: https://api.parse.com/1/classes/Cactus?where=%7B%22array%22:%7B%22$all%22:%5B4,5,6%5D%7D%7D
-    body: 
+    body:
       encoding: US-ASCII
-      string: ""
-    headers: 
-      Content-Type: 
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      Accept: 
+      Accept:
       - application/json
-      User-Agent: 
+      User-Agent:
       - Parse for Ruby, 0.0
-      X-Parse-Rest-Api-Key: 
+      X-Parse-Rest-Api-Key:
       - <X-Parse-REST-API-Key>
-      X-Parse-Application-Id: 
+      X-Parse-Application-Id:
       - <X-Parse-Application-Id>
-      Expect: 
-      - ""
-  response: 
-    status: 
+      Expect:
+      - ''
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      Access-Control-Allow-Origin: 
-      - "*"
-      Access-Control-Request-Method: 
-      - "*"
-      Cache-Control: 
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Request-Method:
+      - '*'
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      Content-Type: 
+      Content-Type:
       - application/json; charset=utf-8
-      Date: 
+      Date:
       - Tue, 29 Jul 2014 23:17:03 GMT
-      Etag: 
-      - "\"1198e9518a70fc07882f407664b4c4b5\""
-      Server: 
+      Etag:
+      - '"1198e9518a70fc07882f407664b4c4b5"'
+      Server:
       - nginx/1.6.0
-      Set-Cookie: 
+      Set-Cookie:
       - <COOKIE-KEY>
-      Status: 
+      Status:
       - 200 OK
-      X-Content-Type-Options: 
+      X-Content-Type-Options:
       - nosniff
-      X-Runtime: 
-      - "0.150038"
-      X-Ua-Compatible: 
+      X-Runtime:
+      - '0.150038'
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length: 
-      - "135"
-      Connection: 
+      Content-Length:
+      - '135'
+      Connection:
       - keep-alive
-    body: 
+    body:
       encoding: ASCII-8BIT
-      string: "{\"results\":[{\"array\":[3,4,5,6],\"createdAt\":\"2014-07-29T23:17:02.032Z\",\"updatedAt\":\"2014-07-29T23:17:02.032Z\",\"objectId\":\"49IRCZEBBr\"}]}"
+      string: '{"results":[{"array":[3,4,5,6],"createdAt":"2014-07-29T23:17:02.032Z","updatedAt":"2014-07-29T23:17:02.032Z","objectId":"49IRCZEBBr"}]}'
     http_version: 
   recorded_at: Tue, 29 Jul 2014 23:17:05 GMT
-- request: 
+- request:
     method: get
     uri: https://api.parse.com/1/classes/Cactus?where=%7B%22array%22:%7B%22$all%22:%5B4,5,6%5D%7D%7D
-    body: 
+    body:
       encoding: US-ASCII
-      string: ""
-    headers: 
-      Content-Type: 
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      Accept: 
+      Accept:
       - application/json
-      User-Agent: 
+      User-Agent:
       - Parse for Ruby, 0.0
-      X-Parse-Rest-Api-Key: 
+      X-Parse-Rest-Api-Key:
       - <X-Parse-REST-API-Key>
-      X-Parse-Application-Id: 
+      X-Parse-Application-Id:
       - <X-Parse-Application-Id>
-      Expect: 
-      - ""
-  response: 
-    status: 
+      Expect:
+      - ''
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      Access-Control-Allow-Origin: 
-      - "*"
-      Access-Control-Request-Method: 
-      - "*"
-      Cache-Control: 
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Request-Method:
+      - '*'
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      Content-Type: 
+      Content-Type:
       - application/json; charset=utf-8
-      Date: 
+      Date:
       - Tue, 29 Jul 2014 23:17:03 GMT
-      Etag: 
-      - "\"1198e9518a70fc07882f407664b4c4b5\""
-      Server: 
+      Etag:
+      - '"1198e9518a70fc07882f407664b4c4b5"'
+      Server:
       - nginx/1.6.0
-      Set-Cookie: 
+      Set-Cookie:
       - <COOKIE-KEY>
-      Status: 
+      Status:
       - 200 OK
-      X-Content-Type-Options: 
+      X-Content-Type-Options:
       - nosniff
-      X-Runtime: 
-      - "0.178351"
-      X-Ua-Compatible: 
+      X-Runtime:
+      - '0.178351'
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length: 
-      - "135"
-      Connection: 
+      Content-Length:
+      - '135'
+      Connection:
       - keep-alive
-    body: 
+    body:
       encoding: ASCII-8BIT
-      string: "{\"results\":[{\"array\":[3,4,5,6],\"createdAt\":\"2014-07-29T23:17:02.032Z\",\"updatedAt\":\"2014-07-29T23:17:02.032Z\",\"objectId\":\"49IRCZEBBr\"}]}"
+      string: '{"results":[{"array":[3,4,5,6],"createdAt":"2014-07-29T23:17:02.032Z","updatedAt":"2014-07-29T23:17:02.032Z","objectId":"49IRCZEBBr"}]}'
     http_version: 
   recorded_at: Tue, 29 Jul 2014 23:17:06 GMT
-- request: 
+- request:
     method: get
     uri: https://api.parse.com/1/classes/Cactus?where=%7B%22array%22:%7B%22$all%22:%5B9%5D%7D%7D
-    body: 
+    body:
       encoding: US-ASCII
-      string: ""
-    headers: 
-      Content-Type: 
+      string: ''
+    headers:
+      Content-Type:
       - application/json
-      Accept: 
+      Accept:
       - application/json
-      User-Agent: 
+      User-Agent:
       - Parse for Ruby, 0.0
-      X-Parse-Rest-Api-Key: 
+      X-Parse-Rest-Api-Key:
       - <X-Parse-REST-API-Key>
-      X-Parse-Application-Id: 
+      X-Parse-Application-Id:
       - <X-Parse-Application-Id>
-      Expect: 
-      - ""
-  response: 
-    status: 
+      Expect:
+      - ''
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      Access-Control-Allow-Origin: 
-      - "*"
-      Access-Control-Request-Method: 
-      - "*"
-      Cache-Control: 
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Request-Method:
+      - '*'
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      Content-Type: 
+      Content-Type:
       - application/json; charset=utf-8
-      Date: 
+      Date:
       - Tue, 29 Jul 2014 23:17:03 GMT
-      Etag: 
-      - "\"e2412c1ffbfb6b53a82a9daf665b2c1a\""
-      Server: 
+      Etag:
+      - '"e2412c1ffbfb6b53a82a9daf665b2c1a"'
+      Server:
       - nginx/1.6.0
-      Set-Cookie: 
+      Set-Cookie:
       - <COOKIE-KEY>
-      Status: 
+      Status:
       - 200 OK
-      X-Content-Type-Options: 
+      X-Content-Type-Options:
       - nosniff
-      X-Runtime: 
-      - "0.057104"
-      X-Ua-Compatible: 
+      X-Runtime:
+      - '0.057104'
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length: 
-      - "14"
-      Connection: 
+      Content-Length:
+      - '14'
+      Connection:
       - keep-alive
-    body: 
+    body:
       encoding: ASCII-8BIT
-      string: "{\"results\":[]}"
+      string: '{"results":[]}'
     http_version: 
   recorded_at: Tue, 29 Jul 2014 23:17:06 GMT
+- request:
+    method: get
+    uri: https://api.leancloud.cn/1.1/classes/Cactus?where=%7B%7D
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:56 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '287'
+      Connection:
+      - keep-alive
+      Last-Modified:
+      - Fri, 10 Apr 2015 09:08:47.307 GMT
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"results":[{"array":[3,4,5,6],"createdAt":"2015-04-10T09:08:47.304Z","updatedAt":"2015-04-10T09:08:47.304Z","objectId":"5527931fe4b0da2c5def9ce8"},{"array":[1,2,5,6,7],"createdAt":"2015-04-10T09:08:47.011Z","updatedAt":"2015-04-10T09:08:47.011Z","objectId":"5527931fe4b0da2c5def9ce6"}]}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:56 GMT
+- request:
+    method: delete
+    uri: https://api.leancloud.cn/1.1/classes/Cactus/5527931fe4b0da2c5def9ce8
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:56 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '2'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:56 GMT
+- request:
+    method: delete
+    uri: https://api.leancloud.cn/1.1/classes/Cactus/5527931fe4b0da2c5def9ce6
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:56 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '2'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:56 GMT
+- request:
+    method: post
+    uri: https://api.leancloud.cn/1.1/classes/Cactus
+    body:
+      encoding: UTF-8
+      string: '{"array":[1,2,5,6,7]}'
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:56 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '78'
+      Connection:
+      - keep-alive
+      Location:
+      - /1.1/classes/Cactus/552793a0e4b0da2c5defa240
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"createdAt":"2015-04-10T09:10:56.945Z","objectId":"552793a0e4b0da2c5defa240"}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:56 GMT
+- request:
+    method: post
+    uri: https://api.leancloud.cn/1.1/classes/Cactus
+    body:
+      encoding: UTF-8
+      string: '{"array":[3,4,5,6]}'
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:57 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '78'
+      Connection:
+      - keep-alive
+      Location:
+      - /1.1/classes/Cactus/552793a1e4b0da2c5defa242
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"createdAt":"2015-04-10T09:10:57.262Z","objectId":"552793a1e4b0da2c5defa242"}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:57 GMT
+- request:
+    method: get
+    uri: https://api.leancloud.cn/1.1/classes/Cactus?where=%7B%22array%22:%7B%22$all%22:%5B5,6%5D%7D%7D
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:57 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '287'
+      Connection:
+      - keep-alive
+      Last-Modified:
+      - Fri, 10 Apr 2015 09:10:57.265 GMT
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"results":[{"array":[3,4,5,6],"createdAt":"2015-04-10T09:10:57.262Z","updatedAt":"2015-04-10T09:10:57.262Z","objectId":"552793a1e4b0da2c5defa242"},{"array":[1,2,5,6,7],"createdAt":"2015-04-10T09:10:56.945Z","updatedAt":"2015-04-10T09:10:56.945Z","objectId":"552793a0e4b0da2c5defa240"}]}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:57 GMT
+- request:
+    method: get
+    uri: https://api.leancloud.cn/1.1/classes/Cactus?where=%7B%22array%22:%7B%22$all%22:%5B1,5,6%5D%7D%7D
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:57 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '151'
+      Connection:
+      - keep-alive
+      Last-Modified:
+      - Fri, 10 Apr 2015 09:10:57.265 GMT
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"results":[{"array":[1,2,5,6,7],"createdAt":"2015-04-10T09:10:56.945Z","updatedAt":"2015-04-10T09:10:56.945Z","objectId":"552793a0e4b0da2c5defa240"}]}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:57 GMT
+- request:
+    method: get
+    uri: https://api.leancloud.cn/1.1/classes/Cactus?where=%7B%22array%22:%7B%22$all%22:%5B1,5,6%5D%7D%7D
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:57 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '151'
+      Connection:
+      - keep-alive
+      Last-Modified:
+      - Fri, 10 Apr 2015 09:10:57.265 GMT
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"results":[{"array":[1,2,5,6,7],"createdAt":"2015-04-10T09:10:56.945Z","updatedAt":"2015-04-10T09:10:56.945Z","objectId":"552793a0e4b0da2c5defa240"}]}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:57 GMT
+- request:
+    method: get
+    uri: https://api.leancloud.cn/1.1/classes/Cactus?where=%7B%22array%22:%7B%22$all%22:%5B4,5,6%5D%7D%7D
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:58 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '149'
+      Connection:
+      - keep-alive
+      Last-Modified:
+      - Fri, 10 Apr 2015 09:10:57.265 GMT
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"results":[{"array":[3,4,5,6],"createdAt":"2015-04-10T09:10:57.262Z","updatedAt":"2015-04-10T09:10:57.262Z","objectId":"552793a1e4b0da2c5defa242"}]}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:58 GMT
+- request:
+    method: get
+    uri: https://api.leancloud.cn/1.1/classes/Cactus?where=%7B%22array%22:%7B%22$all%22:%5B4,5,6%5D%7D%7D
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:58 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '149'
+      Connection:
+      - keep-alive
+      Last-Modified:
+      - Fri, 10 Apr 2015 09:10:57.265 GMT
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"results":[{"array":[3,4,5,6],"createdAt":"2015-04-10T09:10:57.262Z","updatedAt":"2015-04-10T09:10:57.262Z","objectId":"552793a1e4b0da2c5defa242"}]}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:58 GMT
+- request:
+    method: get
+    uri: https://api.leancloud.cn/1.1/classes/Cactus?where=%7B%22array%22:%7B%22$all%22:%5B9%5D%7D%7D
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:58 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '14'
+      Connection:
+      - keep-alive
+      Last-Modified:
+      - Fri, 10 Apr 2015 09:10:57.265 GMT
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"results":[]}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:58 GMT
 recorded_with: VCR 2.4.0

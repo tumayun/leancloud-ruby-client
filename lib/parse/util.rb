@@ -38,7 +38,11 @@ module Parse
 
     case type
       when Protocol::TYPE_POINTER
-        Parse::Pointer.new obj
+        if obj[Protocol::KEY_CREATED_AT]
+          Parse::Object.new obj[Protocol::KEY_CLASS_NAME], Hash[obj.map{|k,v| [k, parse_json(nil, v)]}]
+        else
+          Parse::Pointer.new obj
+        end
       when Protocol::TYPE_BYTES
         Parse::Bytes.new obj
       when Protocol::TYPE_DATE

@@ -1,62 +1,109 @@
---- 
-http_interactions: 
-- request: 
+---
+http_interactions:
+- request:
     method: post
     uri: https://api.parse.com/1/batch
-    body: 
+    body:
       encoding: UTF-8
-      string: "{\"requests\":[{\"method\":\"POST\",\"path\":\"/1/classes/GameScore\",\"body\":{\"score\":1337,\"playerName\":\"Sean Plott\"}}]}"
-    headers: 
-      Content-Type: 
+      string: '{"requests":[{"method":"POST","path":"/1/classes/GameScore","body":{"score":1337,"playerName":"Sean
+        Plott"}}]}'
+    headers:
+      Content-Type:
       - application/json
-      Accept: 
+      Accept:
       - application/json
-      User-Agent: 
+      User-Agent:
       - Parse for Ruby, 0.0
-      X-Parse-Master-Key: 
-      - ""
-      X-Parse-Rest-Api-Key: 
+      X-Parse-Master-Key:
+      - ''
+      X-Parse-Rest-Api-Key:
       - <X-Parse-REST-API-Key>
-      X-Parse-Application-Id: 
+      X-Parse-Application-Id:
       - <X-Parse-Application-Id>
-      X-Parse-Session-Token: 
-      - ""
-      Expect: 
-      - ""
-  response: 
-    status: 
+      X-Parse-Session-Token:
+      - ''
+      Expect:
+      - ''
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      Access-Control-Allow-Origin: 
-      - "*"
-      Access-Control-Request-Method: 
-      - "*"
-      Cache-Control: 
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Request-Method:
+      - '*'
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      Content-Type: 
+      Content-Type:
       - application/json; charset=utf-8
-      Date: 
+      Date:
       - Mon, 22 Apr 2013 16:03:13 GMT
-      Etag: 
-      - "\"ffab602107ac1e1b99cadfce609e7557\""
-      Server: 
+      Etag:
+      - '"ffab602107ac1e1b99cadfce609e7557"'
+      Server:
       - nginx/1.2.2
-      Set-Cookie: 
+      Set-Cookie:
       - <COOKIE-KEY>
-      Status: 
+      Status:
       - 200 OK
-      X-Runtime: 
-      - "0.030989"
-      X-Ua-Compatible: 
+      X-Runtime:
+      - '0.030989'
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length: 
-      - "78"
-      Connection: 
+      Content-Length:
+      - '78'
+      Connection:
       - keep-alive
-    body: 
+    body:
       encoding: ASCII-8BIT
-      string: "[{\"success\":{\"createdAt\":\"2013-04-22T16:03:13.472Z\",\"objectId\":\"VJBh9sJjpo\"}}]"
+      string: '[{"success":{"createdAt":"2013-04-22T16:03:13.472Z","objectId":"VJBh9sJjpo"}}]'
     http_version: 
   recorded_at: Mon, 22 Apr 2013 16:03:13 GMT
+- request:
+    method: post
+    uri: https://api.leancloud.cn/1.1/batch
+    body:
+      encoding: UTF-8
+      string: '{"requests":[{"method":"POST","path":"/1/classes/GameScore","body":{"score":1337,"playerName":"Sean
+        Plott"}}]}'
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:29 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '92'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '[{"success":{"createdAt":"2015-04-10T09:10:29.552Z","objectId":"55279385e4b0da2c5defa0dc"}}]'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:29 GMT
 recorded_with: VCR 2.4.0

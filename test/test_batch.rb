@@ -37,7 +37,7 @@ class TestBatch < ParseTestCase
 
   def test_protocol_uri
     uri = Parse::Protocol.batch_request_uri
-    assert_equal uri, "/1/batch"
+    assert_equal uri, "/1.1/batch"
   end
 
   def test_run
@@ -125,7 +125,7 @@ class TestBatch < ParseTestCase
       end
       resp = batch.run!
       assert_equal Array, resp.class
-      assert_equal resp.first["success"], true
+      assert_equal resp.first["success"], {}
     end
   end
 

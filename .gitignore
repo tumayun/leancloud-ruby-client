@@ -1,5 +1,6 @@
 /coverage
 pkg
+test.sh
 
 lib/.DS_Store
 lib/parse/.DS_Store

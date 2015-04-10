@@ -99,7 +99,7 @@ class TestClient < ParseTestCase
       end
 
       # some json parsers return nil instead of raising
-      JSON.stubs(:parse).returns(nil) 
+      JSON.stubs(:parse).returns(nil)
 
       begin
         client.request('/')
@@ -177,7 +177,7 @@ class TestClient < ParseTestCase
   def test_get_missing
     VCR.use_cassette('test_get_missing', :record => :new_episodes) do
       e = assert_raise(Parse::ParseProtocolError) { Parse.get("SomeClass", "someIdThatDoesNotExist") }
-      assert_equal "101: object not found for get: SomeClass:someIdThatDoesNotExist", e.message
+      assert_equal "101: Class or object doesn't exists.: SomeClass:someIdThatDoesNotExist", e.message
     end
   end
 end

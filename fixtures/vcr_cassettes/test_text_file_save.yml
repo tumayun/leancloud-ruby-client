@@ -1,62 +1,109 @@
---- 
-http_interactions: 
-- request: 
+---
+http_interactions:
+- request:
     method: post
     uri: https://api.parse.com/1/files/hello.txt
-    body: 
+    body:
       encoding: US-ASCII
       string: Hello World!
-    headers: 
-      Content-Type: 
+    headers:
+      Content-Type:
       - text/plain
-      Accept: 
+      Accept:
       - application/json
-      User-Agent: 
+      User-Agent:
       - Parse for Ruby, 0.0
-      X-Parse-Master-Key: 
-      - ""
-      X-Parse-Rest-Api-Key: 
+      X-Parse-Master-Key:
+      - ''
+      X-Parse-Rest-Api-Key:
       - <X-Parse-REST-API-Key>
-      X-Parse-Application-Id: 
+      X-Parse-Application-Id:
       - <X-Parse-Application-Id>
-      X-Parse-Session-Token: 
-      - ""
-      Expect: 
-      - ""
-  response: 
-    status: 
+      X-Parse-Session-Token:
+      - ''
+      Expect:
+      - ''
+  response:
+    status:
       code: 201
       message: Created
-    headers: 
-      Access-Control-Allow-Origin: 
-      - "*"
-      Access-Control-Request-Method: 
-      - "*"
-      Cache-Control: 
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Request-Method:
+      - '*'
+      Cache-Control:
       - no-cache
-      Content-Type: 
+      Content-Type:
       - application/json; charset=utf-8
-      Date: 
+      Date:
       - Mon, 22 Apr 2013 16:03:16 GMT
-      Location: 
+      Location:
       - http://files.parse.com/5c5d4752-8b5b-4a2b-9e5e-781c530f797b/807c829a-110e-4b33-86bb-43c9d7f57333-hello.txt
-      Server: 
+      Server:
       - nginx/1.2.2
-      Set-Cookie: 
+      Set-Cookie:
       - <COOKIE-KEY>
-      Status: 
+      Status:
       - 201 Created
-      X-Runtime: 
-      - "0.074838"
-      X-Ua-Compatible: 
+      X-Runtime:
+      - '0.074838'
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length: 
-      - "172"
-      Connection: 
+      Content-Length:
+      - '172'
+      Connection:
       - keep-alive
-    body: 
+    body:
       encoding: ASCII-8BIT
-      string: "{\"url\":\"http://files.parse.com/5c5d4752-8b5b-4a2b-9e5e-781c530f797b/807c829a-110e-4b33-86bb-43c9d7f57333-hello.txt\",\"name\":\"807c829a-110e-4b33-86bb-43c9d7f57333-hello.txt\"}"
+      string: '{"url":"http://files.parse.com/5c5d4752-8b5b-4a2b-9e5e-781c530f797b/807c829a-110e-4b33-86bb-43c9d7f57333-hello.txt","name":"807c829a-110e-4b33-86bb-43c9d7f57333-hello.txt"}'
     http_version: 
   recorded_at: Mon, 22 Apr 2013 16:03:16 GMT
+- request:
+    method: post
+    uri: https://api.leancloud.cn/1.1/files/hello.txt
+    body:
+      encoding: UTF-8
+      string: Hello World!
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - text/plain
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:43 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '214'
+      Connection:
+      - keep-alive
+      Location:
+      - /1.1/classes/_File/55279393e4b0da2c5defa196
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"size":12,"bucket":"7104en0u","url":"http:\/\/ac-7104en0u.clouddn.com\/tMpGhULp3t5XqCjsaOJFNM3yGX6IdiWxOMwn7g0z.txt","name":"hello.txt","createdAt":"2015-04-10T09:10:43.324Z","objectId":"55279393e4b0da2c5defa196"}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:43 GMT
 recorded_with: VCR 2.4.0

@@ -1,121 +1,213 @@
---- 
-http_interactions: 
-- request: 
+---
+http_interactions:
+- request:
     method: post
     uri: https://api.parse.com/1/classes/TestSave
-    body: 
+    body:
       encoding: UTF-8
-      string: "{\"age\":20}"
-    headers: 
-      Content-Type: 
+      string: '{"age":20}'
+    headers:
+      Content-Type:
       - application/json
-      Accept: 
+      Accept:
       - application/json
-      User-Agent: 
+      User-Agent:
       - Parse for Ruby, 0.0
-      X-Parse-Master-Key: 
-      - ""
-      X-Parse-Rest-Api-Key: 
+      X-Parse-Master-Key:
+      - ''
+      X-Parse-Rest-Api-Key:
       - <X-Parse-REST-API-Key>
-      X-Parse-Application-Id: 
+      X-Parse-Application-Id:
       - <X-Parse-Application-Id>
-      X-Parse-Session-Token: 
-      - ""
-      Expect: 
-      - ""
-  response: 
-    status: 
+      X-Parse-Session-Token:
+      - ''
+      Expect:
+      - ''
+  response:
+    status:
       code: 201
       message: Created
-    headers: 
-      Access-Control-Allow-Origin: 
-      - "*"
-      Access-Control-Request-Method: 
-      - "*"
-      Cache-Control: 
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Request-Method:
+      - '*'
+      Cache-Control:
       - no-cache
-      Content-Type: 
+      Content-Type:
       - application/json; charset=utf-8
-      Date: 
+      Date:
       - Mon, 22 Apr 2013 16:03:15 GMT
-      Location: 
+      Location:
       - https://api.parse.com/1/classes/TestSave/ZktEu4WIv0
-      Server: 
+      Server:
       - nginx/1.2.2
-      Set-Cookie: 
+      Set-Cookie:
       - <COOKIE-KEY>
-      Status: 
+      Status:
       - 201 Created
-      X-Runtime: 
-      - "0.037566"
-      X-Ua-Compatible: 
+      X-Runtime:
+      - '0.037566'
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length: 
-      - "64"
-      Connection: 
+      Content-Length:
+      - '64'
+      Connection:
       - keep-alive
-    body: 
+    body:
       encoding: ASCII-8BIT
-      string: "{\"createdAt\":\"2013-04-22T16:03:15.393Z\",\"objectId\":\"ZktEu4WIv0\"}"
+      string: '{"createdAt":"2013-04-22T16:03:15.393Z","objectId":"ZktEu4WIv0"}'
     http_version: 
   recorded_at: Mon, 22 Apr 2013 16:03:15 GMT
-- request: 
+- request:
     method: put
     uri: https://api.parse.com/1/classes/TestSave/ZktEu4WIv0
-    body: 
+    body:
       encoding: UTF-8
-      string: "{\"age\":40}"
-    headers: 
-      Content-Type: 
+      string: '{"age":40}'
+    headers:
+      Content-Type:
       - application/json
-      Accept: 
+      Accept:
       - application/json
-      User-Agent: 
+      User-Agent:
       - Parse for Ruby, 0.0
-      X-Parse-Master-Key: 
-      - ""
-      X-Parse-Rest-Api-Key: 
+      X-Parse-Master-Key:
+      - ''
+      X-Parse-Rest-Api-Key:
       - <X-Parse-REST-API-Key>
-      X-Parse-Application-Id: 
+      X-Parse-Application-Id:
       - <X-Parse-Application-Id>
-      X-Parse-Session-Token: 
-      - ""
-      Expect: 
-      - ""
-  response: 
-    status: 
+      X-Parse-Session-Token:
+      - ''
+      Expect:
+      - ''
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      Access-Control-Allow-Origin: 
-      - "*"
-      Access-Control-Request-Method: 
-      - "*"
-      Cache-Control: 
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Request-Method:
+      - '*'
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      Content-Type: 
+      Content-Type:
       - application/json; charset=utf-8
-      Date: 
+      Date:
       - Mon, 22 Apr 2013 16:03:15 GMT
-      Etag: 
-      - "\"4c37cdfe0177a31ced681163a966bf82\""
-      Server: 
+      Etag:
+      - '"4c37cdfe0177a31ced681163a966bf82"'
+      Server:
       - nginx/1.2.2
-      Set-Cookie: 
+      Set-Cookie:
       - <COOKIE-KEY>
-      Status: 
+      Status:
       - 200 OK
-      X-Runtime: 
-      - "0.050943"
-      X-Ua-Compatible: 
+      X-Runtime:
+      - '0.050943'
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length: 
-      - "40"
-      Connection: 
+      Content-Length:
+      - '40'
+      Connection:
       - keep-alive
-    body: 
+    body:
       encoding: ASCII-8BIT
-      string: "{\"updatedAt\":\"2013-04-22T16:03:15.462Z\"}"
+      string: '{"updatedAt":"2013-04-22T16:03:15.462Z"}'
     http_version: 
   recorded_at: Mon, 22 Apr 2013 16:03:15 GMT
+- request:
+    method: post
+    uri: https://api.leancloud.cn/1.1/classes/TestSave
+    body:
+      encoding: UTF-8
+      string: '{"age":20}'
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:39 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '78'
+      Connection:
+      - keep-alive
+      Location:
+      - /1.1/classes/TestSave/55279390e4b0da2c5defa16e
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"createdAt":"2015-04-10T09:10:40.008Z","objectId":"55279390e4b0da2c5defa16e"}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:40 GMT
+- request:
+    method: put
+    uri: https://api.leancloud.cn/1.1/classes/TestSave/55279390e4b0da2c5defa16e?new=true
+    body:
+      encoding: UTF-8
+      string: '{"age":40}'
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:40 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '87'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"objectId":"55279390e4b0da2c5defa16e","age":40,"updatedAt":"2015-04-10T09:10:40.324Z"}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:40 GMT
 recorded_with: VCR 2.4.0

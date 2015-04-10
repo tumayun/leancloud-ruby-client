@@ -304,6 +304,7 @@ module Parse
     attr_accessor :content_type
     attr_accessor :body
     attr_accessor :url
+    attr_accessor :id
 
     def initialize(data)
       data = Hash[data.map{ |k, v| [k.to_s, v] }] # convert hash keys to strings
@@ -313,6 +314,7 @@ module Parse
       @content_type   = data["content_type"]   if data["content_type"]
       @url            = data["url"]            if data["url"]
       @body           = data["body"]           if data["body"]
+      @id             = data["id"]             if data["id"]
     end
 
     def eql?(other)
@@ -331,6 +333,7 @@ module Parse
       resp = Parse.client.request(uri, :post, @body, nil, @content_type)
       @parse_filename = resp["name"]
       @url = resp["url"]
+      @id = resp["id"]
       resp
     end
 
@@ -338,7 +341,8 @@ module Parse
       {
         Protocol::KEY_TYPE => Protocol::TYPE_FILE,
         "name" => @parse_filename,
-        "url" => @url
+        "url" => @url,
+        "id" => @id
       }
     end
     alias :as_json :to_h

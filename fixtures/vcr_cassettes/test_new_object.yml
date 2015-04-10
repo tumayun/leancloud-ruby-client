@@ -1,62 +1,109 @@
---- 
-http_interactions: 
-- request: 
+---
+http_interactions:
+- request:
     method: post
     uri: https://api.parse.com/1/classes/Post
-    body: 
+    body:
       encoding: UTF-8
-      string: "{}"
-    headers: 
-      Content-Type: 
+      string: '{}'
+    headers:
+      Content-Type:
       - application/json
-      Accept: 
+      Accept:
       - application/json
-      User-Agent: 
+      User-Agent:
       - Parse for Ruby, 0.0
-      X-Parse-Master-Key: 
-      - ""
-      X-Parse-Rest-Api-Key: 
+      X-Parse-Master-Key:
+      - ''
+      X-Parse-Rest-Api-Key:
       - <X-Parse-REST-API-Key>
-      X-Parse-Application-Id: 
+      X-Parse-Application-Id:
       - <X-Parse-Application-Id>
-      X-Parse-Session-Token: 
-      - ""
-      Expect: 
-      - ""
-  response: 
-    status: 
+      X-Parse-Session-Token:
+      - ''
+      Expect:
+      - ''
+  response:
+    status:
       code: 201
       message: Created
-    headers: 
-      Access-Control-Allow-Origin: 
-      - "*"
-      Access-Control-Request-Method: 
-      - "*"
-      Cache-Control: 
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Request-Method:
+      - '*'
+      Cache-Control:
       - no-cache
-      Content-Type: 
+      Content-Type:
       - application/json; charset=utf-8
-      Date: 
+      Date:
       - Mon, 22 Apr 2013 16:03:19 GMT
-      Location: 
+      Location:
       - https://api.parse.com/1/classes/Post/P0f07TyRDz
-      Server: 
+      Server:
       - nginx/1.2.2
-      Set-Cookie: 
+      Set-Cookie:
       - <COOKIE-KEY>
-      Status: 
+      Status:
       - 201 Created
-      X-Runtime: 
-      - "0.085110"
-      X-Ua-Compatible: 
+      X-Runtime:
+      - '0.085110'
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length: 
-      - "64"
-      Connection: 
+      Content-Length:
+      - '64'
+      Connection:
       - keep-alive
-    body: 
+    body:
       encoding: ASCII-8BIT
-      string: "{\"createdAt\":\"2013-04-22T16:03:19.679Z\",\"objectId\":\"P0f07TyRDz\"}"
+      string: '{"createdAt":"2013-04-22T16:03:19.679Z","objectId":"P0f07TyRDz"}'
     http_version: 
   recorded_at: Mon, 22 Apr 2013 16:03:19 GMT
+- request:
+    method: post
+    uri: https://api.leancloud.cn/1.1/classes/Post
+    body:
+      encoding: UTF-8
+      string: '{}'
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:51 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '78'
+      Connection:
+      - keep-alive
+      Location:
+      - /1.1/classes/Post/5527939be4b0da2c5defa1f0
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"createdAt":"2015-04-10T09:10:51.099Z","objectId":"5527939be4b0da2c5defa1f0"}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:51 GMT
 recorded_with: VCR 2.4.0

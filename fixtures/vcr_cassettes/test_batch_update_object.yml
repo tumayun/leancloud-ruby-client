@@ -1,357 +1,637 @@
---- 
-http_interactions: 
-- request: 
+---
+http_interactions:
+- request:
     method: post
     uri: https://api.parse.com/1/classes/BatchTestObject
-    body: 
+    body:
       encoding: UTF-8
-      string: "{\"foo\":\"1\"}"
-    headers: 
-      Content-Type: 
+      string: '{"foo":"1"}'
+    headers:
+      Content-Type:
       - application/json
-      Accept: 
+      Accept:
       - application/json
-      User-Agent: 
+      User-Agent:
       - Parse for Ruby, 0.0
-      X-Parse-Master-Key: 
-      - ""
-      X-Parse-Rest-Api-Key: 
+      X-Parse-Master-Key:
+      - ''
+      X-Parse-Rest-Api-Key:
       - <X-Parse-REST-API-Key>
-      X-Parse-Application-Id: 
+      X-Parse-Application-Id:
       - <X-Parse-Application-Id>
-      X-Parse-Session-Token: 
-      - ""
-      Expect: 
-      - ""
-  response: 
-    status: 
+      X-Parse-Session-Token:
+      - ''
+      Expect:
+      - ''
+  response:
+    status:
       code: 201
       message: Created
-    headers: 
-      Access-Control-Allow-Origin: 
-      - "*"
-      Access-Control-Request-Method: 
-      - "*"
-      Cache-Control: 
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Request-Method:
+      - '*'
+      Cache-Control:
       - no-cache
-      Content-Type: 
+      Content-Type:
       - application/json; charset=utf-8
-      Date: 
+      Date:
       - Mon, 22 Apr 2013 16:03:13 GMT
-      Location: 
+      Location:
       - https://api.parse.com/1/classes/BatchTestObject/ZD8AqXIoV3
-      Server: 
+      Server:
       - nginx/1.2.2
-      Set-Cookie: 
+      Set-Cookie:
       - <COOKIE-KEY>
-      Status: 
+      Status:
       - 201 Created
-      X-Runtime: 
-      - "0.061459"
-      X-Ua-Compatible: 
+      X-Runtime:
+      - '0.061459'
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length: 
-      - "64"
-      Connection: 
+      Content-Length:
+      - '64'
+      Connection:
       - keep-alive
-    body: 
+    body:
       encoding: ASCII-8BIT
-      string: "{\"createdAt\":\"2013-04-22T16:03:13.583Z\",\"objectId\":\"ZD8AqXIoV3\"}"
+      string: '{"createdAt":"2013-04-22T16:03:13.583Z","objectId":"ZD8AqXIoV3"}'
     http_version: 
   recorded_at: Mon, 22 Apr 2013 16:03:13 GMT
-- request: 
+- request:
     method: post
     uri: https://api.parse.com/1/classes/BatchTestObject
-    body: 
+    body:
       encoding: UTF-8
-      string: "{\"foo\":\"2\"}"
-    headers: 
-      Content-Type: 
+      string: '{"foo":"2"}'
+    headers:
+      Content-Type:
       - application/json
-      Accept: 
+      Accept:
       - application/json
-      User-Agent: 
+      User-Agent:
       - Parse for Ruby, 0.0
-      X-Parse-Master-Key: 
-      - ""
-      X-Parse-Rest-Api-Key: 
+      X-Parse-Master-Key:
+      - ''
+      X-Parse-Rest-Api-Key:
       - <X-Parse-REST-API-Key>
-      X-Parse-Application-Id: 
+      X-Parse-Application-Id:
       - <X-Parse-Application-Id>
-      X-Parse-Session-Token: 
-      - ""
-      Expect: 
-      - ""
-  response: 
-    status: 
+      X-Parse-Session-Token:
+      - ''
+      Expect:
+      - ''
+  response:
+    status:
       code: 201
       message: Created
-    headers: 
-      Access-Control-Allow-Origin: 
-      - "*"
-      Access-Control-Request-Method: 
-      - "*"
-      Cache-Control: 
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Request-Method:
+      - '*'
+      Cache-Control:
       - no-cache
-      Content-Type: 
+      Content-Type:
       - application/json; charset=utf-8
-      Date: 
+      Date:
       - Mon, 22 Apr 2013 16:03:13 GMT
-      Location: 
+      Location:
       - https://api.parse.com/1/classes/BatchTestObject/UiphsqDkxe
-      Server: 
+      Server:
       - nginx/1.2.2
-      Set-Cookie: 
+      Set-Cookie:
       - <COOKIE-KEY>
-      Status: 
+      Status:
       - 201 Created
-      X-Runtime: 
-      - "0.029661"
-      X-Ua-Compatible: 
+      X-Runtime:
+      - '0.029661'
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length: 
-      - "64"
-      Connection: 
+      Content-Length:
+      - '64'
+      Connection:
       - keep-alive
-    body: 
+    body:
       encoding: ASCII-8BIT
-      string: "{\"createdAt\":\"2013-04-22T16:03:13.664Z\",\"objectId\":\"UiphsqDkxe\"}"
+      string: '{"createdAt":"2013-04-22T16:03:13.664Z","objectId":"UiphsqDkxe"}'
     http_version: 
   recorded_at: Mon, 22 Apr 2013 16:03:13 GMT
-- request: 
+- request:
     method: post
     uri: https://api.parse.com/1/classes/BatchTestObject
-    body: 
+    body:
       encoding: UTF-8
-      string: "{\"foo\":\"3\"}"
-    headers: 
-      Content-Type: 
+      string: '{"foo":"3"}'
+    headers:
+      Content-Type:
       - application/json
-      Accept: 
+      Accept:
       - application/json
-      User-Agent: 
+      User-Agent:
       - Parse for Ruby, 0.0
-      X-Parse-Master-Key: 
-      - ""
-      X-Parse-Rest-Api-Key: 
+      X-Parse-Master-Key:
+      - ''
+      X-Parse-Rest-Api-Key:
       - <X-Parse-REST-API-Key>
-      X-Parse-Application-Id: 
+      X-Parse-Application-Id:
       - <X-Parse-Application-Id>
-      X-Parse-Session-Token: 
-      - ""
-      Expect: 
-      - ""
-  response: 
-    status: 
+      X-Parse-Session-Token:
+      - ''
+      Expect:
+      - ''
+  response:
+    status:
       code: 201
       message: Created
-    headers: 
-      Access-Control-Allow-Origin: 
-      - "*"
-      Access-Control-Request-Method: 
-      - "*"
-      Cache-Control: 
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Request-Method:
+      - '*'
+      Cache-Control:
       - no-cache
-      Content-Type: 
+      Content-Type:
       - application/json; charset=utf-8
-      Date: 
+      Date:
       - Mon, 22 Apr 2013 16:03:13 GMT
-      Location: 
+      Location:
       - https://api.parse.com/1/classes/BatchTestObject/1s3ISlPT0N
-      Server: 
+      Server:
       - nginx/1.2.2
-      Set-Cookie: 
+      Set-Cookie:
       - <COOKIE-KEY>
-      Status: 
+      Status:
       - 201 Created
-      X-Runtime: 
-      - "0.045724"
-      X-Ua-Compatible: 
+      X-Runtime:
+      - '0.045724'
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length: 
-      - "64"
-      Connection: 
+      Content-Length:
+      - '64'
+      Connection:
       - keep-alive
-    body: 
+    body:
       encoding: ASCII-8BIT
-      string: "{\"createdAt\":\"2013-04-22T16:03:13.722Z\",\"objectId\":\"1s3ISlPT0N\"}"
+      string: '{"createdAt":"2013-04-22T16:03:13.722Z","objectId":"1s3ISlPT0N"}'
     http_version: 
   recorded_at: Mon, 22 Apr 2013 16:03:13 GMT
-- request: 
+- request:
     method: post
     uri: https://api.parse.com/1/classes/BatchTestObject
-    body: 
+    body:
       encoding: UTF-8
-      string: "{\"foo\":\"4\"}"
-    headers: 
-      Content-Type: 
+      string: '{"foo":"4"}'
+    headers:
+      Content-Type:
       - application/json
-      Accept: 
+      Accept:
       - application/json
-      User-Agent: 
+      User-Agent:
       - Parse for Ruby, 0.0
-      X-Parse-Master-Key: 
-      - ""
-      X-Parse-Rest-Api-Key: 
+      X-Parse-Master-Key:
+      - ''
+      X-Parse-Rest-Api-Key:
       - <X-Parse-REST-API-Key>
-      X-Parse-Application-Id: 
+      X-Parse-Application-Id:
       - <X-Parse-Application-Id>
-      X-Parse-Session-Token: 
-      - ""
-      Expect: 
-      - ""
-  response: 
-    status: 
+      X-Parse-Session-Token:
+      - ''
+      Expect:
+      - ''
+  response:
+    status:
       code: 201
       message: Created
-    headers: 
-      Access-Control-Allow-Origin: 
-      - "*"
-      Access-Control-Request-Method: 
-      - "*"
-      Cache-Control: 
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Request-Method:
+      - '*'
+      Cache-Control:
       - no-cache
-      Content-Type: 
+      Content-Type:
       - application/json; charset=utf-8
-      Date: 
+      Date:
       - Mon, 22 Apr 2013 16:03:13 GMT
-      Location: 
+      Location:
       - https://api.parse.com/1/classes/BatchTestObject/QpZn6ARkSA
-      Server: 
+      Server:
       - nginx/1.2.2
-      Set-Cookie: 
+      Set-Cookie:
       - <COOKIE-KEY>
-      Status: 
+      Status:
       - 201 Created
-      X-Runtime: 
-      - "0.028172"
-      X-Ua-Compatible: 
+      X-Runtime:
+      - '0.028172'
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length: 
-      - "64"
-      Connection: 
+      Content-Length:
+      - '64'
+      Connection:
       - keep-alive
-    body: 
+    body:
       encoding: ASCII-8BIT
-      string: "{\"createdAt\":\"2013-04-22T16:03:13.770Z\",\"objectId\":\"QpZn6ARkSA\"}"
+      string: '{"createdAt":"2013-04-22T16:03:13.770Z","objectId":"QpZn6ARkSA"}'
     http_version: 
   recorded_at: Mon, 22 Apr 2013 16:03:13 GMT
-- request: 
+- request:
     method: post
     uri: https://api.parse.com/1/classes/BatchTestObject
-    body: 
+    body:
       encoding: UTF-8
-      string: "{\"foo\":\"5\"}"
-    headers: 
-      Content-Type: 
+      string: '{"foo":"5"}'
+    headers:
+      Content-Type:
       - application/json
-      Accept: 
+      Accept:
       - application/json
-      User-Agent: 
+      User-Agent:
       - Parse for Ruby, 0.0
-      X-Parse-Master-Key: 
-      - ""
-      X-Parse-Rest-Api-Key: 
+      X-Parse-Master-Key:
+      - ''
+      X-Parse-Rest-Api-Key:
       - <X-Parse-REST-API-Key>
-      X-Parse-Application-Id: 
+      X-Parse-Application-Id:
       - <X-Parse-Application-Id>
-      X-Parse-Session-Token: 
-      - ""
-      Expect: 
-      - ""
-  response: 
-    status: 
+      X-Parse-Session-Token:
+      - ''
+      Expect:
+      - ''
+  response:
+    status:
       code: 201
       message: Created
-    headers: 
-      Access-Control-Allow-Origin: 
-      - "*"
-      Access-Control-Request-Method: 
-      - "*"
-      Cache-Control: 
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Request-Method:
+      - '*'
+      Cache-Control:
       - no-cache
-      Content-Type: 
+      Content-Type:
       - application/json; charset=utf-8
-      Date: 
+      Date:
       - Mon, 22 Apr 2013 16:03:13 GMT
-      Location: 
+      Location:
       - https://api.parse.com/1/classes/BatchTestObject/AXfva0JhBg
-      Server: 
+      Server:
       - nginx/1.2.2
-      Set-Cookie: 
+      Set-Cookie:
       - <COOKIE-KEY>
-      Status: 
+      Status:
       - 201 Created
-      X-Runtime: 
-      - "0.037544"
-      X-Ua-Compatible: 
+      X-Runtime:
+      - '0.037544'
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length: 
-      - "64"
-      Connection: 
+      Content-Length:
+      - '64'
+      Connection:
       - keep-alive
-    body: 
+    body:
       encoding: ASCII-8BIT
-      string: "{\"createdAt\":\"2013-04-22T16:03:13.828Z\",\"objectId\":\"AXfva0JhBg\"}"
+      string: '{"createdAt":"2013-04-22T16:03:13.828Z","objectId":"AXfva0JhBg"}'
     http_version: 
   recorded_at: Mon, 22 Apr 2013 16:03:13 GMT
-- request: 
+- request:
     method: post
     uri: https://api.parse.com/1/batch
-    body: 
+    body:
       encoding: UTF-8
-      string: "{\"requests\":[{\"method\":\"PUT\",\"path\":\"/1/classes/BatchTestObject/ZD8AqXIoV3\",\"body\":{\"foo\":\"updated\"}},{\"method\":\"PUT\",\"path\":\"/1/classes/BatchTestObject/UiphsqDkxe\",\"body\":{\"foo\":\"updated\"}},{\"method\":\"PUT\",\"path\":\"/1/classes/BatchTestObject/1s3ISlPT0N\",\"body\":{\"foo\":\"updated\"}},{\"method\":\"PUT\",\"path\":\"/1/classes/BatchTestObject/QpZn6ARkSA\",\"body\":{\"foo\":\"updated\"}},{\"method\":\"PUT\",\"path\":\"/1/classes/BatchTestObject/AXfva0JhBg\",\"body\":{\"foo\":\"updated\"}}]}"
-    headers: 
-      Content-Type: 
+      string: '{"requests":[{"method":"PUT","path":"/1/classes/BatchTestObject/ZD8AqXIoV3","body":{"foo":"updated"}},{"method":"PUT","path":"/1/classes/BatchTestObject/UiphsqDkxe","body":{"foo":"updated"}},{"method":"PUT","path":"/1/classes/BatchTestObject/1s3ISlPT0N","body":{"foo":"updated"}},{"method":"PUT","path":"/1/classes/BatchTestObject/QpZn6ARkSA","body":{"foo":"updated"}},{"method":"PUT","path":"/1/classes/BatchTestObject/AXfva0JhBg","body":{"foo":"updated"}}]}'
+    headers:
+      Content-Type:
       - application/json
-      Accept: 
+      Accept:
       - application/json
-      User-Agent: 
+      User-Agent:
       - Parse for Ruby, 0.0
-      X-Parse-Master-Key: 
-      - ""
-      X-Parse-Rest-Api-Key: 
+      X-Parse-Master-Key:
+      - ''
+      X-Parse-Rest-Api-Key:
       - <X-Parse-REST-API-Key>
-      X-Parse-Application-Id: 
+      X-Parse-Application-Id:
       - <X-Parse-Application-Id>
-      X-Parse-Session-Token: 
-      - ""
-      Expect: 
-      - ""
-  response: 
-    status: 
+      X-Parse-Session-Token:
+      - ''
+      Expect:
+      - ''
+  response:
+    status:
       code: 200
       message: OK
-    headers: 
-      Access-Control-Allow-Origin: 
-      - "*"
-      Access-Control-Request-Method: 
-      - "*"
-      Cache-Control: 
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Request-Method:
+      - '*'
+      Cache-Control:
       - max-age=0, private, must-revalidate
-      Content-Type: 
+      Content-Type:
       - application/json; charset=utf-8
-      Date: 
+      Date:
       - Mon, 22 Apr 2013 16:03:13 GMT
-      Etag: 
-      - "\"8f986add7fb4d8fe7235b9c12d15c3e4\""
-      Server: 
+      Etag:
+      - '"8f986add7fb4d8fe7235b9c12d15c3e4"'
+      Server:
       - nginx/1.2.2
-      Set-Cookie: 
+      Set-Cookie:
       - <COOKIE-KEY>
-      Status: 
+      Status:
       - 200 OK
-      X-Runtime: 
-      - "0.131594"
-      X-Ua-Compatible: 
+      X-Runtime:
+      - '0.131594'
+      X-Ua-Compatible:
       - IE=Edge,chrome=1
-      Content-Length: 
-      - "266"
-      Connection: 
+      Content-Length:
+      - '266'
+      Connection:
       - keep-alive
-    body: 
+    body:
       encoding: ASCII-8BIT
-      string: "[{\"success\":{\"updatedAt\":\"2013-04-22T16:03:13.884Z\"}},{\"success\":{\"updatedAt\":\"2013-04-22T16:03:13.895Z\"}},{\"success\":{\"updatedAt\":\"2013-04-22T16:03:13.907Z\"}},{\"success\":{\"updatedAt\":\"2013-04-22T16:03:13.947Z\"}},{\"success\":{\"updatedAt\":\"2013-04-22T16:03:13.975Z\"}}]"
+      string: '[{"success":{"updatedAt":"2013-04-22T16:03:13.884Z"}},{"success":{"updatedAt":"2013-04-22T16:03:13.895Z"}},{"success":{"updatedAt":"2013-04-22T16:03:13.907Z"}},{"success":{"updatedAt":"2013-04-22T16:03:13.947Z"}},{"success":{"updatedAt":"2013-04-22T16:03:13.975Z"}}]'
     http_version: 
   recorded_at: Mon, 22 Apr 2013 16:03:13 GMT
+- request:
+    method: post
+    uri: https://api.leancloud.cn/1.1/classes/BatchTestObject
+    body:
+      encoding: UTF-8
+      string: '{"foo":"1"}'
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:30 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '78'
+      Connection:
+      - keep-alive
+      Location:
+      - /1.1/classes/BatchTestObject/55279386e4b0da2c5defa0f5
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"createdAt":"2015-04-10T09:10:30.672Z","objectId":"55279386e4b0da2c5defa0f5"}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:30 GMT
+- request:
+    method: post
+    uri: https://api.leancloud.cn/1.1/classes/BatchTestObject
+    body:
+      encoding: UTF-8
+      string: '{"foo":"2"}'
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:30 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '78'
+      Connection:
+      - keep-alive
+      Location:
+      - /1.1/classes/BatchTestObject/55279386e4b0da2c5defa0fa
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"createdAt":"2015-04-10T09:10:30.956Z","objectId":"55279386e4b0da2c5defa0fa"}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:30 GMT
+- request:
+    method: post
+    uri: https://api.leancloud.cn/1.1/classes/BatchTestObject
+    body:
+      encoding: UTF-8
+      string: '{"foo":"3"}'
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:31 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '78'
+      Connection:
+      - keep-alive
+      Location:
+      - /1.1/classes/BatchTestObject/55279387e4b0da2c5defa0fc
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"createdAt":"2015-04-10T09:10:31.280Z","objectId":"55279387e4b0da2c5defa0fc"}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:31 GMT
+- request:
+    method: post
+    uri: https://api.leancloud.cn/1.1/classes/BatchTestObject
+    body:
+      encoding: UTF-8
+      string: '{"foo":"4"}'
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:31 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '78'
+      Connection:
+      - keep-alive
+      Location:
+      - /1.1/classes/BatchTestObject/55279387e4b0da2c5defa100
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"createdAt":"2015-04-10T09:10:31.591Z","objectId":"55279387e4b0da2c5defa100"}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:31 GMT
+- request:
+    method: post
+    uri: https://api.leancloud.cn/1.1/classes/BatchTestObject
+    body:
+      encoding: UTF-8
+      string: '{"foo":"5"}'
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:31 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '78'
+      Connection:
+      - keep-alive
+      Location:
+      - /1.1/classes/BatchTestObject/55279387e4b0da2c5defa103
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"createdAt":"2015-04-10T09:10:31.887Z","objectId":"55279387e4b0da2c5defa103"}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:31 GMT
+- request:
+    method: post
+    uri: https://api.leancloud.cn/1.1/batch
+    body:
+      encoding: UTF-8
+      string: '{"requests":[{"method":"PUT","path":"/1.1/classes/BatchTestObject/55279386e4b0da2c5defa0f5","body":{"foo":"updated"}},{"method":"PUT","path":"/1.1/classes/BatchTestObject/55279386e4b0da2c5defa0fa","body":{"foo":"updated"}},{"method":"PUT","path":"/1.1/classes/BatchTestObject/55279387e4b0da2c5defa0fc","body":{"foo":"updated"}},{"method":"PUT","path":"/1.1/classes/BatchTestObject/55279387e4b0da2c5defa100","body":{"foo":"updated"}},{"method":"PUT","path":"/1.1/classes/BatchTestObject/55279387e4b0da2c5defa103","body":{"foo":"updated"}}]}'
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:10:32 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '456'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '[{"success":{"updatedAt":"2015-04-10T09:10:32.234Z","objectId":"55279386e4b0da2c5defa0f5"}},{"success":{"updatedAt":"2015-04-10T09:10:32.247Z","objectId":"55279386e4b0da2c5defa0fa"}},{"success":{"updatedAt":"2015-04-10T09:10:32.255Z","objectId":"55279387e4b0da2c5defa0fc"}},{"success":{"updatedAt":"2015-04-10T09:10:32.264Z","objectId":"55279387e4b0da2c5defa100"}},{"success":{"updatedAt":"2015-04-10T09:10:32.275Z","objectId":"55279387e4b0da2c5defa103"}}]'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:10:32 GMT
 recorded_with: VCR 2.4.0
