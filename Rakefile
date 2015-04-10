@@ -14,13 +14,13 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "parse-ruby-client"
-  gem.homepage = "http://github.com/adelevie/parse-ruby-client"
+  gem.name = "leancloud-ruby-client"
+  gem.homepage = "http://github.com/killme2008/leancloud-ruby-client"
   gem.license = "MIT"
-  gem.summary = %Q{A simple Ruby client for the parse.com REST API}
-  gem.description = %Q{A simple Ruby client for the parse.com REST API}
-  gem.email = "adelevie@gmail.com"
-  gem.authors = ["Alan deLevie", "Adam Alpern"]
+  gem.summary = %Q{A simple Ruby client for the leancloud.cn REST API}
+  gem.description = %Q{A simple Ruby client for the leancloud.cn REST API}
+  gem.email = "killme2008@gmail.com"
+  gem.authors = ["Alan deLevie", "Adam Alpern", "Dennis Zhuang"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
@@ -39,7 +39,7 @@ RDoc::Task.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "parse-ruby-client #{version}"
+  rdoc.title = "leancloud-ruby-client #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
