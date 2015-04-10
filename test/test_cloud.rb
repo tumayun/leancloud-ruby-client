@@ -12,6 +12,12 @@ class TestCloud < AVTestCase
 		assert_not_equal nil, AV::Cloud::Function.new("trivial")
 	end
 
+    def test_request_sms
+      VCR.use_cassette('test_request_sms', :record => :new_episodes) do
+        assert_true AV::Cloud.request_sms :mobilePhoneNumber => "18668012283",:op => "test",:ttl => 5
+      end
+    end
+
 	def test_cloud_function
 		omit("this should automate the parse deploy command by committing that binary to the repo")
 

@@ -178,6 +178,10 @@ module AV
       "/#{VERSION}/push"
     end
 
+    def Protocol.cql_uri
+      "/#{VERSION}/cloudQuery"
+    end
+
     def Protocol.cloud_function_uri(function_name)
       "/#{VERSION}/#{CLOUD_FUNCTIONS_PATH}/#{function_name}"
     end

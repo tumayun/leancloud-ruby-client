@@ -185,4 +185,14 @@ class TestQuery < AVTestCase
       assert_equal 0, with_nine_query.get.size
     end
   end
+
+  def test_cql
+    VCR.use_cassette('test_cql', :record => :new_episodes) do
+      post = AV::Object.new 'Post',:title => 'foo'
+      post.save
+      ret = AV::Query.do_cloud_query('select *,count(*) from Post')
+      assert_true ret[:count] > 0
+      assert_true ret[:results].size>0
+    end
+  end
 end

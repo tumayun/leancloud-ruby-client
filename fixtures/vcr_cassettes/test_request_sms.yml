@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.leancloud.cn/1.1/requestSmsCode
+    body:
+      encoding: UTF-8
+      string: '{"mobilePhoneNumber":"18668012283","op":"test","ttl":5}'
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:57:10 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '2'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:57:10 GMT
+recorded_with: VCR 2.4.0

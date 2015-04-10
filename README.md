@@ -6,8 +6,8 @@ leancloud-ruby-client 从 [parse-ruby-client](https://github.com/adelevie/parse-
 
 * 增加短信 API `AV::Cloud.request_sms_code(params)`
 * 增加 CQL 调用 `AV::Query.do_cloud_query(cql, pvalues)`
-* 其他兼容性改进和测试
-* 推送增加可以指定证书功能 `prod` 属性
+* 其他兼容性改进和测试，特别是文件
+* 推送增加可以指定 iOS 生产或者测试证书功能 `production` 属性，值为 `true/false`。
 
 ### Quick Reference
 

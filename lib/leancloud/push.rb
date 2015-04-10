@@ -12,6 +12,7 @@ module AV
     attr_accessor :expiration_time
     attr_accessor :push_time
     attr_accessor :data
+    attr_accessor :production
 
     def initialize(data, channel = "")
       @data = data
@@ -37,6 +38,7 @@ module AV
       body.merge!({ :expiration_time => @expiration_time }) if @expiration_time
       body.merge!({ :push_time => @push_time }) if @push_time
       body.merge!({ :type => @type }) if @type
+      body.merge!({ :prod => 'dev' }) if not @production
 
       response = AV.client.request uri, :post, body.to_json, nil
     end

@@ -1,0 +1,99 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.leancloud.cn/1.1/classes/Post
+    body:
+      encoding: UTF-8
+      string: '{"title":"foo"}'
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:57:15 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '78'
+      Connection:
+      - keep-alive
+      Location:
+      - /1.1/classes/Post/55279e7be4b0da2c5df03632
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"createdAt":"2015-04-10T09:57:15.873Z","objectId":"55279e7be4b0da2c5df03632"}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:57:15 GMT
+- request:
+    method: get
+    uri: https://api.leancloud.cn/1.1/cloudQuery?cql=select%20*,count(*)%20from%20Post&pvalues=%5B%5D
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Fri, 10 Apr 2015 09:59:34 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"results":[{"title":"foo","createdAt":"2015-04-09T03:44:40.580Z","updatedAt":"2015-04-09T03:44:40.580Z","objectId":"5525f5a8e4b06a6fc7f09533"},{"other":{"__type":"Pointer","className":"Post","objectId":"5525f51be4b06a6fc7f0914e"},"title":"bar","createdAt":"2015-04-09T03:42:19.468Z","updatedAt":"2015-04-09T03:42:19.468Z","objectId":"5525f51be4b06a6fc7f09152"},{"createdAt":"2015-04-09T23:59:54.063Z","updatedAt":"2015-04-09T23:59:54.063Z","objectId":"5527127ae4b0f5436834ecd0"},{"createdAt":"2015-04-09T23:49:13.226Z","updatedAt":"2015-04-09T23:49:13.226Z","objectId":"55270ff9e4b0f5436834e1c3"},{"other":{"__type":"Pointer","className":"Post","objectId":"5525f59ae4b06a6fc7f094c5"},"createdAt":"2015-04-09T03:44:27.245Z","updatedAt":"2015-04-09T03:44:27.245Z","objectId":"5525f59be4b06a6fc7f094c7"},{"updatedAt":"2015-04-09T03:41:59.188Z","createdAt":"2015-04-09T03:41:58.333Z","comments":[{"__type":"Pointer","className":"Comment","objectId":"5525f506e4b06a6fc7f090af"}],"objectId":"5525f506e4b06a6fc7f090ae"},{"comments":[{"__type":"Pointer","className":"Comment","objectId":"5525f505e4b06a6fc7f090a7"}],"createdAt":"2015-04-09T03:41:57.715Z","updatedAt":"2015-04-09T03:41:57.715Z","objectId":"5525f505e4b06a6fc7f090aa"},{"title":"foo","createdAt":"2015-04-09T03:44:39.728Z","updatedAt":"2015-04-09T03:44:39.728Z","objectId":"5525f5a7e4b06a6fc7f0952b"},{"createdAt":"2015-04-09T23:49:10.731Z","updatedAt":"2015-04-09T23:49:10.731Z","objectId":"55270ff6e4b0f5436834e1b5"},{"updatedAt":"2015-04-09T03:44:23.631Z","createdAt":"2015-04-09T03:44:23.291Z","chapters":["hello","goodbye"],"objectId":"5525f597e4b06a6fc7f094ae"},{"createdAt":"2015-04-09T23:47:14.604Z","updatedAt":"2015-04-09T23:47:14.604Z","objectId":"55270f82e4b0f5436834deb6"},{"title":"foo","createdAt":"2015-04-09T03:44:39.167Z","updatedAt":"2015-04-09T03:44:39.167Z","objectId":"5525f5a7e4b06a6fc7f09525"},{"random":0.1393653518584047,"createdAt":"2015-04-09T03:44:42.144Z","updatedAt":"2015-04-09T03:44:42.144Z","objectId":"5525f5aae4b06a6fc7f09542"},{"createdAt":"2015-04-09T23:47:12.675Z","updatedAt":"2015-04-09T23:47:12.675Z","objectId":"55270f80e4b0f5436834deae"},{"title":"foo","createdAt":"2015-04-09T03:44:37.348Z","updatedAt":"2015-04-09T03:44:37.348Z","objectId":"5525f5a5e4b06a6fc7f09511"},{"updatedAt":"2015-04-09T03:44:33.962Z","title":"hello
+        2","createdAt":"2015-04-09T03:44:33.556Z","objectId":"5525f5a1e4b06a6fc7f094f6"},{"updatedAt":"2015-04-09T03:44:29.479Z","createdAt":"2015-04-09T03:44:29.156Z","objectId":"5525f59de4b06a6fc7f094d8"},{"updatedAt":"2015-04-09T03:44:26.635Z","createdAt":"2015-04-09T03:44:26.297Z","count":0,"objectId":"5525f59ae4b06a6fc7f094c1"},{"location":{"longitude":40.0,"latitude":-30.0,"__type":"GeoPoint"},"createdAt":"2015-04-09T03:41:50.220Z","updatedAt":"2015-04-09T03:41:50.220Z","objectId":"5525f4fee4b06a6fc7f09071"},{"createdAt":"2015-04-09T23:47:11.186Z","updatedAt":"2015-04-09T23:47:11.186Z","objectId":"55270f7fe4b0f5436834dea5"},{"createdAt":"2015-04-09T23:47:10.431Z","updatedAt":"2015-04-09T23:47:10.431Z","objectId":"55270f7ee4b0f5436834de9b"},{"time":{"iso":"1970-01-01T00:00:00.000Z","__type":"Date"},"createdAt":"2015-04-09T03:44:18.164Z","updatedAt":"2015-04-09T03:44:18.164Z","objectId":"5525f592e4b06a6fc7f09481"},{"random":0.9190024386786158,"createdAt":"2015-04-09T03:43:43.920Z","updatedAt":"2015-04-09T03:43:43.920Z","objectId":"5525f56fe4b06a6fc7f09390"},{"random":0.3784856930913485,"createdAt":"2015-04-09T03:43:43.262Z","updatedAt":"2015-04-09T03:43:43.262Z","objectId":"5525f56fe4b06a6fc7f0938a"},{"location":{"longitude":40.0,"latitude":-30.0,"__type":"GeoPoint"},"createdAt":"2015-04-09T03:40:38.050Z","updatedAt":"2015-04-09T03:40:38.050Z","objectId":"5525f4b6e4b06a6fc7f08e47"},{"random":0.7769413073595881,"createdAt":"2015-04-09T03:44:41.564Z","updatedAt":"2015-04-09T03:44:41.564Z","objectId":"5525f5a9e4b06a6fc7f0953c"},{"time":{"iso":"1970-01-01T00:00:00.000Z","__type":"Date"},"createdAt":"2015-04-09T03:43:36.736Z","updatedAt":"2015-04-09T03:43:36.736Z","objectId":"5525f568e4b06a6fc7f09362"},{"random":0.5069919436537267,"createdAt":"2015-04-09T03:42:23.174Z","updatedAt":"2015-04-09T03:42:23.174Z","objectId":"5525f51fe4b06a6fc7f09171"},{"random":0.21879386968034498,"createdAt":"2015-04-09T03:42:22.548Z","updatedAt":"2015-04-09T03:42:22.548Z","objectId":"5525f51ee4b06a6fc7f0916a"},{"location":{"longitude":40.0,"latitude":-30.0,"__type":"GeoPoint"},"createdAt":"2015-04-09T03:37:37.982Z","updatedAt":"2015-04-09T03:37:37.982Z","objectId":"5525f401e4b06a6fc7f08a18"},{"title":"foo","createdAt":"2015-04-09T03:44:40.859Z","updatedAt":"2015-04-09T03:44:40.859Z","objectId":"5525f5a8e4b06a6fc7f09537"},{"title":"foo","createdAt":"2015-04-09T03:42:21.778Z","updatedAt":"2015-04-09T03:42:21.778Z","objectId":"5525f51de4b06a6fc7f09160"},{"title":"foo","createdAt":"2015-04-09T03:42:20.182Z","updatedAt":"2015-04-09T03:42:20.182Z","objectId":"5525f51ce4b06a6fc7f09155"},{"title":"foo","createdAt":"2015-04-09T03:42:19.162Z","updatedAt":"2015-04-09T03:42:19.162Z","objectId":"5525f51be4b06a6fc7f0914e"},{"location":{"longitude":40.0,"latitude":-30.0,"__type":"GeoPoint"},"createdAt":"2015-04-09T03:36:11.013Z","updatedAt":"2015-04-09T03:36:11.013Z","objectId":"5525f3abe4b06a6fc7f0880c"},{"published":true,"read":false,"createdAt":"2015-04-09T03:44:32.980Z","updatedAt":"2015-04-09T03:44:32.980Z","objectId":"5525f5a0e4b06a6fc7f094f4"},{"title":"foo","createdAt":"2015-04-09T03:42:18.443Z","updatedAt":"2015-04-09T03:42:18.443Z","objectId":"5525f51ae4b06a6fc7f09147"},{"title":"foo","createdAt":"2015-04-09T03:42:16.613Z","updatedAt":"2015-04-09T03:42:16.613Z","objectId":"5525f518e4b06a6fc7f0913b"},{"createdAt":"2015-04-09T23:59:56.678Z","updatedAt":"2015-04-09T23:59:56.678Z","objectId":"5527127ce4b0f5436834ece1"},{"createdAt":"2015-04-09T23:49:17.224Z","updatedAt":"2015-04-09T23:49:17.224Z","objectId":"55270ffde4b0f5436834e1df"},{"createdAt":"2015-04-09T23:49:15.362Z","updatedAt":"2015-04-09T23:49:15.362Z","objectId":"55270ffbe4b0f5436834e1d3"},{"createdAt":"2015-04-09T23:49:14.002Z","updatedAt":"2015-04-09T23:49:14.002Z","objectId":"55270ffae4b0f5436834e1cb"},{"createdAt":"2015-04-09T23:47:07.969Z","updatedAt":"2015-04-09T23:47:07.969Z","objectId":"55270f7be4b0f5436834de91"},{"createdAt":"2015-04-09T03:52:11.641Z","updatedAt":"2015-04-09T03:52:11.641Z","objectId":"5525f76be4b06a6fc7f0a291"},{"createdAt":"2015-04-09T03:52:07.627Z","updatedAt":"2015-04-09T03:52:07.627Z","objectId":"5525f767e4b06a6fc7f0a26f"},{"createdAt":"2015-04-09T03:52:05.695Z","updatedAt":"2015-04-09T03:52:05.695Z","objectId":"5525f765e4b06a6fc7f0a25f"},{"title":"hello
+        world","createdAt":"2015-04-09T03:44:29.970Z","updatedAt":"2015-04-09T03:44:29.970Z","objectId":"5525f59de4b06a6fc7f094dc"},{"createdAt":"2015-04-09T03:52:04.648Z","updatedAt":"2015-04-09T03:52:04.648Z","objectId":"5525f764e4b06a6fc7f0a25a"},{"createdAt":"2015-04-09T03:52:00.266Z","updatedAt":"2015-04-09T03:52:00.266Z","objectId":"5525f760e4b06a6fc7f0a23f"},{"createdAt":"2015-04-09T03:47:30.273Z","updatedAt":"2015-04-09T03:47:30.273Z","objectId":"5525f652e4b06a6fc7f09b3f"},{"createdAt":"2015-04-09T03:47:27.736Z","updatedAt":"2015-04-09T03:47:27.736Z","objectId":"5525f64fe4b06a6fc7f09b28"},{"createdAt":"2015-04-09T03:47:26.099Z","updatedAt":"2015-04-09T03:47:26.099Z","objectId":"5525f64ee4b06a6fc7f09b19"},{"createdAt":"2015-04-09T03:47:25.169Z","updatedAt":"2015-04-09T03:47:25.169Z","objectId":"5525f64de4b06a6fc7f09b0d"},{"createdAt":"2015-04-09T03:47:21.867Z","updatedAt":"2015-04-09T03:47:21.867Z","objectId":"5525f649e4b06a6fc7f09af0"},{"createdAt":"2015-04-09T03:46:15.779Z","updatedAt":"2015-04-09T03:46:15.779Z","objectId":"5525f607e4b06a6fc7f098b6"},{"createdAt":"2015-04-09T03:46:13.012Z","updatedAt":"2015-04-09T03:46:13.012Z","objectId":"5525f605e4b06a6fc7f09896"},{"createdAt":"2015-04-09T03:46:10.811Z","updatedAt":"2015-04-09T03:46:10.811Z","objectId":"5525f602e4b06a6fc7f0987d"},{"createdAt":"2015-04-09T03:46:09.571Z","updatedAt":"2015-04-09T03:46:09.571Z","objectId":"5525f601e4b06a6fc7f09874"},{"createdAt":"2015-04-09T03:46:05.129Z","updatedAt":"2015-04-09T03:46:05.129Z","objectId":"5525f5fde4b06a6fc7f09859"},{"createdAt":"2015-04-09T03:44:31.371Z","updatedAt":"2015-04-09T03:44:31.371Z","objectId":"5525f59fe4b06a6fc7f094e8"},{"createdAt":"2015-04-09T03:42:07.767Z","updatedAt":"2015-04-09T03:42:07.767Z","objectId":"5525f50fe4b06a6fc7f090ec"},{"createdAt":"2015-04-09T03:44:28.822Z","updatedAt":"2015-04-09T03:44:28.822Z","objectId":"5525f59ce4b06a6fc7f094d4"},{"createdAt":"2015-04-09T03:44:26.938Z","updatedAt":"2015-04-09T03:44:26.938Z","objectId":"5525f59ae4b06a6fc7f094c5"},{"createdAt":"2015-04-09T03:44:26.010Z","updatedAt":"2015-04-09T03:44:26.010Z","objectId":"5525f59ae4b06a6fc7f094c0"},{"createdAt":"2015-04-09T03:44:22.770Z","updatedAt":"2015-04-09T03:44:22.770Z","objectId":"5525f596e4b06a6fc7f094aa"},{"createdAt":"2015-04-09T03:42:03.532Z","updatedAt":"2015-04-09T03:42:03.532Z","objectId":"5525f50be4b06a6fc7f090d7"},{"createdAt":"2015-04-09T03:42:01.451Z","updatedAt":"2015-04-09T03:42:01.451Z","objectId":"5525f509e4b06a6fc7f090cc"},{"createdAt":"2015-04-09T03:41:59.557Z","updatedAt":"2015-04-09T03:41:59.557Z","objectId":"5525f507e4b06a6fc7f090b1"},{"createdAt":"2015-04-09T03:41:55.626Z","updatedAt":"2015-04-09T03:41:55.626Z","objectId":"5525f503e4b06a6fc7f09094"},{"updatedAt":"2015-04-09T03:42:11.499Z","title":"hello
+        2","createdAt":"2015-04-09T03:42:11.170Z","objectId":"5525f513e4b06a6fc7f0910b"},{"location":{"longitude":40.0,"latitude":-30.0,"__type":"GeoPoint"},"createdAt":"2015-04-09T03:28:14.024Z","updatedAt":"2015-04-09T03:28:14.024Z","objectId":"5525f1cee4b06a6fc7f079dc"},{"title":"hello
+        world","createdAt":"2015-04-09T03:43:41.944Z","updatedAt":"2015-04-09T03:43:41.944Z","objectId":"5525f56de4b06a6fc7f09382"},{"updatedAt":"2015-04-09T03:42:04.165Z","createdAt":"2015-04-09T03:42:03.859Z","objectId":"5525f50be4b06a6fc7f090d9"},{"updatedAt":"2015-04-09T03:42:00.885Z","createdAt":"2015-04-09T03:41:59.892Z","count":0,"objectId":"5525f507e4b06a6fc7f090b5"},{"createdAt":"2015-04-09T03:03:01.242Z","updatedAt":"2015-04-09T03:03:01.242Z","objectId":"5525ebe5e4b06a6fc7f04e7b"},{"createdAt":"2015-04-09T03:02:58.095Z","updatedAt":"2015-04-09T03:02:58.095Z","objectId":"5525ebe2e4b06a6fc7f04e66"},{"createdAt":"2015-04-09T03:02:55.982Z","updatedAt":"2015-04-09T03:02:55.982Z","objectId":"5525ebdfe4b06a6fc7f04e57"},{"createdAt":"2015-04-09T03:02:55.019Z","updatedAt":"2015-04-09T03:02:55.019Z","objectId":"5525ebdfe4b06a6fc7f04e4e"},{"createdAt":"2015-04-09T03:02:50.426Z","updatedAt":"2015-04-09T03:02:50.426Z","objectId":"5525ebdae4b06a6fc7f04e25"},{"createdAt":"2015-04-09T02:59:35.395Z","updatedAt":"2015-04-09T02:59:35.395Z","objectId":"5525eb17e4b06a6fc7f04904"},{"createdAt":"2015-04-09T02:59:32.502Z","updatedAt":"2015-04-09T02:59:32.502Z","objectId":"5525eb14e4b06a6fc7f048f2"},{"createdAt":"2015-04-09T02:59:30.522Z","updatedAt":"2015-04-09T02:59:30.522Z","objectId":"5525eb12e4b06a6fc7f048e8"},{"createdAt":"2015-04-09T02:59:29.143Z","updatedAt":"2015-04-09T02:59:29.143Z","objectId":"5525eb11e4b06a6fc7f048de"},{"createdAt":"2015-04-09T02:59:25.363Z","updatedAt":"2015-04-09T02:59:25.363Z","objectId":"5525eb0de4b06a6fc7f048c5"},{"createdAt":"2015-04-08T15:04:37.045Z","updatedAt":"2015-04-08T15:04:37.045Z","objectId":"55254385e4b0585a7282c046"},{"createdAt":"2015-04-08T15:04:34.985Z","updatedAt":"2015-04-08T15:04:34.985Z","objectId":"55254382e4b0585a7282c023"},{"createdAt":"2015-04-08T15:04:33.492Z","updatedAt":"2015-04-08T15:04:33.492Z","objectId":"55254381e4b0585a7282c013"},{"createdAt":"2015-04-08T15:04:32.660Z","updatedAt":"2015-04-08T15:04:32.660Z","objectId":"55254380e4b0585a7282c007"},{"createdAt":"2015-04-08T15:04:29.096Z","updatedAt":"2015-04-08T15:04:29.096Z","objectId":"5525437de4b0585a7282bfcc"},{"createdAt":"2015-04-08T14:56:06.559Z","updatedAt":"2015-04-08T14:56:06.559Z","objectId":"55254186e4b0585a7282ac87"},{"time":{"iso":"1970-01-01T00:00:00.000Z","__type":"Date"},"createdAt":"2015-04-09T03:41:49.303Z","updatedAt":"2015-04-09T03:41:49.303Z","objectId":"5525f4fde4b06a6fc7f0906c"},{"location":{"longitude":40.0,"latitude":-30.0,"__type":"GeoPoint"},"createdAt":"2015-04-09T03:25:52.332Z","updatedAt":"2015-04-09T03:25:52.332Z","objectId":"5525f140e4b06a6fc7f07634"},{"createdAt":"2015-04-08T14:56:04.268Z","updatedAt":"2015-04-08T14:56:04.268Z","objectId":"55254184e4b0585a7282ac71"},{"other":{"__type":"Pointer","className":"Post","objectId":"5525f509e4b06a6fc7f090cc"},"createdAt":"2015-04-09T03:42:01.910Z","updatedAt":"2015-04-09T03:42:01.910Z","objectId":"5525f509e4b06a6fc7f090ce"},{"location":{"longitude":40.0,"latitude":-30.0,"__type":"GeoPoint"},"createdAt":"2015-04-09T03:21:17.087Z","updatedAt":"2015-04-09T03:21:17.087Z","objectId":"5525f02de4b06a6fc7f06ddf"},{"location":{"longitude":40.0,"latitude":-30.0,"__type":"GeoPoint"},"createdAt":"2015-04-09T03:12:41.949Z","updatedAt":"2015-04-09T03:12:41.949Z","objectId":"5525ee29e4b06a6fc7f06046"},{"random":0.8261689547415835,"createdAt":"2015-04-09T03:40:44.770Z","updatedAt":"2015-04-09T03:40:44.770Z","objectId":"5525f4bce4b06a6fc7f08e72"},{"createdAt":"2015-04-08T14:56:02.833Z","updatedAt":"2015-04-08T14:56:02.833Z","objectId":"55254182e4b0585a7282ac61"},{"updatedAt":"2015-04-09T03:41:56.795Z","createdAt":"2015-04-09T03:41:56.353Z","chapters":["hello","goodbye"],"objectId":"5525f504e4b06a6fc7f0909d"},{"createdAt":"2015-04-08T14:56:01.702Z","updatedAt":"2015-04-08T14:56:01.702Z","objectId":"55254181e4b0585a7282ac59"}],"count":492,"className":"Post"}'
+    http_version: 
+  recorded_at: Fri, 10 Apr 2015 09:59:34 GMT
+recorded_with: VCR 2.4.0
