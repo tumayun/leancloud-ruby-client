@@ -1,14 +1,14 @@
 require 'helper'
 
-#Parse.init :application_id => $PARSE_APPLICATION_ID, :api_key => $PARSE_REST_API_KEY
+#AV.init :application_id => $PARSE_APPLICATION_ID, :api_key => $PARSE_REST_API_KEY
 
 class TestInit < Test::Unit::TestCase
   def setup
-    Parse.destroy
+    AV.destroy
   end
   
   def test_no_api_keys_error
-    fake = Parse::Object.new "shouldNeverExist"
+    fake = AV::Object.new "shouldNeverExist"
     fake["foo"] = "bar"
     
     begin
@@ -18,6 +18,6 @@ class TestInit < Test::Unit::TestCase
     end
     
     assert_equal error_triggered, true
-    assert_equal fake[Parse::Protocol::KEY_OBJECT_ID], nil
+    assert_equal fake[AV::Protocol::KEY_OBJECT_ID], nil
   end
 end

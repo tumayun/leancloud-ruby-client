@@ -1,10 +1,10 @@
 require 'helper'
 
-class TestFile < ParseTestCase
+class TestFile < AVTestCase
 
   def test_file_save
     VCR.use_cassette('test_text_file_save', :record => :new_episodes) do
-      tf = Parse::File.new({
+      tf = AV::File.new({
         :body => "Hello World!",
         :local_filename => "hello.txt",
         :content_type => "text/plain"
@@ -22,7 +22,7 @@ class TestFile < ParseTestCase
 
   def test_image_save
     #VCR.use_cassette('test_image_file_save', :record => :new_episodes) do
-      tf = Parse::File.new({
+      tf = AV::File.new({
         :body => IO.read("test/parsers.jpg"),
         :local_filename => "parsers.jpg",
         :content_type => "image/jpeg"
@@ -39,7 +39,7 @@ class TestFile < ParseTestCase
 
   def test_associate_with_object
     #VCR.use_cassette('test_image_file_associate_with_object', :record => :new_episodes) do
-      tf = Parse::File.new({
+      tf = AV::File.new({
         :body => IO.read("test/parsers.jpg"),
         :local_filename => "parsers.jpg",
         :content_type => "image/jpeg"
@@ -52,7 +52,7 @@ class TestFile < ParseTestCase
       assert tf.body
       assert tf.to_json
 
-      object = Parse::Object.new("ShouldHaveFile")
+      object = AV::Object.new("ShouldHaveFile")
       object["photo"] = tf
       object.save
 

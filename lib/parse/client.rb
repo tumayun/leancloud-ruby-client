@@ -4,7 +4,7 @@ require 'parse/error'
 require 'parse/util'
 
 require 'logger'
-module Parse
+module AV
 
   # A class which encapsulates the HTTPS communication with the Parse
   # API server.
@@ -40,7 +40,7 @@ module Parse
           max: @max_retries,
           logger: @logger,
           interval: 0.5,
-          exceptions: ['Faraday::Error::TimeoutError', 'Faraday::Error::ParsingError', 'Parse::ParseProtocolRetry']
+          exceptions: ['Faraday::Error::TimeoutError', 'Faraday::Error::ParsingError', 'AV::AVProtocolRetry']
         c.use Faraday::ExtendedParseJson
 
         c.response :logger, @logger unless @quiet
@@ -52,7 +52,7 @@ module Parse
 
     # Perform an HTTP request for the given uri and method
     # with common basic response handling. Will raise a
-    # ParseProtocolError if the response has an error status code,
+    # AVProtocolError if the response has an error status code,
     # and will return the parsed JSON body on success, if there is one.
     def request(uri, method = :get, body = nil, query = nil, content_type = nil)
       headers = {}
@@ -94,11 +94,11 @@ module Parse
   # ------------------------------------------------------------
   class << self
     # A singleton client for use by methods in Object.
-    # Always use Parse.client to retrieve the client object.
+    # Always use AV.client to retrieve the client object.
     @client = nil
 
     # Initialize the singleton instance of Client which is used
-    # by all API methods. Parse.init must be called before saving
+    # by all API methods. AV.init must be called before saving
     # or retrieving any objects.
     def init(data = {}, &blk)
       defaults = {:application_id => ENV["PARSE_APPLICATION_ID"], :api_key => ENV["PARSE_REST_API_KEY"]}
@@ -111,7 +111,7 @@ module Parse
 
     # A convenience method for using global.json
     def init_from_cloud_code(path = "../config/global.json")
-      # warning: toplevel constant File referenced by Parse::Object::File
+      # warning: toplevel constant File referenced by AV::Object::File
       global = JSON.parse(Object::File.open(path).read)
       application_name  = global["applications"]["_default"]["link"]
       application_id    = global["applications"][application_name]["applicationId"]
@@ -137,7 +137,7 @@ module Parse
     def get(class_name, object_id = nil)
       data = self.client.get( Protocol.class_uri(class_name, object_id) )
       self.parse_json class_name, data
-    rescue ParseProtocolError => e
+    rescue AVProtocolError => e
       if e.code == Protocol::ERROR_OBJECT_NOT_FOUND_FOR_GET
         e.message += ": #{class_name}:#{object_id}"
       end

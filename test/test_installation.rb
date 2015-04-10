@@ -1,10 +1,10 @@
 require 'helper'
 
-class TestInstallation < ParseTestCase
+class TestInstallation < AVTestCase
   def test_retrieving_installation_data
     installation_data = {
       "appIdentifier"=>"net.project_name",
-      "appName"=>"Parse Project",
+      "appName"=>"AV Project",
       "appVersion"=>"35",
       "badge"=>9,
       "channels"=>["", "channel1"],
@@ -19,25 +19,25 @@ class TestInstallation < ParseTestCase
     }
 
     VCR.use_cassette('test_get_installation') do
-      installation = Parse::Installation.get "987"
+      installation = AV::Installation.get "987"
       assert_equal installation_data, installation
     end
   end
 
   def test_changing_channels
-    installation = Parse::Installation.new "987"
+    installation = AV::Installation.new "987"
     installation.channels = ["", "my-channel"]
     assert_equal ["", "my-channel"], installation["channels"]
   end
 
   def test_changing_badges
-    installation = Parse::Installation.new "987"
+    installation = AV::Installation.new "987"
     installation.badge = 5
     assert_equal 5, installation["badge"]
   end
 
   def test_updating_installation_data
-    installation = Parse::Installation.new "987"
+    installation = AV::Installation.new "987"
     installation.channels = ["", "my-channel"]
     installation.badge = 5
 

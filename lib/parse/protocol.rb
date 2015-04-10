@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-module Parse
+module AV
   # A module which encapsulates the specifics of Parse's REST API.
   module Protocol
 

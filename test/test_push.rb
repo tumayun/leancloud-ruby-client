@@ -1,16 +1,16 @@
 require 'helper'
 
-class TestPush < ParseTestCase
+class TestPush < AVTestCase
 
   def test_save_without_where
     data = {:foo => 'bar',
             :alert => 'message'}
-    pf_push = Parse::Push.new(data, "some_chan")
+    pf_push = AV::Push.new(data, "some_chan")
     pf_push.type = 'ios'
 
-    query = Parse::Query.new(Parse::Protocol::CLASS_INSTALLATION).eq('deviceToken', 'baz')
+    query = AV::Query.new(AV::Protocol::CLASS_INSTALLATION).eq('deviceToken', 'baz')
 
-    Parse::Client.any_instance.expects(:request).with do |uri, method, body, query|
+    AV::Client.any_instance.expects(:request).with do |uri, method, body, query|
       hash = JSON.parse(body)
       assert_equal :post, method
       assert has_entries('type' => 'ios', 'channel' => "some_chan").matches?([hash])
@@ -26,13 +26,13 @@ class TestPush < ParseTestCase
   def test_save_with_where_removes_channel
     data = {:foo => 'bar',
             :alert => 'message'}
-    pf_push = Parse::Push.new(data, "some_chan")
+    pf_push = AV::Push.new(data, "some_chan")
     pf_push.type = 'ios'
 
-    query = Parse::Query.new(Parse::Protocol::CLASS_INSTALLATION).eq('deviceToken', 'baz')
+    query = AV::Query.new(AV::Protocol::CLASS_INSTALLATION).eq('deviceToken', 'baz')
     pf_push.where = query.where
 
-    Parse::Client.any_instance.expects(:request).with do |uri, method, body, query|
+    AV::Client.any_instance.expects(:request).with do |uri, method, body, query|
       hash = JSON.parse(body)
       assert_false has_entries('channel' => "some_chan").matches?([hash])
       assert has_entries('deviceToken' => 'baz').matches?([hash['where']])

@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 require 'cgi'
 
-module Parse
+module AV
 
   class Query
     attr_accessor :where
@@ -49,12 +49,12 @@ module Parse
     end
 
     def eq_pair(field, value)
-      add_constraint field, Parse.pointerize_value(value)
+      add_constraint field, AV.pointerize_value(value)
       self
     end
 
     def not_eq(field, value)
-      add_constraint field, { "$ne" => Parse.pointerize_value(value) }
+      add_constraint field, { "$ne" => AV.pointerize_value(value) }
       self
     end
 
@@ -64,42 +64,42 @@ module Parse
     end
 
     def less_than(field, value)
-      add_constraint field, { "$lt" => Parse.pointerize_value(value) }
+      add_constraint field, { "$lt" => AV.pointerize_value(value) }
       self
     end
 
     def less_eq(field, value)
-      add_constraint field, { "$lte" => Parse.pointerize_value(value) }
+      add_constraint field, { "$lte" => AV.pointerize_value(value) }
       self
     end
 
     def greater_than(field, value)
-      add_constraint field, { "$gt" => Parse.pointerize_value(value) }
+      add_constraint field, { "$gt" => AV.pointerize_value(value) }
       self
     end
 
     def greater_eq(field, value)
-      add_constraint field, { "$gte" => Parse.pointerize_value(value) }
+      add_constraint field, { "$gte" => AV.pointerize_value(value) }
       self
     end
 
     def value_in(field, values)
-      add_constraint field, { "$in" => values.map { |v| Parse.pointerize_value(v) } }
+      add_constraint field, { "$in" => values.map { |v| AV.pointerize_value(v) } }
       self
     end
 
     def value_not_in(field, values)
-      add_constraint field, { "$nin" => values.map { |v| Parse.pointerize_value(v) } }
+      add_constraint field, { "$nin" => values.map { |v| AV.pointerize_value(v) } }
       self
     end
 
     def contains_all(field, values)
-      add_constraint field, { "$all" => values.map { |v| Parse.pointerize_value(v) } }
+      add_constraint field, { "$all" => values.map { |v| AV.pointerize_value(v) } }
       self
     end
 
     def related_to(field,value)
-      h = {"object" => Parse.pointerize_value(value), "key" => field}
+      h = {"object" => AV.pointerize_value(value), "key" => field}
       add_constraint("$relatedTo", h )
     end
 
@@ -109,7 +109,7 @@ module Parse
     end
 
     def in_query(field, query=nil)
-      query_hash = {Parse::Protocol::KEY_CLASS_NAME => query.class_name, "where" => query.where}
+      query_hash = {AV::Protocol::KEY_CLASS_NAME => query.class_name, "where" => query.where}
       add_constraint(field, "$inQuery" => query_hash)
       self
     end
@@ -134,19 +134,19 @@ module Parse
 
     def get
       uri   = Protocol.class_uri @class_name
-      if @class_name == Parse::Protocol::CLASS_USER
+      if @class_name == AV::Protocol::CLASS_USER
         uri = Protocol.user_uri
-      elsif @class_name == Parse::Protocol::CLASS_INSTALLATION
+      elsif @class_name == AV::Protocol::CLASS_INSTALLATION
         uri = Protocol.installation_uri
       end
       query = { "where" => where_as_json.to_json }
       set_order(query)
       [:count, :limit, :skip, :include].each {|a| merge_attribute(a, query)}
-      Parse.client.logger.info{"Parse query for #{uri} #{query.inspect}"} unless Parse.client.quiet
-      response = Parse.client.request uri, :get, nil, query
+      AV.client.logger.info{"Parse query for #{uri} #{query.inspect}"} unless AV.client.quiet
+      response = AV.client.request uri, :get, nil, query
 
       if response.is_a?(Hash) && response.has_key?(Protocol::KEY_RESULTS) && response[Protocol::KEY_RESULTS].is_a?(Array)
-        parsed_results = response[Protocol::KEY_RESULTS].map{|o| Parse.parse_json(class_name, o)}
+        parsed_results = response[Protocol::KEY_RESULTS].map{|o| AV.parse_json(class_name, o)}
         if response.keys.size == 1
           parsed_results
         else

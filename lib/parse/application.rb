@@ -1,7 +1,7 @@
-module Parse
+module AV
   class Application
     def self.config
-      Parse.client.request(Parse::Protocol.config_uri)['params']
+      AV.client.request(AV::Protocol.config_uri)['params']
     end
   end
 end

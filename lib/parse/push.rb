@@ -2,7 +2,7 @@
 require 'cgi'
 require 'parse/error'
 
-module Parse
+module AV
   class Push
     attr_accessor :channels
     attr_accessor :channel
@@ -38,7 +38,7 @@ module Parse
       body.merge!({ :push_time => @push_time }) if @push_time
       body.merge!({ :type => @type }) if @type
 
-      response = Parse.client.request uri, :post, body.to_json, nil
+      response = AV.client.request uri, :post, body.to_json, nil
     end
 
   end

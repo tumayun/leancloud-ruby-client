@@ -1,22 +1,22 @@
 require 'helper'
 
-class TestCloud < ParseTestCase
+class TestCloud < AVTestCase
 	# functions stored in test/cloud_functions/MyCloudCode
-	# see https://parse.com/docs/cloud_code_guide to learn how to use Parse Cloud Code
+	# see https://parse.com/docs/cloud_code_guide to learn how to use AV Cloud Code
 	#
-	# Parse.Cloud.define('trivial', function(request, response) {
+	# AV.Cloud.define('trivial', function(request, response) {
   # 	response.success(request.params);
 	# });
 
 	def test_cloud_function_initialize
-		assert_not_equal nil, Parse::Cloud::Function.new("trivial")
+		assert_not_equal nil, AV::Cloud::Function.new("trivial")
 	end
 
 	def test_cloud_function
 		omit("this should automate the parse deploy command by committing that binary to the repo")
 
 		VCR.use_cassette('test_cloud_function', :record => :new_episodes) do
-			function = Parse::Cloud::Function.new("trivial")
+			function = AV::Cloud::Function.new("trivial")
 			params = {"foo" => "bar"}
 			resp = function.call(params)
 			assert_equal resp, params

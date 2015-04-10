@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-module Parse
+module AV
   module Cloud
 
     class Function
@@ -14,7 +14,7 @@ module Parse
       end
 
       def call(params={})
-        response = Parse.client.post(self.uri, params.to_json)
+        response = AV.client.post(self.uri, params.to_json)
         result = response["result"]
         result
       end

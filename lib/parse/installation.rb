@@ -3,8 +3,8 @@ require 'parse/client'
 require 'parse/error'
 require 'parse/object'
 
-module Parse
-  class Installation < Parse::Object
+module AV
+  class Installation < AV::Object
     UPDATABLE_FIELDS = {
       badge: 'badge',
       channels: 'channels',
@@ -26,8 +26,8 @@ module Parse
     end
 
     def get
-      if response = Parse.client.request(uri, :get, nil, nil)
-        parse Parse.parse_json(nil, response)
+      if response = AV.client.request(uri, :get, nil, nil)
+        parse AV.parse_json(nil, response)
       end
     end
 
@@ -42,7 +42,7 @@ module Parse
     end
 
     def save
-      Parse.client.request uri, method, self.to_json, nil
+      AV.client.request uri, method, self.to_json, nil
     end
 
     def rest_api_hash

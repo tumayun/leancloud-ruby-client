@@ -4,8 +4,8 @@ require 'parse/client'
 require 'parse/error'
 require 'parse/object'
 
-module Parse
-  class User < Parse::Object
+module AV
+  class User < AV::Object
 
     def self.authenticate(username, password)
       body = {
@@ -13,21 +13,21 @@ module Parse
         "password" => password
       }
 
-      response = Parse.client.request(Parse::Protocol::USER_LOGIN_URI, :get, nil, body)
-      Parse.client.session_token = response[Parse::Protocol::KEY_USER_SESSION_TOKEN]
+      response = AV.client.request(AV::Protocol::USER_LOGIN_URI, :get, nil, body)
+      AV.client.session_token = response[AV::Protocol::KEY_USER_SESSION_TOKEN]
 
       new(response)
     end
 
     def self.reset_password(email)
       body = {"email" => email}
-      Parse.client.post(Parse::Protocol::PASSWORD_RESET_URI, body.to_json)
+      AV.client.post(AV::Protocol::PASSWORD_RESET_URI, body.to_json)
     end
 
     def initialize(data = nil)
       data["username"] = data[:username] if data[:username]
       data["password"] = data[:password] if data[:password]
-      super(Parse::Protocol::CLASS_USER, data)
+      super(AV::Protocol::CLASS_USER, data)
     end
 
     def uri

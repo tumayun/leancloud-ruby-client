@@ -43,15 +43,15 @@ VCR.configure do |c|
     end
   end
 
-  filter_sensitive_header(c, Parse::Protocol::HEADER_APP_ID)
-  filter_sensitive_header(c, Parse::Protocol::HEADER_API_KEY)
-  filter_sensitive_header(c, Parse::Protocol::HEADER_MASTER_KEY)
-  filter_sensitive_header(c, Parse::Protocol::HEADER_SESSION_TOKEN)
+  filter_sensitive_header(c, AV::Protocol::HEADER_APP_ID)
+  filter_sensitive_header(c, AV::Protocol::HEADER_API_KEY)
+  filter_sensitive_header(c, AV::Protocol::HEADER_MASTER_KEY)
+  filter_sensitive_header(c, AV::Protocol::HEADER_SESSION_TOKEN)
 end
 
-class ParseTestCase < Test::Unit::TestCase
+class AVTestCase < Test::Unit::TestCase
   def setup
-    @client = Parse.init(:logger => Logger.new(STDERR).tap{|l| l.level = Logger::ERROR})
+    @client = AV.init(:logger => Logger.new(STDERR).tap{|l| l.level = Logger::ERROR})
   end
 end
 

@@ -3,7 +3,7 @@ require 'parse/protocol'
 require 'parse/client'
 require 'parse/error'
 
-module Parse
+module AV
 
   # Represents an individual Parse API object.
   class Object < Hash
@@ -22,13 +22,13 @@ module Parse
     end
 
     def eql?(other)
-      Parse.object_pointer_equality?(self, other)
+      AV.object_pointer_equality?(self, other)
     end
 
     alias == eql?
 
     def hash
-      Parse.object_pointer_hash(self)
+      AV.object_pointer_hash(self)
     end
 
     def uri
@@ -36,7 +36,7 @@ module Parse
     end
 
     def pointer
-      Parse::Pointer.new(rest_api_hash) unless new?
+      AV::Pointer.new(rest_api_hash) unless new?
     end
 
     # make it easier to deal with the ambiguity of whether you're passed a pointer or object
@@ -67,14 +67,14 @@ module Parse
       body = safe_hash.to_json
       uri = self.uri
       uri = uri + '?new=true' if method == :put
-      data = Parse.client.request(uri, method, body)
+      data = AV.client.request(uri, method, body)
 
       if data
         # array operations can return mutated view of array which needs to be parsed
-        parse Parse.parse_json(class_name, data)
+        parse AV.parse_json(class_name, data)
       end
 
-      if @class_name == Parse::Protocol::CLASS_USER
+      if @class_name == AV::Protocol::CLASS_USER
         self.delete("password")
         self.delete(:username)
         self.delete(:password)
@@ -93,14 +93,14 @@ module Parse
         elsif value.nil?
           [key, Protocol::DELETE_OP]
         else
-          [key, Parse.pointerize_value(value)]
+          [key, AV.pointerize_value(value)]
         end
       end.compact]
     end
 
     # full REST api representation of object
     def rest_api_hash
-      self.merge(Parse::Protocol::KEY_CLASS_NAME => class_name)
+      self.merge(AV::Protocol::KEY_CLASS_NAME => class_name)
     end
 
     # Handle the addition of Array#to_h in Ruby 2.1
@@ -132,7 +132,7 @@ module Parse
     # values from the API.
     def refresh
       if @parse_object_id
-        data = Parse.get @class_name, @parse_object_id
+        data = AV.get @class_name, @parse_object_id
         clear
         if data
           parse data
@@ -145,7 +145,7 @@ module Parse
     # Delete the remote Parse API object.
     def parse_delete
       if @parse_object_id
-        response = Parse.client.delete self.uri
+        response = AV.client.delete self.uri
       end
 
       self.clear
@@ -181,8 +181,8 @@ module Parse
       #  return nil
       #end
 
-      body = {field => Parse::Increment.new(amount)}.to_json
-      data = Parse.client.request(self.uri() + '?new=true', :put, body)
+      body = {field => AV::Increment.new(amount)}.to_json
+      data = AV.client.request(self.uri() + '?new=true', :put, body)
       parse data
       self
     end
@@ -219,7 +219,7 @@ module Parse
           k = k.to_s
         end
 
-        if k != Parse::Protocol::KEY_TYPE
+        if k != AV::Protocol::KEY_TYPE
           self[k] = v
         end
       end
@@ -233,7 +233,7 @@ module Parse
       if @parse_object_id
         @op_fields[field] ||= ArrayOp.new(operation, [])
         raise "only one operation type allowed per array #{field}" if @op_fields[field].operation != operation
-        @op_fields[field].objects << Parse.pointerize_value(value)
+        @op_fields[field].objects << AV.pointerize_value(value)
       end
 
       # parse doesn't return column values on initial POST creation so we must maintain them ourselves
