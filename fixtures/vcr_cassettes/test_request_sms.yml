@@ -45,4 +45,47 @@ http_interactions:
       string: '{}'
     http_version: 
   recorded_at: Fri, 10 Apr 2015 09:57:10 GMT
+- request:
+    method: post
+    uri: https://api.leancloud.cn/1.1/verifySmsCode/123456
+    body:
+      encoding: UTF-8
+      string: '{"mobilePhoneNumber":"18668012283"}'
+    headers:
+      User-Agent:
+      - Parse for Ruby, 0.0
+      Content-Type:
+      - application/json
+      X-Avoscloud-Application-Id:
+      - <X-AVOSCloud-Application-Id>
+      X-Avoscloud-Application-Key:
+      - <X-AVOSCloud-Application-Key>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - Tengine
+      Date:
+      - Tue, 16 Jun 2015 08:19:09 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '71'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache,no-store
+      Pragma:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: '{"code":603,"error":"\u65e0\u6548\u7684\u77ed\u4fe1\u9a8c\u8bc1\u7801"}'
+    http_version: 
+  recorded_at: Tue, 16 Jun 2015 08:19:09 GMT
 recorded_with: VCR 2.4.0
