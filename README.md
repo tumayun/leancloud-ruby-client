@@ -1172,6 +1172,28 @@ At the moment there are a couple of things to watch out for:
 
 2. Points should not equal or exceed the extreme ends of the ranges. Latitude should not be -90.0 or 90.0. Longitude should not be -180.0 or 180.0. Attempting to use GeoPoint's with latitude and/or longitude outside these ranges will cause an error.
 
+## Cloud Function
+
+You can call cloud function which you have had written in `main.js`.
+
+### How to use
+
+```ruby
+# should look something like this:
+AV::Cloud::Function.new("hello").call(foo: "bar", ...)
+# or call it without params like this:
+AV::Cloud::Function.new("hello").call
+```
+
+### Request sms code
+
+```ruby
+# this should get the sms code
+AV::Cloud.request_sms(params)
+# this should verify sms code
+AV::Cloud.verify_sms_code(phone, code)
+```
+
 # 原始文档
 
 [parse-ruby-client](https://github.com/adelevie/parse-ruby-client)
