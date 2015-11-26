@@ -14,8 +14,8 @@ class TestCloud < AVTestCase
 
     def test_request_sms
       VCR.use_cassette('test_request_sms', :record => :new_episodes) do
-        assert_equal (AV::Cloud.request_sms :mobilePhoneNumber => "18668012283",:op => "test",:ttl => 5), {}
-        puts AV::Cloud.verify_sms_code('18668012283', '123456').inspect
+        assert_equal (AV::Cloud.request_sms :mobilePhoneNumber => "186xxxxxxx",:op => "test",:ttl => 5), {}
+        puts AV::Cloud.verify_sms_code('186xxxxxxx', '123456').inspect
       end
     end
 
