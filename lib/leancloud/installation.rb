@@ -3,8 +3,8 @@ require 'leancloud/client'
 require 'leancloud/error'
 require 'leancloud/object'
 
-module AV
-  class Installation < AV::Object
+module LC
+  class Installation < LC::Object
     UPDATABLE_FIELDS = {
       badge: 'badge',
       channels: 'channels',
@@ -26,8 +26,8 @@ module AV
     end
 
     def get
-      if response = AV.client.request(uri, :get, nil, nil)
-        parse AV.parse_json(nil, response)
+      if response = LC.client.request(uri, :get, nil, nil)
+        parse LC.parse_json(nil, response)
       end
     end
 
@@ -42,7 +42,7 @@ module AV
     end
 
     def save
-      AV.client.request uri, method, self.to_json, nil
+      LC.client.request uri, method, self.to_json, nil
     end
 
     def rest_api_hash

@@ -4,8 +4,14 @@ require 'leancloud/client'
 require 'leancloud/error'
 require 'leancloud/object'
 
-module AV
-  class User < AV::Object
+module LC
+  class User < LC::Object
+
+    def self.become(token)
+      response = LC.client._request(uri: LC::Protocol::USER_CURRENT_URI, session_token: token)
+      LC.client.session_token = response[LC::Protocol::KEY_USER_SESSION_TOKEN]
+      new(response)
+    end
 
     def self.authenticate(username, password)
       body = {
@@ -13,21 +19,21 @@ module AV
         "password" => password
       }
 
-      response = AV.client.request(AV::Protocol::USER_LOGIN_URI, :get, nil, body)
-      AV.client.session_token = response[AV::Protocol::KEY_USER_SESSION_TOKEN]
+      response = LC.client.request(LC::Protocol::USER_LOGIN_URI, :get, nil, body)
+      LC.client.session_token = response[LC::Protocol::KEY_USER_SESSION_TOKEN]
 
       new(response)
     end
 
     def self.reset_password(email)
       body = {"email" => email}
-      AV.client.post(AV::Protocol::PASSWORD_RESET_URI, body.to_json)
+      LC.client.post(LC::Protocol::PASSWORD_RESET_URI, body.to_json)
     end
 
     def initialize(data = nil)
       data["username"] = data[:username] if data[:username]
       data["password"] = data[:password] if data[:password]
-      super(AV::Protocol::CLASS_USER, data)
+      super(LC::Protocol::CLASS_USER, data)
     end
 
     def uri

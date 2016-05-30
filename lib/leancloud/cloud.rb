@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-module AV
+module LC
   module Cloud
 
     class Function
@@ -14,19 +14,19 @@ module AV
       end
 
       def call(params={})
-        response = AV.client.post(self.uri, params.to_json)
+        response = LC.client.post(self.uri, params.to_json)
         result = response["result"]
         result
       end
     end
 
     def self.request_sms(params)
-      AV.client.post("/#{Protocol::VERSION}/requestSmsCode", params.to_json)
+      LC.client.post("/#{Protocol::VERSION}/requestSmsCode", params.to_json)
     end
 
     def self.verify_sms_code(phone, code)
       params = { mobilePhoneNumber: phone}
-      AV.client.post("/#{Protocol::VERSION}/verifySmsCode/#{code}", params.to_json)
+      LC.client.post("/#{Protocol::VERSION}/verifySmsCode/#{code}", params.to_json)
     end
   end
 end

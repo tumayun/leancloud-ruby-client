@@ -10,6 +10,7 @@ group :development do
   gem 'webmock',   '~> 1.9.0'
   gem 'vcr'
   gem 'pry'
+  gem "json", '>=1.8.3'
 end
 
 gem 'faraday'

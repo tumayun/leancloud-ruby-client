@@ -3,7 +3,7 @@ require 'leancloud/protocol'
 require 'leancloud/client'
 require 'leancloud/error'
 
-module AV
+module LC
 
   # Represents an individual Parse API object.
   class Object < Hash
@@ -22,13 +22,13 @@ module AV
     end
 
     def eql?(other)
-      AV.object_pointer_equality?(self, other)
+      LC.object_pointer_equality?(self, other)
     end
 
     alias == eql?
 
     def hash
-      AV.object_pointer_hash(self)
+      LC.object_pointer_hash(self)
     end
 
     def uri
@@ -36,7 +36,7 @@ module AV
     end
 
     def pointer
-      AV::Pointer.new(rest_api_hash) unless new?
+      LC::Pointer.new(rest_api_hash) unless new?
     end
 
     # make it easier to deal with the ambiguity of whether you're passed a pointer or object
@@ -67,14 +67,14 @@ module AV
       body = safe_hash.to_json
       uri = self.uri
       uri = uri + '?new=true' if method == :put
-      data = AV.client.request(uri, method, body)
+      data = LC.client.request(uri, method, body)
 
       if data
         # array operations can return mutated view of array which needs to be parsed
-        parse AV.parse_json(class_name, data)
+        parse LC.parse_json(class_name, data)
       end
 
-      if @class_name == AV::Protocol::CLASS_USER
+      if @class_name == LC::Protocol::CLASS_USER
         self.delete("password")
         self.delete(:username)
         self.delete(:password)
@@ -93,14 +93,14 @@ module AV
         elsif value.nil?
           [key, Protocol::DELETE_OP]
         else
-          [key, AV.pointerize_value(value)]
+          [key, LC.pointerize_value(value)]
         end
       end.compact]
     end
 
     # full REST api representation of object
     def rest_api_hash
-      self.merge(AV::Protocol::KEY_CLASS_NAME => class_name)
+      self.merge(LC::Protocol::KEY_CLASS_NAME => class_name)
     end
 
     # Handle the addition of Array#to_h in Ruby 2.1
@@ -132,7 +132,7 @@ module AV
     # values from the API.
     def refresh
       if @parse_object_id
-        data = AV.get @class_name, @parse_object_id
+        data = LC.get @class_name, @parse_object_id
         clear
         if data
           parse data
@@ -145,7 +145,7 @@ module AV
     # Delete the remote Parse API object.
     def parse_delete
       if @parse_object_id
-        response = AV.client.delete self.uri
+        response = LC.client.delete self.uri
       end
 
       self.clear
@@ -181,8 +181,8 @@ module AV
       #  return nil
       #end
 
-      body = {field => AV::Increment.new(amount)}.to_json
-      data = AV.client.request(self.uri() + '?new=true', :put, body)
+      body = {field => LC::Increment.new(amount)}.to_json
+      data = LC.client.request(self.uri() + '?new=true', :put, body)
       parse data
       self
     end
@@ -219,7 +219,7 @@ module AV
           k = k.to_s
         end
 
-        if k != AV::Protocol::KEY_TYPE
+        if k != LC::Protocol::KEY_TYPE
           self[k] = v
         end
       end
@@ -233,7 +233,7 @@ module AV
       if @parse_object_id
         @op_fields[field] ||= ArrayOp.new(operation, [])
         raise "only one operation type allowed per array #{field}" if @op_fields[field].operation != operation
-        @op_fields[field].objects << AV.pointerize_value(value)
+        @op_fields[field].objects << LC.pointerize_value(value)
       end
 
       # parse doesn't return column values on initial POST creation so we must maintain them ourselves

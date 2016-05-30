@@ -4,10 +4,11 @@ leancloud-ruby-client 从 [parse-ruby-client](https://github.com/adelevie/parse-
 
 除了简单的重命名和调用地址改动之外，还做了下列事情：
 
-* 增加短信 API `AV::Cloud.request_sms(params)` 和 `AV::Cloud.verify_sms_code(phone, code)`
-* 增加 CQL 调用 `AV::Query.do_cloud_query(cql, pvalues)`
+* 增加短信 API `LC::Cloud.request_sms(params)` 和 `LC::Cloud.verify_sms_code(phone, code)`
+* 增加 CQL 调用 `LC::Query.do_cloud_query(cql, pvalues)`
 * 其他兼容性改进和测试，特别是文件
 * 推送增加可以指定 iOS 生产或者测试证书功能 `production` 属性，值为 `true/false`。
+* 增加用户 API `LC::User.became(token)`
 
 ### Quick Reference
 
@@ -20,9 +21,9 @@ leancloud-ruby-client 从 [parse-ruby-client](https://github.com/adelevie/parse-
 ```ruby
 require 'leancloud-ruby-client'
 
-AV.init :application_id => "<your_app_id>",
+LC.init :application_id => "<your_app_id>",
            :api_key        => "<your_api_key>",
-           :quiet			=> true | false                      
+           :quiet			=> true | false
 ```
 
 [![Gem Version](https://badge.fury.io/rb/parse-ruby-client.png)](http://badge.fury.io/rb/parse-ruby-client)
@@ -104,7 +105,7 @@ The design philosophy behind parse-ruby-client is to stay out of the way as much
 ### Creating Objects
 
 ```ruby
-game_score = AV::Object.new("GameScore")
+game_score = LC::Object.new("GameScore")
 game_score["score"] = 1337
 game_score["playerName"] = "Sean Plott"
 game_score["cheatMode"] = false
@@ -124,10 +125,10 @@ This will return:
 
 ### Retrieving Objects
 
-The easiest way to retrieve Objects is with `AV::Query`:
+The easiest way to retrieve Objects is with `LC::Query`:
 
 ```ruby
-game_score_query = AV::Query.new("GameScore")
+game_score_query = LC::Query.new("GameScore")
 game_score_query.eq("objectId", "GeqPWJdNqp")
 game_score = game_score_query.get
 puts game_score
@@ -148,7 +149,7 @@ Notice that this is an `Array` of results. For more information on queries, see 
 When retrieving objects that have pointers to children, you can fetch child objects by setting the `include` attribute. For instance, to fetch the object pointed to by the "game" key:
 
 ```ruby
-game_score_query = AV::Query.new("GameScore")
+game_score_query = LC::Query.new("GameScore")
 game_score_query.eq("objectId", "GeqPWJdNqp")
 game_score_query.include = "game"
 game_score = game_score_query.get
@@ -162,10 +163,10 @@ game_score_query.include = "game,genre"
 
 ### Updating Objects
 
-To change the data on an object that already exists, just call `AV::Object#save` on it. Any keys you don't specify will remain unchanged, so you can update just a subset of the object's data. For example, if we wanted to change the score field of our object:
+To change the data on an object that already exists, just call `LC::Object#save` on it. Any keys you don't specify will remain unchanged, so you can update just a subset of the object's data. For example, if we wanted to change the score field of our object:
 
 ```ruby
-game_score = AV::Query.new("GameScore").eq("objectId", "GeqPWJdNqp").get.first
+game_score = LC::Query.new("GameScore").eq("objectId", "GeqPWJdNqp").get.first
 game_score["score"] = 73453
 result = game_score.save
 puts result
@@ -186,8 +187,8 @@ This will return:
 To help with storing counter-type data, Parse provides the ability to atomically increment (or decrement) any number field. So, we can increment the score field like so:
 
 ```ruby
-game_score = AV::Query.new("GameScore").eq("objectId", "GeqPWJdNqp").get.first
-game_score["score"] = AV::Increment.new(1)
+game_score = LC::Query.new("GameScore").eq("objectId", "GeqPWJdNqp").get.first
+game_score["score"] = LC::Increment.new(1)
 game_score.save
 ```
 
@@ -197,14 +198,14 @@ You can also use a negative amount to decrement.
 
 To help with storing array data, there are three operations that can be used to atomically change an array field:
 
-1. `AV::Object#array_add(field, value)` appends the given array of objects to the end of an array field.
-2. `AV::Object#array_add_unique(field, value)` adds only the given objects which aren't already contained in an array field to that field. The position of the insert is not guaranteed.
-3. `AV::Object#array_remove(field, value)` removes all instances of each given object from an array field.
+1. `LC::Object#array_add(field, value)` appends the given array of objects to the end of an array field.
+2. `LC::Object#array_add_unique(field, value)` adds only the given objects which aren't already contained in an array field to that field. The position of the insert is not guaranteed.
+3. `LC::Object#array_remove(field, value)` removes all instances of each given object from an array field.
 
 Each method takes an array of objects to add or remove in the "objects" key. For example, we can add items to the set-like "skills" field like so:
 
 ```ruby
-game_score = AV::Query.new("GameScore").eq("objectId", "5iEEIxM4MW").get.first
+game_score = LC::Query.new("GameScore").eq("objectId", "5iEEIxM4MW").get.first
 game_score.array_add_unique("skills", ["flying", "kungfu"])
 game_score.save
 puts game_score["skills"]
@@ -221,11 +222,11 @@ This will return:
 In order to update Relation types, Parse provides special operators to atomically add and remove objects to a relation. So, we can add an object to a relation like so:
 
 ```ruby
-game_score = AV::Query.new("GameScore").eq("objectId", "5iEEIxM4MW").get.first
-player = AV::Query.new("Player").eq("objectId", "GLtvtEaGKa").get.first
+game_score = LC::Query.new("GameScore").eq("objectId", "5iEEIxM4MW").get.first
+player = LC::Query.new("Player").eq("objectId", "GLtvtEaGKa").get.first
 game_score.array_add_relation("opponents", player.pointer)
 game_score.save
-game_score["opponents"] #=> #<AV::ArrayOp:0x007fbe98931508 @operation="AddRelation", @objects=[Player:GLtvtEaGKa]>
+game_score["opponents"] #=> #<LC::ArrayOp:0x007fbe98931508 @operation="AddRelation", @objects=[Player:GLtvtEaGKa]>
 game_score["opponents"].objects.first #=> Player:GLtvtEaGKa
 ```
 
@@ -237,15 +238,15 @@ To remove an object from a relation, you can do:
 
 ### Deleting Objects
 
-To delete an object from the Parse Cloud, call `AV::Object#parse_delete`. For example:
+To delete an object from the Parse Cloud, call `LC::Object#parse_delete`. For example:
 
 ```ruby
-game_score = AV::Query.new("GameScore").eq("objectId", "5iEEIxM4MW").get.first
+game_score = LC::Query.new("GameScore").eq("objectId", "5iEEIxM4MW").get.first
 game_score.parse_delete
-AV::Query.new("GameScore").eq("objectId", "5iEEIxM4MW").get.length #=> 0
+LC::Query.new("GameScore").eq("objectId", "5iEEIxM4MW").get.length #=> 0
 ```
 
-You can delete a single field from an object by using the `AV::Object#delete_field` operation:
+You can delete a single field from an object by using the `LC::Object#delete_field` operation:
 
 ```ruby
 # TODO: This method is not yet implemented.
@@ -255,10 +256,10 @@ You can delete a single field from an object by using the `AV::Object#delete_fie
 
 To reduce the amount of time spent on network round trips, you can create, update, or delete several objects in one call, using the batch endpoint.
 
-parse-ruby-client provides a "manual" way to construct Batch Operations, as well as some convenience methods. The commands are run in the order they are given. For example, to create a couple of GameScore objects using the "manual" style, use `AV::Batch#add_request`. `#add_request` takes a `Hash` with `"method"`, `"path"`, and `"body"` keys that specify the HTTP command that would normally be used for that command.
+parse-ruby-client provides a "manual" way to construct Batch Operations, as well as some convenience methods. The commands are run in the order they are given. For example, to create a couple of GameScore objects using the "manual" style, use `LC::Batch#add_request`. `#add_request` takes a `Hash` with `"method"`, `"path"`, and `"body"` keys that specify the HTTP command that would normally be used for that command.
 
 ```ruby
-batch = AV::Batch.new
+batch = LC::Batch.new
 batch.add_request({
   "method" => "POST",
   "path"   => "/1/classes/GameScore"
@@ -278,13 +279,13 @@ batch.add_request({
 batch.run!
 ```
 
-Because manually constructing `"path"` values is repetitive, you can use `AV::Batch#create_object`, `AV::Batch#update_object`, and `AV::Batch#delete_object`. Each of these methods takes an instance of `AV::Object` as the only argument. Then you just call `AV::Batch#run!`. For example:
+Because manually constructing `"path"` values is repetitive, you can use `LC::Batch#create_object`, `LC::Batch#update_object`, and `LC::Batch#delete_object`. Each of these methods takes an instance of `LC::Object` as the only argument. Then you just call `LC::Batch#run!`. For example:
 
 ```ruby
-batch = AV::Batch.new
+batch = LC::Batch.new
 # making a few GameScore objects and adding them to the batch operation.
 [1, 2, 3, 4, 5].each do |i|
-  gs = AV::Object.new("GameScore")
+  gs = LC::Object.new("GameScore")
   gs["score"] = "#{i}"
   batch.create_object(gs)
 end
@@ -319,32 +320,32 @@ So far we have only used values that can be encoded with standard JSON. The Pars
 
 #### Dates
 
-Use `AV::Date::new` to create a date object:
+Use `LC::Date::new` to create a date object:
 
 ```ruby
 date_time = DateTime.now
-parse_date = AV::Date.new(date_time)
+parse_date = LC::Date.new(date_time)
 ```
 
 Dates are useful in combination with the built-in createdAt and updatedAt fields. For example, to retrieve objects created since a particular time, just encode a Date in a comparison query:
 
 ```ruby
-game_score = AV::Query.new("GameScore").tap do |q|
-  q.greater_than("createdAt", AV::Date.new(DateTime.now)) # query options explained in more detail later in this document
+game_score = LC::Query.new("GameScore").tap do |q|
+  q.greater_than("createdAt", LC::Date.new(DateTime.now)) # query options explained in more detail later in this document
 end.get.first
 ```
 
-`AV::Date::new` can take a `DateTime`, iso `Hash`, or a `String` that can be parsed by `DateTime#parse` as the sole argument.
+`LC::Date::new` can take a `DateTime`, iso `Hash`, or a `String` that can be parsed by `DateTime#parse` as the sole argument.
 
-The `AV::Date` API is not set in stone and will likely change following the suggestions discussed here: https://github.com/adelevie/parse-ruby-client/issues/35. The current methods probably will not go away, but some newer, easier methods will be added.
+The `LC::Date` API is not set in stone and will likely change following the suggestions discussed here: https://github.com/adelevie/parse-ruby-client/issues/35. The current methods probably will not go away, but some newer, easier methods will be added.
 
 #### Bytes
 
-`AV::Bytes` contains an attribute, `base64`, which contains a base64 encoding of binary data. The specific base64 encoding is the one used by MIME, and does not contain whitespace.
+`LC::Bytes` contains an attribute, `base64`, which contains a base64 encoding of binary data. The specific base64 encoding is the one used by MIME, and does not contain whitespace.
 
 ```ruby
 data = "TG9va3MgbGlrZSB5b3UgZm91bmQgYW4gZWFzdGVyIEVnZy4gTWF5YmUgaXQn\ncyB0aW1lIHlvdSB0b29rIGEgTWluZWNyYWZ0IGJyZWFrPw==\n" # base64 encoded data
-bytes = AV::Bytes.new(data)
+bytes = LC::Bytes.new(data)
 ```
 
 #### Pointers
@@ -352,12 +353,12 @@ bytes = AV::Bytes.new(data)
 The `Pointer` type is used when mobile code sets a `PFObject` (iOS SDK) or `ParseObject` (Android SDK) as the value of another object. It contains the `className` and `objectId` of the referred-to value.
 
 ```ruby
-pointer = AV::Pointer.new({"className" => "gameScore", "objectId" => "GeqPWJdNqp"})
+pointer = LC::Pointer.new({"className" => "gameScore", "objectId" => "GeqPWJdNqp"})
 ```
 
 Pointers to `user` objects have a `className` of `_User`. Prefixing with an underscore is forbidden for developer-defined classes and signifies the class is a special built-in.
 
-If you already have a `AV::Object`, you can get its `Pointer` very easily:
+If you already have a `LC::Object`, you can get its `Pointer` very easily:
 
 ```ruby
 game_score.pointer
@@ -385,7 +386,7 @@ When more data types are added, they will also be represented as hashes with a `
 Queries are created like so:
 
 ```ruby
-query = AV::Query.new("GameScore")
+query = LC::Query.new("GameScore")
 ```
 
 
@@ -398,7 +399,7 @@ You can retrieve multiple objects at once by calling `#get`:
 query.get
 ```
 
-The return value is an `Array` of `AV::Object` instances:
+The return value is an `Array` of `LC::Object` instances:
 
 ```ruby
 [{"score"=>100,
@@ -420,53 +421,53 @@ The return value is an `Array` of `AV::Object` instances:
 
 ### Query Contraints
 
-There are several ways to put constraints on the objects found, using various methods of `AV::Query`. The most basic is `AV::Query#eq`:
+There are several ways to put constraints on the objects found, using various methods of `LC::Query`. The most basic is `LC::Query#eq`:
 
 ```ruby
-query = AV::Query.new("GameScore").eq("playerName", "Sean Plott")
+query = LC::Query.new("GameScore").eq("playerName", "Sean Plott")
 ```
 
 Other constraint methods include:
 
 <table>
   <tr>
-    <td>`AV::Query#less_than(field, value)`</td>
+    <td>`LC::Query#less_than(field, value)`</td>
     <td>Less Than</td>
   </tr>
   <tr>
-    <td>`AV::Query#less_eq(field, value)`</td>
+    <td>`LC::Query#less_eq(field, value)`</td>
     <td>Less Than or Equal To</td>
   </tr>
   <tr>
-    <td>`AV::Query#greater_than(field, value)`</td>
+    <td>`LC::Query#greater_than(field, value)`</td>
     <td>Greater Than</td>
   </tr>
   <tr>
-    <td>`AV::Query#greater_eq(field, value)`</td>
+    <td>`LC::Query#greater_eq(field, value)`</td>
     <td>Greater Than Or Equal To</td>
   </tr>
   <tr>
-    <td>`AV::Query#not_eq(field, value)`</td>
+    <td>`LC::Query#not_eq(field, value)`</td>
     <td>Not Equal To</td>
   </tr>
   <tr>
-    <td>`AV::Query#value_in(field, values)`</td>
+    <td>`LC::Query#value_in(field, values)`</td>
     <td>Contained In</td>
   </tr>
   <tr>
-    <td>`AV::Query#value_not_in(field, values)`</td>
+    <td>`LC::Query#value_not_in(field, values)`</td>
     <td>Not Contained in</td>
   </tr>
   <tr>
-    <td>`AV::Query#exists(field, value=true)`</td>
+    <td>`LC::Query#exists(field, value=true)`</td>
     <td>A value is set for the key</td>
   </tr>
   <tr>
-    <td>`AV::Query#contains_all(field, values)`</td>
+    <td>`LC::Query#contains_all(field, values)`</td>
     <td>Contains all values in the array</td>
   </tr>
   <tr>
-    <td>`AV::Query#select`</td>
+    <td>`LC::Query#select`</td>
     <td>TODO: `$select` not yet implemented. This matches a value for a key in the result of a different query</td>
   </tr>
 </table>
@@ -474,7 +475,7 @@ Other constraint methods include:
 For example, to retrieve scores between 1000 and 3000, including the endpoints, we could issue:
 
 ```ruby
-scores = AV::Query.new("GameScore").tap do |q|
+scores = LC::Query.new("GameScore").tap do |q|
   q.greater_eq("score", 1000)
   q.less_eq("score", 3000)
 end.get
@@ -483,7 +484,7 @@ end.get
 To retrieve scores equal to an odd number below 10, we could issue:
 
 ```ruby
-scores = AV::Query.new("GameScore").tap do |q|
+scores = LC::Query.new("GameScore").tap do |q|
   q.value_in("score", [1,3,5,7,9])
 end.get
 ```
@@ -491,7 +492,7 @@ end.get
 To retrieve scores not by a given list of players we could issue:
 
 ```ruby
-scores = AV::Query.new("GameScore").tap do |q|
+scores = LC::Query.new("GameScore").tap do |q|
   q.value_not_in("playerName", ["Jonathan Walsh","Dario Wunsch","Shawn Simon"])
 end.get
 ```
@@ -499,7 +500,7 @@ end.get
 To retrieve documents with the score set, we could issue:
 
 ```ruby
-scores = AV::Query.new("GameScore").tap do |q|
+scores = LC::Query.new("GameScore").tap do |q|
   q.exists("score") # defaults to `true`
 end.get
 ```
@@ -507,7 +508,7 @@ end.get
 To retrieve documents without the score set, we could issue:
 
 ```ruby
-scores = AV::Query.new("GameScore").tap do |q|
+scores = LC::Query.new("GameScore").tap do |q|
   q.exists("score", false)
 end.get
 ```
@@ -515,7 +516,7 @@ end.get
 If you have a class containing sports teams and you store a user's hometown in the user class, you can issue one query to find the list of users whose hometown teams have winning records. The query would look like:
 
 ```ruby
-users = AV::Query.new("_User").tap do |users_query|
+users = LC::Query.new("_User").tap do |users_query|
   users_query.eq("hometown", {
     "$select" => {
       "query" => {
@@ -532,10 +533,10 @@ end.get
 
 Currently, there is no convenience method provided for `$select` queries. However, they are still possible. This is a good example of the flexibility of parse-ruby-client. You usually do not need to wait for a feature to be added in order to user it. If you have a good idea on what a convencience method for this should look like, please file an issue, or even better, submit a pull request.
 
-You can use the `AV::Query#order_by` method to specify a field to sort by. By default, everything is ordered ascending. Thus, to retrieve scores in ascending order:
+You can use the `LC::Query#order_by` method to specify a field to sort by. By default, everything is ordered ascending. Thus, to retrieve scores in ascending order:
 
 ```ruby
-scores = AV::Query.new("GameScore").tap do |q|
+scores = LC::Query.new("GameScore").tap do |q|
   q.order_by = "score"
 end.get
 ```
@@ -543,7 +544,7 @@ end.get
 And to retrieve scores in descending order:
 
 ```ruby
-scores = AV::Query.new("GameScore").tap do |q|
+scores = LC::Query.new("GameScore").tap do |q|
   q.order_by = "score"
   q.order = :descending
 end.get
@@ -552,7 +553,7 @@ end.get
 You can sort by multiple fields by passing order a comma-separated list. Currently, there is no convenience method to accomplish this. However, you can still manually construct an `order` string. To retrieve documents that are ordered by scores in ascending order and the names in descending order:
 
 ```ruby
-scores = AV::Query.new("GameScore").tap do |q|
+scores = LC::Query.new("GameScore").tap do |q|
   q.order_by = "score,-name"
 end.get
 ```
@@ -560,7 +561,7 @@ end.get
 You can use the `limit` and `skip` parameters for pagination. `limit` defaults to 100, but anything from 1 to 1000 is a valid limit. Thus, to retrieve 200 objects after skipping the first 400:
 
 ```ruby
-scores = AV::Query.new("GameScore").tap do |q|
+scores = LC::Query.new("GameScore").tap do |q|
   q.limit = 200
   q.skip = 400
 end.get
@@ -573,13 +574,13 @@ All of these parameters can be used in combination with each other.
 For keys with an array type, you can find objects where the key's array value contains 2 by:
 
 ```ruby
-randos = AV::Query.new("RandomObject").eq("arrayKey", 2).get
+randos = LC::Query.new("RandomObject").eq("arrayKey", 2).get
 ```
 
 You can also query that the array contains multiple objects by using contains all, for example you can return objects that have the array values 2 AND 3 by:
 
 ```ruby
-randos = AV::Query.new("RandomObject").eq("arrayKey", [2, 3]).get
+randos = LC::Query.new("RandomObject").eq("arrayKey", [2, 3]).get
 ```
 
 ### Relational Queries
@@ -587,36 +588,36 @@ randos = AV::Query.new("RandomObject").eq("arrayKey", [2, 3]).get
 There are several ways to issue queries for relational data. For example, if each `Comment` has a `Post` object in its `post` field, you can fetch comments for a particular `Post`:
 
 ```ruby
-comments = AV::Query.new("Comment").tap do |q|
-  q.eq("post", AV::Pointer.new({
+comments = LC::Query.new("Comment").tap do |q|
+  q.eq("post", LC::Pointer.new({
     "className" => "Post",
     "objectId"  => "8TOXdXf3tz"
   }))
 end.get
 ```
 
-If you want to retrieve objects where a field contains an object that matches another query, you can use the `AV::Query#in_query(field, query=nil)` method. Note that the default limit of 100 and maximum limit of 1000 apply to the inner query as well, so with large data sets you may need to construct queries carefully to get the desired behavior. For example, imagine you have `Post` class and a `Comment` class, where each `Comment` has a relation to its parent `Post`. You can find comments on posts with images by doing:
+If you want to retrieve objects where a field contains an object that matches another query, you can use the `LC::Query#in_query(field, query=nil)` method. Note that the default limit of 100 and maximum limit of 1000 apply to the inner query as well, so with large data sets you may need to construct queries carefully to get the desired behavior. For example, imagine you have `Post` class and a `Comment` class, where each `Comment` has a relation to its parent `Post`. You can find comments on posts with images by doing:
 
 ```ruby
-comments = AV::Query.new("Comment").tap do |comments_query|
-  comments_query.in_query("post", AV::Query.new("Post").tap do |posts_query|
+comments = LC::Query.new("Comment").tap do |comments_query|
+  comments_query.in_query("post", LC::Query.new("Post").tap do |posts_query|
     posts_query.exists("image")
   end)
 end.get
 ```
 
-Note: You must pass an instance of `AV::Query` as the second argument for `AV::Query#query_in`. You cannot manually construct queries for this.
+Note: You must pass an instance of `LC::Query` as the second argument for `LC::Query#query_in`. You cannot manually construct queries for this.
 
 TODO: Implement this:
 ```
 If you want to retrieve objects where a field contains an object that does not match another query, you can use the $notInQuery operator. Imagine you have Post class and a Comment class, where each Comment has a relation to its parent Post. You can find comments on posts without images by doing:
 ```
 
-If you want to retrieve objects that are members of `Relation` field of a parent object, you can use the `AV::Query#related_to(field, value)` method. Imagine you have a `Post `class and `User` class, where each `Post` can be liked by many users. If the `Users` that liked a Post was stored in a `Relation` on the post under the key likes, you, can the find the users that liked a particular post by:
+If you want to retrieve objects that are members of `Relation` field of a parent object, you can use the `LC::Query#related_to(field, value)` method. Imagine you have a `Post `class and `User` class, where each `Post` can be liked by many users. If the `Users` that liked a Post was stored in a `Relation` on the post under the key likes, you, can the find the users that liked a particular post by:
 
 ```ruby
-users = AV::Query.new("_User").tap do |q|
-  q.related_to("likes", AV::Pointer.new({
+users = LC::Query.new("_User").tap do |q|
+  q.related_to("likes", LC::Pointer.new({
     "className" => "Post",
     "objectId" => "8TOXdXf3tz"
   }))
@@ -626,7 +627,7 @@ end.get
 In some situations, you want to return multiple types of related objects in one query. You can do this by passing the field to include in the `include` parameter. For example, let's say you are retrieving the last ten comments, and you want to retrieve their related posts at the same time:
 
 ```ruby
-comments = AV::Query.new("Comment").tap do |q|
+comments = LC::Query.new("Comment").tap do |q|
   q.order_by = "createdAt"
   q.order    = :descending
   q.limit    = 10
@@ -660,7 +661,7 @@ When the query is issued with an `include` parameter for the key holding this po
 You can also do multi level includes using dot notation. If you wanted to include the post for a comment and the post's author as well you can do:
 
 ```ruby
-comments = AV::Query.new("Comment").tap do |q|
+comments = LC::Query.new("Comment").tap do |q|
   q.order_by = "createdAt"
   q.order    = :descending
   q.limit    = 10
@@ -671,7 +672,7 @@ end.get
 You can issue a query with multiple fields included by passing a comma-separated list of keys as the include parameter:
 
 ```ruby
-comments = AV::Query.new("Comment").tap do |q|
+comments = LC::Query.new("Comment").tap do |q|
   q.include("post,author")
 end.get
 ```
@@ -681,7 +682,7 @@ end.get
 If you are limiting your query, or if there are a very large number of results, and you want to know how many total results there are without returning them all, you can use the `count` parameter. For example, if you only care about the number of games played by a particular player:
 
 ```ruby
-count = AV::Query.new("GameScore").tap do |q|
+count = LC::Query.new("GameScore").tap do |q|
   q.eq("playerName", "Jonathan Walsh")
   q.limit = 0
   q.count
@@ -692,13 +693,13 @@ With a nonzero limit, that request would return results as well as the count.
 
 ### Compound Queries
 
-If you want to find objects that match one of several queries, you can use `AV::Quer#or` method, with an `Array` as its value. For instance, if you want to find players with either have a lot of wins or a few wins, you can do:
+If you want to find objects that match one of several queries, you can use `LC::Quer#or` method, with an `Array` as its value. For instance, if you want to find players with either have a lot of wins or a few wins, you can do:
 
 ```ruby
 
-players = AV::Query.new("Player").tap do |q|
+players = LC::Query.new("Player").tap do |q|
   q.greater_than("wins", 150)
-  q.or(AV::Query.new("Player").tap do |or_query|
+  q.or(LC::Query.new("Player").tap do |or_query|
     or_query.less_than("wins, 5")
   end)
 end.get
@@ -706,7 +707,7 @@ end.get
 
 ## Users
 
-Many apps have a unified login that works across the mobile app and other systems. Accessing user accounts through parse-ruby-client lets you build this functionality on top of AV.
+Many apps have a unified login that works across the mobile app and other systems. Accessing user accounts through parse-ruby-client lets you build this functionality on top of LC.
 
 In general, users have the same features as other objects, such as the flexible schema. The differences are that user objects must have a username and password, the password is automatically encrypted and stored securely, and Parse enforces the uniqueness of the `username` and `email` fields.
 
@@ -716,10 +717,10 @@ Signing up a new user differs from creating a generic object in that the `userna
 
 You can ask Parse to verify user email addresses in your application settings page. With this setting enabled, all new user registrations with an `email` field will generate an email confirmation at that address. You can check whether the user has verified their `email` with the `emailVerified` field.
 
-To sign up a new user, create a new `AV::User` object and then call `#save` on it:
+To sign up a new user, create a new `LC::User` object and then call `#save` on it:
 
 ```ruby
-user = AV::User.new({
+user = LC::User.new({
   :username => "cooldude6",
   :password => "p_n7!-e8",
   :phone => "415-392-0202"
@@ -727,7 +728,7 @@ user = AV::User.new({
 user.save
 ```
 
-The response body is a `AV::User` object containing the `objectId`, the `createdAt` timestamp of the newly-created object, and the `sessionToken` which can be used to authenticate subsequent requests as this user:
+The response body is a `LC::User` object containing the `objectId`, the `createdAt` timestamp of the newly-created object, and the `sessionToken` which can be used to authenticate subsequent requests as this user:
 
 ```ruby
 {"username"=>"cooldude6",
@@ -739,13 +740,13 @@ The response body is a `AV::User` object containing the `objectId`, the `created
 
 ### Logging In
 
-After you allow users to sign up, you need to let them log in to their account with a username and password in the future. To do this, call `AV::User#authenticate(username, password)`:
+After you allow users to sign up, you need to let them log in to their account with a username and password in the future. To do this, call `LC::User#authenticate(username, password)`:
 
 ```ruby
-user = AV::User.authenticate("cooldude6", "p_n7!-e8")
+user = LC::User.authenticate("cooldude6", "p_n7!-e8")
 ```
 
-The response body is a `AV::User` object containing all the user-provided fields except `password`. It also contains the `createdAt`, `updatedAt`, `objectId`, and `sessionToken` fields:
+The response body is a `LC::User` object containing all the user-provided fields except `password`. It also contains the `createdAt`, `updatedAt`, `objectId`, and `sessionToken` fields:
 
 ```ruby
 {"username"=>"cooldude6",
@@ -770,10 +771,10 @@ There are three `emailVerified` states to consider:
 
 ### Requesting A Password Reset
 
-You can initiate password resets for users who have emails associated with their account. To do this, use `AV::User::reset_password`:
+You can initiate password resets for users who have emails associated with their account. To do this, use `LC::User::reset_password`:
 
 ```ruby
-resp = AV::User.reset_password("coolguy@iloveapps.com")
+resp = LC::User.reset_password("coolguy@iloveapps.com")
 puts resp #=> {}
 ```
 
@@ -781,13 +782,13 @@ If successful, the response body is an empty `Hash` object.
 
 ### Retrieving Users
 
-You can also retrieve the contents of a user object by using `AV::Query`. For example, to retrieve the user created above:
+You can also retrieve the contents of a user object by using `LC::Query`. For example, to retrieve the user created above:
 
 ```ruby
-user = AV::Query.new("_User").eq("objectId", "2bMfWZQ9Ob").get.first
+user = LC::Query.new("_User").eq("objectId", "2bMfWZQ9Ob").get.first
 ```
 
-The response body is a `AV::User` object containing all the user-provided fields except `password`. It also contains the `createdAt`, `updatedAt`, and `objectId` fields:
+The response body is a `LC::User` object containing all the user-provided fields except `password`. It also contains the `createdAt`, `updatedAt`, and `objectId` fields:
 
 ```ruby
 {"username"=>"cooldude6",
@@ -808,7 +809,7 @@ To change the data on a user that already exists, send a PUT request to the user
 For example, if we wanted to change the phone number for cooldude6:
 
 ```ruby
-user = AV::Query.new("_User").eq("objectId", "2bMfWZQ9Ob").get.first
+user = LC::Query.new("_User").eq("objectId", "2bMfWZQ9Ob").get.first
 user["phone"] = "415-369-6201"
 user.save
 ```
@@ -816,24 +817,24 @@ user.save
 Currently returns the following error:
 
 ```
-AV::AVProtocolError: 206: AV::UserCannotBeAlteredWithoutSessionError
+LC::LCProtocolError: 206: LC::UserCannotBeAlteredWithoutSessionError
 ```
 
 ### Querying
 
-You can retrieve multiple users at once by using `AV::Query`:
+You can retrieve multiple users at once by using `LC::Query`:
 
 ```ruby
-users = AV::Query.new("_User").get
+users = LC::Query.new("_User").get
 ```
 
-The return value is an `Array` of `AV::User` objects:
+The return value is an `Array` of `LC::User` objects:
 
 ```ruby
 [{"username"=>"fake_person",
   "createdAt"=>"2012-04-20T20:07:32.295Z",
   "updatedAt"=>"2012-04-20T20:07:32.295Z",
-  "objectId"=>"AAVwfClOx9"},
+  "objectId"=>"ALCwfClOx9"},
  {"username"=>"fake_person222",
   "createdAt"=>"2012-04-20T20:07:32.946Z",
   "updatedAt"=>"2012-04-20T20:07:32.946Z",
@@ -907,7 +908,7 @@ Signing a user up with a linked service and logging them in with that service us
 
 ```ruby
 # should look something like this:
-twitter_user = AV::User::Twitter.new({
+twitter_user = LC::User::Twitter.new({
   "id" => "12345678",
   "screen_name" => "ParseIt",
   "consumer_key" => "SaMpLeId3X7eLjjLgWEw",
@@ -964,7 +965,7 @@ Linking an existing user with a service like Facebook or Twitter uses a PUT requ
 ```ruby
 # should look something like this:
 
-user = AV::Query.new("_User").eq("objectId", "2bMfWZQ9Ob").get.first
+user = LC::Query.new("_User").eq("objectId", "2bMfWZQ9Ob").get.first
 user.link_to_facebook!({
   "id" => "123456789",
   "access_token" => "SaMpLeAAibS7Q55FSzcERWIEmzn6rosftAr7pmDME10008bWgyZAmv7mziwfacNOhWkgxDaBf8a2a2FCc9Hbk9wAsqLYZBLR995wxBvSGNoTrEaL",
@@ -988,7 +989,7 @@ Unlinking an existing user with a service also uses a PUT request to clear authD
 ```ruby
 # should look something like this:
 
-user = AV::Query.new("_User").eq("objectId", "2bMfWZQ9Ob").get.first
+user = LC::Query.new("_User").eq("objectId", "2bMfWZQ9Ob").get.first
 user.unlink_from_facebook!
 ```
 
@@ -1026,10 +1027,10 @@ See https://leancloud.cn/docs/rest_api.html#角色-1
 
 ### Uploading Files
 
-To upload a file to Parse, use `AV::File`. You must include the `"Content-Type"` parameter when instantiating. Keep in mind that files are limited to 10 megabytes. Here's a simple example that'll create a file named `hello.txt` containing a string:
+To upload a file to Parse, use `LC::File`. You must include the `"Content-Type"` parameter when instantiating. Keep in mind that files are limited to 10 megabytes. Here's a simple example that'll create a file named `hello.txt` containing a string:
 
 ```ruby
-file = AV::File.new({
+file = LC::File.new({
   :body => "Hello World!",
   :local_filename => "hello.txt",
   :content_type => "text/plain"
@@ -1048,7 +1049,7 @@ The response body is a `Hash` object containing the name of the file, which is t
 To upload an image, the syntax is a little bit different. Here's an example that will upload the image parsers.jpg from the current directory:
 
 ```ruby
-photo = AV::File.new({
+photo = LC::File.new({
   :body => IO.read("test/parsers.jpg"),
   :local_filename => "parsers.jpg",
   :content_type => "image/jpeg"
@@ -1061,13 +1062,13 @@ photo.save
 After files are uploaded, you can associate them with Parse objects:
 
 ```ruby
-photo = AV::File.new({
+photo = LC::File.new({
   :body => IO.read("test/parsers.jpg"),
   :local_filename => "parsers.jpg",
   :content_type => "image/jpeg"
 })
 photo.save
-player_profile = AV::Object.new("PlayerProfile").tap do |p|
+player_profile = LC::Object.new("PlayerProfile").tap do |p|
   p["name"] = "All the Parsers"
   p["picture"] = photo
 end.save
@@ -1090,7 +1091,7 @@ For config/installation: https://leancloud.cn/docs/push_guide.html#使用_REST_A
 To send a notification to the "Giants" channel, as given at: https://leancloud.cn/docs/push_guide.html
 ```ruby
 data = { :alert => "This is a notification from Parse" }
-push = AV::Push.new(data, "Giants")
+push = LC::Push.new(data, "Giants")
 push.type = "ios"
 push.save
 ```
@@ -1102,9 +1103,9 @@ To send a notification to installations where `injuryReports` is `true`, as give
 
 ```ruby
 data = { :alert => "This is a notification from Parse" }
-push = AV::Push.new(data)
+push = LC::Push.new(data)
 push.type = "ios"
-query = AV::Query.new(AV::Protocol::CLASS_INSTALLATION).eq('injuryReports', true)
+query = LC::Query.new(LC::Protocol::CLASS_INSTALLATION).eq('injuryReports', true)
 push.where = query.where
 push.save
 ```
@@ -1114,16 +1115,16 @@ push.save
 #### Retrieving Installations
 
 ```ruby
-installation = AV::Installation.get "objectId"
+installation = LC::Installation.get "objectId"
 # Same as
-installation = AV::Installation.new "objectId"
+installation = LC::Installation.new "objectId"
 installation.get
 ```
 
 #### Updating installations
 
 ```ruby
-installation = AV::Installation.new "objectId"
+installation = LC::Installation.new "objectId"
 installation.channels = ["", "my-channel-name"]
 installation.badge = 5
 installation.save
@@ -1138,8 +1139,8 @@ Parse allows you to associate real-world latitude and longitude coordinates with
 To associate a point with an object you will need to embed a GeoPoint data type into your object. This is done by using a JSON object with __type set to the string GeoPoint and numeric values being set for the latitude and longitude keys. For example, to create an object containing a point under the "location" key with a latitude of 40.0 degrees and -30.0 degrees longitude:
 
 ```ruby
-place = AV::Object.new("PlaceObject").tap do |p|
-  p["location"] = AV::GeoPoint.new({
+place = LC::Object.new("PlaceObject").tap do |p|
+  p["location"] = LC::GeoPoint.new({
     "latitude" => 40.0,
     "longitude" => -30.0
   })
@@ -1154,7 +1155,7 @@ Now that you have a bunch of objects with spatial coordinates, it would be nice 
 
 ```ruby
 # should look something like this:
-places = AV::Query.new("PlaceObject").tap do |q|
+places = LC::Query.new("PlaceObject").tap do |q|
   q.near("location", {
     "latitude" => 30.0,
     "longitude" => -20.0
@@ -1180,18 +1181,18 @@ You can call cloud function which you have had written in `main.js`.
 
 ```ruby
 # should look something like this:
-AV::Cloud::Function.new("hello").call(foo: "bar", ...)
+LC::Cloud::Function.new("hello").call(foo: "bar", ...)
 # or call it without params like this:
-AV::Cloud::Function.new("hello").call
+LC::Cloud::Function.new("hello").call
 ```
 
 ### Request sms code
 
 ```ruby
 # this should get the sms code
-AV::Cloud.request_sms(params)
+LC::Cloud.request_sms(params)
 # this should verify sms code
-AV::Cloud.verify_sms_code(phone, code)
+LC::Cloud.verify_sms_code(phone, code)
 ```
 
 # 原始文档

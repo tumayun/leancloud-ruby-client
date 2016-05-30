@@ -1,16 +1,16 @@
 # -*- encoding : utf-8 -*-
-module AV
+module LC
 
   # Base exception class for errors thrown by the Parse
-  # client library. AVError will be raised by any
-  # network operation if AV.init() has not been called.
-  class AVError < StandardError #Exception ... why? A:http://www.skorks.com/2009/09/ruby-exceptions-and-exception-handling/
+  # client library. LCError will be raised by any
+  # network operation if LC.init() has not been called.
+  class LCError < StandardError #Exception ... why? A:http://www.skorks.com/2009/09/ruby-exceptions-and-exception-handling/
   end
 
   # An exception class raised when the REST API returns an error.
   # The error code and message will be parsed out of the HTTP response,
   # which is also included in the response attribute.
-  class AVProtocolError < AVError
+  class LCProtocolError < LCError
     attr_accessor :code
     attr_accessor :error
     attr_accessor :response
@@ -36,7 +36,7 @@ module AV
     end
   end
 
-  class AVProtocolRetry < AVProtocolError
+  class LCProtocolRetry < LCProtocolError
   end
 
 end

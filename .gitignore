@@ -1,6 +1,7 @@
 /coverage
 pkg
 test.sh
+Gemfile.lock
 
 lib/.DS_Store
 lib/parse/.DS_Store

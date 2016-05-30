@@ -2,7 +2,7 @@
 require 'cgi'
 require 'leancloud/error'
 
-module AV
+module LC
   class Push
     attr_accessor :channels
     attr_accessor :channel
@@ -40,7 +40,7 @@ module AV
       body.merge!({ :type => @type }) if @type
       body.merge!({ :prod => 'dev' }) if not @production
 
-      response = AV.client.request uri, :post, body.to_json, nil
+      response = LC.client.request uri, :post, body.to_json, nil
     end
 
   end
