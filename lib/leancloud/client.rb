@@ -57,11 +57,8 @@ module LC
         m = ""
       end
       k = @master_key || @api_key
-      puts k
       t = (time.to_f * 1000).to_i.to_s
-      puts t
       md5 = Digest::MD5.hexdigest t+k
-      puts md5
       sign = "#{md5},#{t}#{m}"
     end
     # Perform an HTTP request for the given uri and method
@@ -79,7 +76,7 @@ module LC
       }.each do |key, value|
         headers[key] = value if value
       end
-      puts headers
+
       @session.send(method, uri, query || body || {}, headers).body
     end
     def _request(uri: "", method: :get, body: nil, query: nil, content_type: nil, session_token: nil)
