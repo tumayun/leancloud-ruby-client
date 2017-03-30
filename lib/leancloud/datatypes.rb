@@ -3,7 +3,7 @@ require 'time'
 require 'date'
 require 'base64'
 
-module AV
+module LC
 
   # Pointer
   # ------------------------------------------------------------
@@ -31,13 +31,13 @@ module AV
     end
 
     def eql?(other)
-      AV.object_pointer_equality?(self, other)
+      LC.object_pointer_equality?(self, other)
     end
 
     alias == eql?
 
     def hash
-      AV.object_pointer_hash(self)
+      LC.object_pointer_hash(self)
     end
 
     def new?
@@ -59,7 +59,7 @@ module AV
 
     # Retrieve the Parse object referenced by this pointer.
     def get
-      AV.get @class_name, @parse_object_id if @parse_object_id
+      LC.get @class_name, @parse_object_id if @parse_object_id
     end
 
     def to_s
@@ -295,7 +295,7 @@ module AV
 
   # File
   # ------------------------------------------------------------
-  # tf = AV::File.new(:body => "Hello World!", :local_filename => "hello.txt")
+  # tf = LC::File.new(:body => "Hello World!", :local_filename => "hello.txt")
   # tf.save
   class File
     # '{"avatar": {"__type":"File", "name":"profile.png", "url"=>"http://files.parse.com/blah/profile.png"}}'
@@ -329,8 +329,8 @@ module AV
     end
 
     def save
-      uri = AV::Protocol.file_uri(@local_filename)
-      resp = AV.client.request(uri, :post, @body, nil, @content_type)
+      uri = LC::Protocol.file_uri(@local_filename)
+      resp = LC.client.request(uri, :post, @body, nil, @content_type)
       @parse_filename = resp["name"]
       @url = resp["url"]
       @id = resp["id"]

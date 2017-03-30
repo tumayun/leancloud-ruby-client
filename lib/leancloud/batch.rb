@@ -1,10 +1,10 @@
 # -*- encoding : utf-8 -*-
-module AV
+module LC
   class Batch
     attr_reader :requests
     attr_reader :client
 
-    def initialize(client = AV.client)
+    def initialize(client = LC.client)
       @client = client
       @requests ||= []
     end
@@ -15,7 +15,7 @@ module AV
 
     def create_object(object)
       method = "POST"
-      path = AV::Protocol.class_uri(object.class_name)
+      path = LC::Protocol.class_uri(object.class_name)
       body = object.safe_hash
       add_request({
         "method" => method,
@@ -26,7 +26,7 @@ module AV
 
     def update_object(object)
       method = "PUT"
-      path = AV::Protocol.class_uri(object.class_name, object.id)
+      path = LC::Protocol.class_uri(object.class_name, object.id)
       body = object.safe_hash
       add_request({
         "method" => method,
@@ -38,12 +38,12 @@ module AV
     def delete_object(object)
       add_request({
         "method" => "DELETE",
-        "path" => AV::Protocol.class_uri(object.class_name, object.id)
+        "path" => LC::Protocol.class_uri(object.class_name, object.id)
       })
     end
 
     def run!
-      uri = AV::Protocol.batch_request_uri
+      uri = LC::Protocol.batch_request_uri
       body = {:requests => @requests}.to_json
       @client.request(uri, :post, body)
     end

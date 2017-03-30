@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-module AV
+module LC
   # A module which encapsulates the specifics of Parse's REST API.
   module Protocol
 
@@ -17,18 +17,22 @@ module AV
 
     # The HTTP header used for passing your application ID to the
     # Parse API.
-    HEADER_APP_ID   = "X-AVOSCloud-Application-Id"
+    HEADER_APP_ID   = "X-LC-Id"
+
+    # The HTTP header used for passing your API Sign to the
+    # Parse API.
+    HEADER_API_KEY  = "X-LC-Sign"
 
     # The HTTP header used for passing your API key to the
     # Parse API.
-    HEADER_API_KEY  = "X-AVOSCloud-Application-Key"
+    #HEADER_API_KEY  = "X-LC-Key"
 
     # The HTTP header used for passing your API Master key to the
     # Parse API.
-    HEADER_MASTER_KEY  = "X-AVOSCloud-Master-Key"
+    #HEADER_MASTER_KEY  = "X-LC-Master"
 
     # The HTTP header used for passing your authenticated session
-    HEADER_SESSION_TOKEN = "X-AVOSCloud-Session-Token"
+    HEADER_SESSION_TOKEN = "X-LC-Session"
 
     # JSON Keys
     # ----------------------------------------
@@ -119,6 +123,7 @@ module AV
     CLASS_INSTALLATION = "_Installation"
 
     USER_LOGIN_URI  = "/#{VERSION}/login"
+    USER_CURRENT_URI  = "/#{VERSION}/users/me"
     PASSWORD_RESET_URI = "/#{VERSION}/requestPasswordReset"
     SMS_URI = "/#{VERSION}/requestSmsCode"
 

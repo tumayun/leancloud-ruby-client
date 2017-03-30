@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 require 'cgi'
 
-module AV
+module LC
 
   class Query
     attr_accessor :where
@@ -16,18 +16,18 @@ module AV
     def self.do_cloud_query(cql, pvalues=[])
       uri   = Protocol.cql_uri
       query = { "cql" => cql,"pvalues"=> pvalues.to_json }
-      AV.client.logger.info{"Leancloud query for #{uri} #{query.inspect}"} unless AV.client.quiet
-      response = AV.client.request uri, :get, nil, query
+      LC.client.logger.info{"Leancloud query for #{uri} #{query.inspect}"} unless LC.client.quiet
+      response = LC.client.request uri, :get, nil, query
 
       if response.is_a?(Hash) && response.has_key?(Protocol::KEY_RESULTS) && response[Protocol::KEY_RESULTS].is_a?(Array)
         class_name = response[Protocol::KEY_CLASS_NAME]
-        parsed_results = response[Protocol::KEY_RESULTS].map{|o| AV.parse_json(class_name, o)}
+        parsed_results = response[Protocol::KEY_RESULTS].map{|o| LC.parse_json(class_name, o)}
         return {
             count: response['count'],
             results: parsed_results
         }
       else
-        raise AVError.new("query response not a Hash with #{Protocol::KEY_RESULTS} key: #{response.class} #{response.inspect}")
+        raise LCError.new("query response not a Hash with #{Protocol::KEY_RESULTS} key: #{response.class} #{response.inspect}")
       end
     end
 
@@ -67,12 +67,12 @@ module AV
     end
 
     def eq_pair(field, value)
-      add_constraint field, AV.pointerize_value(value)
+      add_constraint field, LC.pointerize_value(value)
       self
     end
 
     def not_eq(field, value)
-      add_constraint field, { "$ne" => AV.pointerize_value(value) }
+      add_constraint field, { "$ne" => LC.pointerize_value(value) }
       self
     end
 
@@ -82,42 +82,42 @@ module AV
     end
 
     def less_than(field, value)
-      add_constraint field, { "$lt" => AV.pointerize_value(value) }
+      add_constraint field, { "$lt" => LC.pointerize_value(value) }
       self
     end
 
     def less_eq(field, value)
-      add_constraint field, { "$lte" => AV.pointerize_value(value) }
+      add_constraint field, { "$lte" => LC.pointerize_value(value) }
       self
     end
 
     def greater_than(field, value)
-      add_constraint field, { "$gt" => AV.pointerize_value(value) }
+      add_constraint field, { "$gt" => LC.pointerize_value(value) }
       self
     end
 
     def greater_eq(field, value)
-      add_constraint field, { "$gte" => AV.pointerize_value(value) }
+      add_constraint field, { "$gte" => LC.pointerize_value(value) }
       self
     end
 
     def value_in(field, values)
-      add_constraint field, { "$in" => values.map { |v| AV.pointerize_value(v) } }
+      add_constraint field, { "$in" => values.map { |v| LC.pointerize_value(v) } }
       self
     end
 
     def value_not_in(field, values)
-      add_constraint field, { "$nin" => values.map { |v| AV.pointerize_value(v) } }
+      add_constraint field, { "$nin" => values.map { |v| LC.pointerize_value(v) } }
       self
     end
 
     def contains_all(field, values)
-      add_constraint field, { "$all" => values.map { |v| AV.pointerize_value(v) } }
+      add_constraint field, { "$all" => values.map { |v| LC.pointerize_value(v) } }
       self
     end
 
     def related_to(field,value)
-      h = {"object" => AV.pointerize_value(value), "key" => field}
+      h = {"object" => LC.pointerize_value(value), "key" => field}
       add_constraint("$relatedTo", h )
     end
 
@@ -127,7 +127,7 @@ module AV
     end
 
     def in_query(field, query=nil)
-      query_hash = {AV::Protocol::KEY_CLASS_NAME => query.class_name, "where" => query.where}
+      query_hash = {LC::Protocol::KEY_CLASS_NAME => query.class_name, "where" => query.where}
       add_constraint(field, "$inQuery" => query_hash)
       self
     end
@@ -152,26 +152,26 @@ module AV
 
     def get
       uri   = Protocol.class_uri @class_name
-      if @class_name == AV::Protocol::CLASS_USER
+      if @class_name == LC::Protocol::CLASS_USER
         uri = Protocol.user_uri
-      elsif @class_name == AV::Protocol::CLASS_INSTALLATION
+      elsif @class_name == LC::Protocol::CLASS_INSTALLATION
         uri = Protocol.installation_uri
       end
       query = { "where" => where_as_json.to_json }
       set_order(query)
       [:count, :limit, :skip, :include].each {|a| merge_attribute(a, query)}
-      AV.client.logger.info{"Parse query for #{uri} #{query.inspect}"} unless AV.client.quiet
-      response = AV.client.request uri, :get, nil, query
+      LC.client.logger.info{"Parse query for #{uri} #{query.inspect}"} unless LC.client.quiet
+      response = LC.client.request uri, :get, nil, query
 
       if response.is_a?(Hash) && response.has_key?(Protocol::KEY_RESULTS) && response[Protocol::KEY_RESULTS].is_a?(Array)
-        parsed_results = response[Protocol::KEY_RESULTS].map{|o| AV.parse_json(class_name, o)}
+        parsed_results = response[Protocol::KEY_RESULTS].map{|o| LC.parse_json(class_name, o)}
         if response.keys.size == 1
           parsed_results
         else
           response.dup.merge(Protocol::KEY_RESULTS => parsed_results)
         end
       else
-        raise AVError.new("query response not a Hash with #{Protocol::KEY_RESULTS} key: #{response.class} #{response.inspect}")
+        raise LCError.new("query response not a Hash with #{Protocol::KEY_RESULTS} key: #{response.class} #{response.inspect}")
       end
     end
 

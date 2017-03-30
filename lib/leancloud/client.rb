@@ -4,7 +4,7 @@ require 'leancloud/error'
 require 'leancloud/util'
 
 require 'logger'
-module AV
+module LC
 
   # A class which encapsulates the HTTPS communication with the Parse
   # API server.
@@ -40,7 +40,7 @@ module AV
           max: @max_retries,
           logger: @logger,
           interval: 0.5,
-          exceptions: ['Faraday::Error::TimeoutError', 'Faraday::Error::ParsingError', 'AV::AVProtocolRetry']
+          exceptions: ['Faraday::Error::TimeoutError', 'Faraday::Error::ParsingError', 'LC::LCProtocolRetry']
         c.use Faraday::ExtendedParseJson
 
         c.response :logger, @logger unless @quiet
@@ -49,21 +49,46 @@ module AV
         yield(c) if block_given?
       end
     end
-
+    def get_sign(time = Time.now)
+      m = !!@master_key
+      if m
+        m = ",master"
+      else
+        m = ""
+      end
+      k = @master_key || @api_key
+      t = (time.to_f * 1000).to_i.to_s
+      md5 = Digest::MD5.hexdigest t+k
+      sign = "#{md5},#{t}#{m}"
+    end
     # Perform an HTTP request for the given uri and method
     # with common basic response handling. Will raise a
-    # AVProtocolError if the response has an error status code,
+    # LCProtocolError if the response has an error status code,
     # and will return the parsed JSON body on success, if there is one.
-    def request(uri, method = :get, body = nil, query = nil, content_type = nil)
+    def request(uri, method = :get, body = nil, query = nil, content_type = nil, session_token = nil)
+      headers = {}
+      {
+        "Content-Type"                  => content_type || 'application/json',
+        "User-Agent"                    => 'leancloud-ruby-client, 0.0',
+        Protocol::HEADER_APP_ID         => @application_id,
+        Protocol::HEADER_API_KEY        => get_sign,
+        Protocol::HEADER_SESSION_TOKEN  => session_token || @session_token,
+      }.each do |key, value|
+        headers[key] = value if value
+      end
+
+      @session.send(method, uri, query || body || {}, headers).body
+    end
+    def _request(uri: "", method: :get, body: nil, query: nil, content_type: nil, session_token: nil)
+      raise ArgumentError, "wrong number of arguments (given 0, expected 1..6)" if !(uri && uri != "")
       headers = {}
 
       {
         "Content-Type"                  => content_type || 'application/json',
-        "User-Agent"                    => 'Parse for Ruby, 0.0',
-        Protocol::HEADER_MASTER_KEY     => @master_key,
+        "User-Agent"                    => 'leancloud-ruby-client, 0.0',
         Protocol::HEADER_APP_ID         => @application_id,
-        Protocol::HEADER_API_KEY        => @api_key,
-        Protocol::HEADER_SESSION_TOKEN  => @session_token,
+        Protocol::HEADER_API_KEY        => get_sign,
+        Protocol::HEADER_SESSION_TOKEN  => session_token || @session_token,
       }.each do |key, value|
         headers[key] = value if value
       end
@@ -94,11 +119,11 @@ module AV
   # ------------------------------------------------------------
   class << self
     # A singleton client for use by methods in Object.
-    # Always use AV.client to retrieve the client object.
+    # Always use LC.client to retrieve the client object.
     @client = nil
 
     # Initialize the singleton instance of Client which is used
-    # by all API methods. AV.init must be called before saving
+    # by all API methods. LC.init must be called before saving
     # or retrieving any objects.
     def init(data = {}, &blk)
       defaults = {:application_id => ENV["LC_APPLICATION_ID"], :api_key => ENV["LC_APPLICATION_KEY"]}
@@ -111,7 +136,7 @@ module AV
 
     # A convenience method for using global.json
     def init_from_cloud_code(path = "../config/global.json")
-      # warning: toplevel constant File referenced by AV::Object::File
+      # warning: toplevel constant File referenced by LC::Object::File
       global = JSON.parse(Object::File.open(path).read)
       application_name  = global["applications"]["_default"]["link"]
       application_id    = global["applications"][application_name]["applicationId"]
@@ -126,7 +151,7 @@ module AV
     end
 
     def client
-      raise AVError, "API not initialized" if !@@client
+      raise LCError, "API not initialized" if !@@client
       @@client
     end
 
@@ -137,7 +162,7 @@ module AV
     def get(class_name, object_id = nil)
       data = self.client.get( Protocol.class_uri(class_name, object_id) )
       self.parse_json class_name, data
-    rescue AVProtocolError => e
+    rescue LCProtocolError => e
       if e.code == Protocol::ERROR_OBJECT_NOT_FOUND_FOR_GET
         e.message += ": #{class_name}:#{object_id}"
       end
