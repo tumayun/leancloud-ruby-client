@@ -10,6 +10,8 @@ leancloud-ruby-client 从 [parse-ruby-client](https://github.com/adelevie/parse-
 * 推送增加可以指定 iOS 生产或者测试证书功能 `production` 属性，值为 `true/false`。
 * 增加用户 API `LC::User.became(token)`
 
+**注意，从 0.2.0 版本开始，原来的 AV module 已经重命名为 LC module**。
+
 ## Contributors
 
 * [oranzhang](https://github.com/oranzhang)
