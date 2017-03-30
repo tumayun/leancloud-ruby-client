@@ -1,5 +1,5 @@
 require 'helper'
 
-class TestQuery < AVTestCase
+class TestQuery < LCTestCase
 
 end

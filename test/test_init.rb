@@ -1,14 +1,14 @@
 require 'helper'
 
-#AV.init :application_id => $LC_APPLICATION_ID, :api_key => $LC_APPLICATION_KEY
+#LC.init :application_id => $LC_APPLICATION_ID, :api_key => $LC_APPLICATION_KEY
 
 class TestInit < Test::Unit::TestCase
   def setup
-    AV.destroy
+    LC.destroy
   end
   
   def test_no_api_keys_error
-    fake = AV::Object.new "shouldNeverExist"
+    fake = LC::Object.new "shouldNeverExist"
     fake["foo"] = "bar"
     
     begin
@@ -18,6 +18,6 @@ class TestInit < Test::Unit::TestCase
     end
     
     assert_equal error_triggered, true
-    assert_equal fake[AV::Protocol::KEY_OBJECT_ID], nil
+    assert_equal fake[LC::Protocol::KEY_OBJECT_ID], nil
   end
 end

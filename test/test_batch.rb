@@ -1,19 +1,19 @@
 require 'helper'
 
-class TestBatch < AVTestCase
+class TestBatch < LCTestCase
 
   def test_initialize
-    batch = AV::Batch.new
-    assert_equal batch.class, AV::Batch
-    assert_equal AV.client, batch.client
+    batch = LC::Batch.new
+    assert_equal batch.class, LC::Batch
+    assert_equal LC.client, batch.client
 
-    batch = AV::Batch.new(AV::Client.new)
-    assert_equal batch.class, AV::Batch
-    assert_not_equal AV.client, batch.client
+    batch = LC::Batch.new(LC::Client.new)
+    assert_equal batch.class, LC::Batch
+    assert_not_equal LC.client, batch.client
   end
 
   def test_add_request
-    batch = AV::Batch.new
+    batch = LC::Batch.new
     batch.add_request({
       :method => "POST",
       :path => "/1/classes/GameScore",
@@ -36,13 +36,13 @@ class TestBatch < AVTestCase
   end
 
   def test_protocol_uri
-    uri = AV::Protocol.batch_request_uri
+    uri = LC::Protocol.batch_request_uri
     assert_equal uri, "/1.1/batch"
   end
 
   def test_run
     VCR.use_cassette('test_batch_run', :record => :new_episodes) do
-      batch = AV::Batch.new
+      batch = LC::Batch.new
       batch.add_request({
         "method" => "POST",
         "path" => "/1/classes/GameScore",
@@ -61,11 +61,11 @@ class TestBatch < AVTestCase
   def test_create_object
     VCR.use_cassette('test_batch_create_object', :record => :new_episodes) do
       objects = [1, 2, 3, 4, 5].map do |i|
-        p = AV::Object.new("BatchTestObject")
+        p = LC::Object.new("BatchTestObject")
         p["foo"] = "#{i}"
         p
       end
-      batch = AV::Batch.new
+      batch = LC::Batch.new
       objects.each do |obj|
         batch.create_object(obj)
       end
@@ -78,7 +78,7 @@ class TestBatch < AVTestCase
   def test_update_object
     VCR.use_cassette('test_batch_update_object', :record => :new_episodes) do
       objects = [1, 2, 3, 4, 5].map do |i|
-        p = AV::Object.new("BatchTestObject")
+        p = LC::Object.new("BatchTestObject")
         p["foo"] = "#{i}"
         p.save
         p
@@ -86,7 +86,7 @@ class TestBatch < AVTestCase
       objects.map do |obj|
         obj["foo"] = "updated"
       end
-      batch = AV::Batch.new
+      batch = LC::Batch.new
       objects.each do |obj|
         batch.update_object(obj)
       end
@@ -98,12 +98,12 @@ class TestBatch < AVTestCase
 
   def test_update_nils_delete_keys
     VCR.use_cassette('test_batch_update_nils_delete_keys', :record => :new_episodes) do
-      post = AV::Object.new("BatchTestObject")
+      post = LC::Object.new("BatchTestObject")
       post["foo"] = "1"
       post.save
 
       post["foo"] = nil
-      batch = AV::Batch.new
+      batch = LC::Batch.new
       batch.update_object(post)
       batch.run!
 
@@ -114,12 +114,12 @@ class TestBatch < AVTestCase
   def test_delete_object
     VCR.use_cassette('test_batch_delete_object', :record => :new_episodes) do
       objects = [1, 2, 3, 4, 5].map do |i|
-        p = AV::Object.new("BatchTestObject")
+        p = LC::Object.new("BatchTestObject")
         p["foo"] = "#{i}"
         p.save
         p
       end
-      batch = AV::Batch.new
+      batch = LC::Batch.new
       objects.each do |obj|
         batch.delete_object(obj)
       end

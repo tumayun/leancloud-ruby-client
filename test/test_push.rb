@@ -1,16 +1,16 @@
 require 'helper'
 
-class TestPush < AVTestCase
+class TestPush < LCTestCase
 
   def test_save_without_where
     data = {:foo => 'bar',
             :alert => 'message'}
-    pf_push = AV::Push.new(data, "some_chan")
+    pf_push = LC::Push.new(data, "some_chan")
     pf_push.type = 'ios'
 
-    query = AV::Query.new(AV::Protocol::CLASS_INSTALLATION).eq('deviceToken', 'baz')
+    query = LC::Query.new(LC::Protocol::CLASS_INSTALLATION).eq('deviceToken', 'baz')
 
-    AV::Client.any_instance.expects(:request).with do |uri, method, body, query|
+    LC::Client.any_instance.expects(:request).with do |uri, method, body, query|
       hash = JSON.parse(body)
       assert_equal :post, method
       assert has_entries('type' => 'ios', 'channel' => "some_chan").matches?([hash])
@@ -26,13 +26,13 @@ class TestPush < AVTestCase
   def test_save_with_where_removes_channel
     data = {:foo => 'bar',
             :alert => 'message'}
-    pf_push = AV::Push.new(data, "some_chan")
+    pf_push = LC::Push.new(data, "some_chan")
     pf_push.type = 'ios'
 
-    query = AV::Query.new(AV::Protocol::CLASS_INSTALLATION).eq('deviceToken', 'baz')
+    query = LC::Query.new(LC::Protocol::CLASS_INSTALLATION).eq('deviceToken', 'baz')
     pf_push.where = query.where
 
-    AV::Client.any_instance.expects(:request).with do |uri, method, body, query|
+    LC::Client.any_instance.expects(:request).with do |uri, method, body, query|
       hash = JSON.parse(body)
       assert_false has_entries('channel' => "some_chan").matches?([hash])
       assert has_entries('deviceToken' => 'baz').matches?([hash['where']])

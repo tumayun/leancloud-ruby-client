@@ -1,10 +1,10 @@
 require 'helper'
 
-class TestInstallation < AVTestCase
+class TestInstallation < LCTestCase
   def test_retrieving_installation_data
     installation_data = {
       "appIdentifier"=>"net.project_name",
-      "appName"=>"AV Project",
+      "appName"=>"LC Project",
       "appVersion"=>"35",
       "badge"=>9,
       "channels"=>["", "channel1"],
@@ -19,25 +19,25 @@ class TestInstallation < AVTestCase
     }
 
     VCR.use_cassette('test_get_installation') do
-      installation = AV::Installation.get "987"
+      installation = LC::Installation.get "987"
       assert_equal installation_data, installation
     end
   end
 
   def test_changing_channels
-    installation = AV::Installation.new "987"
+    installation = LC::Installation.new "987"
     installation.channels = ["", "my-channel"]
     assert_equal ["", "my-channel"], installation["channels"]
   end
 
   def test_changing_badges
-    installation = AV::Installation.new "987"
+    installation = LC::Installation.new "987"
     installation.badge = 5
     assert_equal 5, installation["badge"]
   end
 
   def test_updating_installation_data
-    installation = AV::Installation.new "987"
+    installation = LC::Installation.new "987"
     installation.channels = ["", "my-channel"]
     installation.badge = 5
 

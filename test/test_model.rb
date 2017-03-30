@@ -1,9 +1,9 @@
 require 'helper'
 
-class TestModelObject < AV::Model
+class TestModelObject < LC::Model
 end
 
-class TestModel < AVTestCase
+class TestModel < LCTestCase
 
   def test_new
     VCR.use_cassette('test_new_model', :record => :new_episodes) do
@@ -16,7 +16,7 @@ class TestModel < AVTestCase
 
   def test_superclass
     tmo = TestModelObject
-    assert_equal tmo.superclass, AV::Model
-    assert_equal tmo.superclass.superclass, AV::Object
+    assert_equal tmo.superclass, LC::Model
+    assert_equal tmo.superclass.superclass, LC::Object
   end
 end

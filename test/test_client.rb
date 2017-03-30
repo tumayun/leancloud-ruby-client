@@ -1,13 +1,13 @@
 require 'helper'
 
-class TestClient < AVTestCase
+class TestClient < LCTestCase
 
   def stubbed_client(&block)
     stubs = Faraday::Adapter::Test::Stubs.new do |stub|
       yield(stub)
     end
 
-    client = AV.init(
+    client = LC.init(
       :logger => Logger.new(STDERR).tap {
         |l| l.level = Logger::ERROR
       }
@@ -24,7 +24,7 @@ class TestClient < AVTestCase
       stubs, client = stubbed_client do |stub|
         (@client.max_retries + 1).times do
           stub.get('/') {[ 500, {}, {
-            'code' => AV::Protocol::ERROR_TIMEOUT}.to_json
+            'code' => LC::Protocol::ERROR_TIMEOUT}.to_json
           ]}
         end
       end
@@ -104,7 +104,7 @@ class TestClient < AVTestCase
       begin
         client.request('/')
         raise "client error response should have raised"
-      rescue AV::AVProtocolError => e
+      rescue LC::LCProtocolError => e
         assert_equal "HTTP Status 403 Body nonparseable", e.error
       end
 
@@ -114,58 +114,58 @@ class TestClient < AVTestCase
 
   def test_simple_save
     VCR.use_cassette('test_simple_save', :record => :new_episodes) do
-      test_save = AV::Object.new "TestSave"
+      test_save = LC::Object.new "TestSave"
       test_save["foo"] = "bar"
       test_save.save
 
       assert_equal test_save["foo"], "bar"
-      assert_equal test_save[AV::Protocol::KEY_CREATED_AT].class, String
-      assert_equal test_save[AV::Protocol::KEY_OBJECT_ID].class, String
+      assert_equal test_save[LC::Protocol::KEY_CREATED_AT].class, String
+      assert_equal test_save[LC::Protocol::KEY_OBJECT_ID].class, String
     end
   end
 
   def test_update
     VCR.use_cassette('test_update', :record => :new_episodes) do
-      foo = AV::Object.new "TestSave"
+      foo = LC::Object.new "TestSave"
       foo["age"] = 20
       foo.save
 
       assert_equal foo["age"], 20
-      assert_equal foo[AV::Protocol::KEY_UPDATED_AT], nil
+      assert_equal foo[LC::Protocol::KEY_UPDATED_AT], nil
 
       foo["age"] = 40
       orig = foo.dup
       foo.save
 
       assert_equal foo["age"], 40
-      assert_equal foo[AV::Protocol::KEY_UPDATED_AT].class, String
+      assert_equal foo[LC::Protocol::KEY_UPDATED_AT].class, String
 
       # only difference should be updatedAt
-      orig_assoc = orig.reject{|k,v| k == AV::Protocol::KEY_UPDATED_AT}.to_a
-      foo_assoc = foo.reject{|k,v| k == AV::Protocol::KEY_UPDATED_AT}.to_a
+      orig_assoc = orig.reject{|k,v| k == LC::Protocol::KEY_UPDATED_AT}.to_a
+      foo_assoc = foo.reject{|k,v| k == LC::Protocol::KEY_UPDATED_AT}.to_a
       assert_equal foo_assoc, orig_assoc
     end
   end
 
   def test_server_update
     VCR.use_cassette('test_server_update', :record => :new_episodes) do
-      foo = AV::Object.new("TestSave").save
+      foo = LC::Object.new("TestSave").save
       foo["name"] = 'john'
       foo.save
 
-      bar = AV.get("TestSave",foo.id) # pull it from the server
+      bar = LC.get("TestSave",foo.id) # pull it from the server
       assert_equal bar["name"], 'john'
       bar["name"] = 'dave'
       bar.save
 
-      bat = AV.get("TestSave",foo.id)
+      bat = LC.get("TestSave",foo.id)
       assert_equal bat["name"], 'dave'
     end
   end
 
   def test_destroy
     VCR.use_cassette('test_destroy', :record => :new_episodes) do
-      d = AV::Object.new "toBeDeleted"
+      d = LC::Object.new "toBeDeleted"
       d["foo"] = "bar"
       d.save
       d.parse_delete
@@ -176,7 +176,7 @@ class TestClient < AVTestCase
 
   def test_get_missing
     VCR.use_cassette('test_get_missing', :record => :new_episodes) do
-      e = assert_raise(AV::AVProtocolError) { AV.get("SomeClass", "someIdThatDoesNotExist") }
+      e = assert_raise(LC::LCProtocolError) { LC.get("SomeClass", "someIdThatDoesNotExist") }
       assert_equal "101: Class or object doesn't exists.: SomeClass:someIdThatDoesNotExist", e.message
     end
   end

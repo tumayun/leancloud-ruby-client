@@ -1,6 +1,6 @@
 require 'helper'
 
-class TestUser < AVTestCase
+class TestUser < LCTestCase
 
   def test_user_save
     VCR.use_cassette('test_user_save', :record => :new_episodes) do
@@ -9,10 +9,10 @@ class TestUser < AVTestCase
         :username => username,
         :password => "topsecret"
       }
-      user = AV::User.new data
+      user = LC::User.new data
       user.save
-      assert_equal user[AV::Protocol::KEY_OBJECT_ID].class, String
-      assert_equal user[AV::Protocol::KEY_CREATED_AT].class, String
+      assert_equal user[LC::Protocol::KEY_OBJECT_ID].class, String
+      assert_equal user[LC::Protocol::KEY_CREATED_AT].class, String
     end
   end
 
@@ -24,14 +24,14 @@ class TestUser < AVTestCase
         :password => "secret"
       }
 
-      user = AV::User.new(data)
+      user = LC::User.new(data)
 
       user.save
 
       assert_equal user["username"], u
-      assert_equal user[AV::Protocol::KEY_USER_SESSION_TOKEN].class, String
+      assert_equal user[LC::Protocol::KEY_USER_SESSION_TOKEN].class, String
 
-      login = AV::User.authenticate(u, "secret")
+      login = LC::User.authenticate(u, "secret")
 
       assert_equal login["username"], user["username"]
       assert_equal login["sessionToken"].class, String
@@ -48,11 +48,11 @@ class TestUser < AVTestCase
       :password => "secret"
     }
 
-    user = AV::User.new(data)
+    user = LC::User.new(data)
 
     user.save
 
-    reset_password = AV::User.reset_password(u)
+    reset_password = LC::User.reset_password(u)
 
     assert_equal Hash.new, reset_password
   end

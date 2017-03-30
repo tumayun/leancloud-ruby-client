@@ -5,11 +5,15 @@
 
 Gem::Specification.new do |s|
   s.name = "leancloud-ruby-client"
+<<<<<<< Updated upstream
   s.version = "0.2.0"
+=======
+  s.version = "0.1.1"
+>>>>>>> Stashed changes
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Alan deLevie", "Adam Alpern", "Dennis Zhuang"]
-  s.date = "2015-04-10"
+  s.date = "2015-06-16"
   s.description = "A simple Ruby client for the leancloud.cn REST API"
   s.email = "killme2008@gmail.com"
   s.extra_rdoc_files = [

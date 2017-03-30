@@ -27,7 +27,6 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'leancloud-ruby-client'
 
-YAML::ENGINE.yamler='syck' # get ascii strings as strings in fixtures
 
 VCR.configure do |c|
   c.cassette_library_dir = 'fixtures/vcr_cassettes'
@@ -43,15 +42,14 @@ VCR.configure do |c|
     end
   end
 
-  filter_sensitive_header(c, AV::Protocol::HEADER_APP_ID)
-  filter_sensitive_header(c, AV::Protocol::HEADER_API_KEY)
-  filter_sensitive_header(c, AV::Protocol::HEADER_MASTER_KEY)
-  filter_sensitive_header(c, AV::Protocol::HEADER_SESSION_TOKEN)
+  filter_sensitive_header(c, LC::Protocol::HEADER_APP_ID)
+  filter_sensitive_header(c, LC::Protocol::HEADER_API_KEY)
+  filter_sensitive_header(c, LC::Protocol::HEADER_SESSION_TOKEN)
 end
 
-class AVTestCase < Test::Unit::TestCase
+class LCTestCase < Test::Unit::TestCase
   def setup
-    @client = AV.init(:logger => Logger.new(STDERR).tap{|l| l.level = Logger::ERROR})
+    @client = LC.init(:logger => Logger.new(STDERR).tap{|l| l.level = Logger::ERROR})
   end
 end
 
