@@ -93,6 +93,7 @@ Gem::Specification.new do |s|
     "lib/leancloud/query.rb",
     "lib/leancloud/user.rb",
     "lib/leancloud/util.rb",
+    "lib/leancloud/scan.rb",
     "test/cloud_functions/MyCloudCode/cloud/main.js",
     "test/config/global.json",
     "test/helper.rb",

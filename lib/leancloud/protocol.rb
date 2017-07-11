@@ -194,5 +194,9 @@ module LC
     def Protocol.batch_request_uri
       "/#{VERSION}/#{BATCH_REQUEST_URI}"
     end
+
+    def Protocol.scan_uri(class_name)
+      "/#{VERSION}/scan/classes/#{class_name}"
+    end
   end
 end
