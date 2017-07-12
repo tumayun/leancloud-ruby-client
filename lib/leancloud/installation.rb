@@ -33,7 +33,7 @@ module LC
 
     UPDATABLE_FIELDS.each do |method_name, key|
       define_method "#{method_name}=" do |value|
-        self[key] = value
+        body[key] = value
       end
     end
 
@@ -42,7 +42,7 @@ module LC
     end
 
     def save
-      LC.client.request uri, method, self.to_json, nil
+      LC.client.request uri, method, body.to_json, nil
     end
 
     def rest_api_hash
@@ -53,5 +53,9 @@ module LC
       @parse_object_id ? :put : :post
     end
 
+    def body
+      return @body if defined? @body
+      @body = {}
+    end
   end
 end
